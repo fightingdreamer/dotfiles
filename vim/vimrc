@@ -1,0 +1,260 @@
+scriptencoding utf-8
+
+syntax on " enable syntax-highlighting
+
+language en_US.utf8  " sets the language of the messages / ui
+
+" GUI and Terminal VIM options {{{
+if has("gui_running")
+  " Disable all GUI elements and enable console based dialogs for simple queries
+  set guioptions=gc
+
+  " Disabled blinking cursor in vim-qt
+  set gcr+=a:blinkon0
+
+  " Default font for GUI Vim
+  " set guifont=Menlo\ Bold\ 10
+  " set guifont=Monaco\ Bold\ 9
+  set guifont=MonacoB\ Bold\ 9
+  " set guifont=Source\ Code\ Pro\ Semibold\ 11
+
+  " sets the language of the menu
+  set langmenu=en_US.UTF-8
+else
+  set t_Co=256
+  " Automatic rename of tmux window
+  "if exists('$TMUX') && !exists('$NORENAME')
+  "  au BufEnter * call system('tmux rename-window '.expand('%:t:S'))
+  "  au VimLeave * call system('tmux set-window automatic-rename on')
+  "endif
+endif
+" }}}
+
+" Mouse {{{
+if has('mouse')
+  set mouse=a " Enable mouse support
+  "set mousemodel=popup " Use the mouse for copy/paste with popup in gui vim
+  set mousehide " Hide cursor while typing
+  "if exists("$TMUX")
+  "  if !has('nvim')
+  "    " Tmux knows the extended mouse mode
+  "    set ttymouse=xterm2
+  "  endif
+  "endif
+endif
+" }}}
+
+" Multibyte {{{
+if has('multi_byte')
+  "›,·,»·,¶,→,←,×,▸,¬,˽,˰
+  set listchars=trail:·,tab:»\ ,extends:→,precedes:←,nbsp:×
+  " Vertical split chars
+  set fillchars=stl:\ ,stlnc:\ ,vert:│
+  if has('patch-7.4.338')
+    let &sbr = nr2char(8618).' ' " Show ↪ at the beginning of wrapped lines
+    set breakindent
+    set breakindentopt=sbr
+  endif
+endif
+" }}}
+
+" Autocmd {{{
+if has("autocmd")
+  " Enable file type detection.
+  filetype plugin indent on
+
+  " Python indentation
+  " About nosmartindent please look this link
+  " http://stackoverflow.com/questions/2063175/vim-insert-mode-comments-go-to-start-of-line
+  au FileType python     setlocal nosmartindent "textwidth=79
+  au FileType javascript setlocal expandtab shiftwidth=4 tabstop=4
+  au FileType vim        setlocal expandtab shiftwidth=2 tabstop=2
+  au FileType scss       setlocal expandtab shiftwidth=4 tabstop=4
+  au FileType css        setlocal expandtab shiftwidth=4 tabstop=4
+  au FileType html       setlocal expandtab shiftwidth=2 tabstop=2
+  au FileType jinja      setlocal expandtab shiftwidth=2 tabstop=2
+
+  " Disable line numbers for QuickFix
+  au FileType qf         setlocal nonumber
+
+  " Remember cursor position
+  "augroup vimrc-remember-cursor-position
+  "  au!
+  "  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+  "augroup END
+endif
+" }}}
+
+" Use ag over grep {{{
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor
+  let $FZF_DEFAULT_COMMAND='ag -l -g ""'
+endif
+" }}}
+
+" Neovim options {{{
+"if has('nvim')
+"  set rtp+=~/.vim/
+"  " If Neovim support is enabled, then let set the
+"  " NVIM_TUI_ENABLE_CURSOR_SHAPE for the user.
+"  if $NVIM_TUI_ENABLE_CURSOR_SHAPE == ""
+"    let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
+"  endif
+"endif
+" }}}
+
+" Store undofile in to fixed location {{{
+if exists("+undofile")
+  " undofile - This allows you to use undos after exiting and restarting
+  " This, like swap and backups, uses .vim-undo first, then ~/.vim/undo
+  " :help undo-persistence
+  " This is only present in 7.3+
+  set undofile
+
+  if !isdirectory('~/.vim/undo')
+    silent !mkdir ~/.vim/undo -p
+  endif
+
+  " Store undo files in to fixed location
+  set undodir=~/.vim/undo
+endif
+" }}}
+
+" Clear highlight with esc {{{
+if has('gui_running')
+  nnoremap <silent> <Esc> :nohlsearch<Return><Esc>
+else
+  augroup no_highlight
+    autocmd TermResponse * nnoremap <Esc> :noh<Return><Esc>
+  augroup END
+end
+" }}}
+
+" Store swap files in to fixed location
+set noswapfile
+set directory=/var/tmp//,/tmp//,.
+
+" Store backup files in to fixed location
+set nobackup
+set backupdir=/var/tmp//,/tmp//,.
+
+" This will set your path variable to current directory
+" (from which you launched vim) and to all directories
+" under current directory recursively.
+set path=.,,**
+
+" Tell vim to remember certain things when we exit
+"  '10  :  marks will be remembered for up to 10 previously edited files
+"  "100 :  will save up to 100 lines for each register
+"  :20  :  up to 20 lines of command-line history will be remembered
+"  %    :  saves and restores the buffer list
+"  n... :  where to save the viminfo files
+"set viminfo='10,\"100,:20,%,n~/.viminfo
+
+" Disable timeout for Esc key
+set ttimeout ttimeoutlen=0 notimeout
+set ttyfast " Optimize for fast terminal connections
+set lazyredraw " Don't redraw while executing macros (good performance config)
+
+" Autocomplete options:
+" longest: do not select the first candidate
+" preview: removed includes display of documentation
+set completeopt=menuone,longest
+
+set confirm " Get a dialog when :q, :w, or :wq fails
+
+let mapleader = "\<Space>" " Map leader
+
+let maplocalleader = "-" " Local leader
+
+set hlsearch " Highlight search terms (very useful!)
+
+set incsearch " Show search matches while typing
+
+set display+=lastline " Display lastline instead of @
+
+set laststatus=2 " Enable statusline
+
+set scrolloff=3 " Minimal number of screen lines to keep above and below the cursor
+
+set magic " For regular expressions turn magic on
+
+set ignorecase " Searches are Non Case-sensitive
+
+set smartcase " Do smart case matching when searching
+
+set showcmd " Show incomplete cmds down the bottom
+
+set title " Show title
+
+set noautochdir " Vim will not change the current working directory whenever you open a file
+
+set autoread " Reload files changed outside automatically
+
+set tabstop=4 " Number of spaces that a <Tab> in the file counts for
+
+set softtabstop=0 " Number of spaces that a <Tab> counts for while performing editing operations
+
+set shiftwidth=4 " Number of spaces to use for each step of (auto)indent
+
+set expandtab " Use the appropriate number of spaces to insert a <Tab>
+
+set backspace=indent,eol,start " Fix backspace indent
+
+set smarttab " Be smart when using tabs
+
+set autoindent " Enable auto indent
+
+set smartindent " Smart indent
+
+set wrap " Enable word wrap
+set textwidth=0 " Disable line break
+
+set noerrorbells novisualbell t_vb= " No annoying sound on errors
+
+set encoding=utf8 " Default encoding
+
+set termencoding=utf-8 " Terminal encoding
+
+set fileencodings=utf8 " Supported file encodings
+
+set number " Enable line numbers
+
+"set colorcolumn=80 " Show right margin
+
+set list " Show non printable characters
+
+set ruler " Always display cursor position
+
+set hidden " A buffer becomes hidden when it is abandoned
+
+set wildmenu " Turn on the Wild menu
+
+set wildmode=list:longest,list:full " Wildmenu configuration
+
+" Ignore files
+set wildignore+=*.o,*.obj,.git/**,node_modules/**,.sass-cache,*.pyc,*.gem
+set wildignore+=*.jpg,*.jpeg,*.tiff,*.gif,*.png,*.svg,,*.pdf
+
+set conceallevel=0 " Conceal level
+
+set modelines=1 " Make Vim only use folding settings for current file
+
+set foldmethod=syntax
+
+set foldminlines=1
+
+set noshowmode " Suppress mode change messages
+
+set exrc " Allow load .vimrc or _vimrc from current directory
+
+set cursorline " Highlight the screen line of the cursor
+
+if filereadable(expand('~/.vim/plugins.vim'))
+  " Include plugins list
+  source ~/.vim/plugins.vim
+endif
+
+colorscheme Tomorrow-Night
+
+" vim:foldmethod=marker:foldlevel=0:tabstop=2:shiftwidth=2
