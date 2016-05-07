@@ -1,0 +1,23 @@
+[gui]
+  fontui = -family \"DejaVu Sans\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+  fontdiff = -family Menlo -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+[alias]
+  st = status
+  ci = commit
+  ca = commit --amend
+  br = branch
+  co = checkout
+  df = diff
+  rb = rebase
+  lg = log -p
+  svn-dcommit = !git stash && git svn dcommit && git stash pop
+  tree = log --graph --full-history --all --color --date=short --pretty=format:\"%Cred%x09%h %Creset%ad%Cblue%d %Creset %s %C(bold)(%an)%Creset\"
+[core]
+  editor = gvim --remote-tab-wait-silent
+  autocrlf = input
+[include]
+  path = ~/.gitconfig.local
