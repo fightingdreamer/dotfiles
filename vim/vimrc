@@ -234,7 +234,7 @@ set wildmode=list:longest,list:full " Wildmenu configuration
 
 " Ignore files
 set wildignore+=*.o,*.obj,.git/**,node_modules/**,.sass-cache,*.pyc,*.gem
-set wildignore+=*.jpg,*.jpeg,*.tiff,*.gif,*.png,*.svg,,*.pdf
+set wildignore+=*.jpg,*.jpeg,*.tiff,*.gif,*.png,*.svg,*.pdf
 
 set conceallevel=0 " Conceal level
 
