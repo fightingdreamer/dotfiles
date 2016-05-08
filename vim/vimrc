@@ -208,6 +208,7 @@ set autoindent " Enable auto indent
 set smartindent " Smart indent
 
 set wrap " Enable word wrap
+
 set textwidth=0 " Disable line break
 
 set noerrorbells novisualbell t_vb= " No annoying sound on errors
