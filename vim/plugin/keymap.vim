@@ -267,4 +267,18 @@ endif
 " }}}
 " ----------------------------------------
 
+" Custom
+" ----------------------------------------
+" | Perl Fennec {{{
+" ----------------------------------------
+function! RunFennecLine()
+    let cur_line = line(".")
+    exe "!FENNEC_TEST='" . cur_line . "' prove --nocolor -v -I ~/perl5/lib/perl5 -I lib %"
+endfunction
+
+nnoremap <leader>x :call RunFennecLine()<cr>
+" }}}
+" ----------------------------------------
+
+
 " vim:foldmethod=marker:foldminlines=1:foldlevel=0:tabstop=2:shiftwidth=2
