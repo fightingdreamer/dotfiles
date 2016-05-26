@@ -67,6 +67,7 @@ if has("autocmd")
   " About nosmartindent please look this link
   " http://stackoverflow.com/questions/2063175/vim-insert-mode-comments-go-to-start-of-line
   au FileType python     setlocal nosmartindent "textwidth=79
+  au FileType perl       setlocal foldmethod=indent
   au FileType javascript setlocal expandtab shiftwidth=4 tabstop=4
   au FileType vim        setlocal expandtab shiftwidth=2 tabstop=2
   au FileType scss       setlocal expandtab shiftwidth=4 tabstop=4
