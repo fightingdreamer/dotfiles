@@ -89,6 +89,7 @@ let g:syntastic_javascript_checkers = ['eslint']
 " perl
 let g:syntastic_enable_perl_checker = 1
 let g:syntastic_perl_checkers = ['perl']
+let g:syntastic_perl_perl_args = ['-I', expand('~/perl5/lib/perl5'), '-I', 'lib']
 " let g:syntastic_perl_checkers = ['perl', 'perlcritic']
 " let g:syntastic_perl_perlcritic_args = '-severity 3'
 " let g:syntastic_perl_perlcritic_thres = 2
