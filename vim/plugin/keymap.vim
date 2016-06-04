@@ -80,7 +80,7 @@ nmap <leader>P "+P
 " ----------------------------------------
 " | Syntax details with F11 {{{
 " ----------------------------------------
-map <F11> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+map <F12> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
       \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 " }}}
@@ -262,7 +262,7 @@ nnoremap <leader>l :<C-u>UndotreeToggle<cr>
 " | vim-fullscreen {{{
 " ----------------------------------------
 if has("gui_running")
-  nmap <F12> <Plug>(fullscreen-toggle)
+  nmap <F11> <Plug>(fullscreen-toggle)
 endif
 " }}}
 " ----------------------------------------
