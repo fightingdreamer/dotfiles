@@ -113,7 +113,7 @@ if exists("+undofile")
   set undofile
 
   if !isdirectory('~/.vim/undo')
-    silent !mkdir ~/.vim/undo -p
+    silent !mkdir -p ~/.vim/undo
   endif
 
   " Store undo files in to fixed location
