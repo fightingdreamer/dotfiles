@@ -266,6 +266,14 @@ if has("gui_running")
 endif
 " }}}
 " ----------------------------------------
+" | python-mode {{{
+" ----------------------------------------
+let g:pymode_run = 1
+let g:pymode_run_bind = '<localleader>r'
+let g:pymode_breakpoint = 1
+let g:pymode_breakpoint_bind = '<localleader>b'
+" }}}
+" ----------------------------------------
 
 " Custom
 " ----------------------------------------

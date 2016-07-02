@@ -135,5 +135,16 @@ let g:neocomplete#sources#omni#input_patterns.perl =
 
 " }}}
 " ----------------------------------------
+" | python-mode {{{
+" ----------------------------------------
+let g:pymode_options_max_line_length = 99
+let g:pymode_options_colorcolumn = 0
+let g:pymode_lint = 1
+let g:pymode_lint_on_write = 1
+let g:pymode_lint_unmodified = 1
+let g:pymode_lint_checkers = ['pyflakes', 'pep8']
+let g:pymode_lint_signs = 1
+" }}}
+" ----------------------------------------
 
 " vim:foldmethod=marker:foldminlines=1:foldlevel=0:tabstop=2:shiftwidth=2
