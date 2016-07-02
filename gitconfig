@@ -21,3 +21,5 @@
   autocrlf = input
 [include]
   path = ~/.gitconfig.local
+[credential]
+  helper = store
