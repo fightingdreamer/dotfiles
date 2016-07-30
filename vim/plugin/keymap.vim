@@ -5,11 +5,11 @@
 nnoremap <M-n> :tabnew<cr>
 nnoremap <M-c> :tabclose<cr>
 
-nnoremap <M-j> :tabprevious<cr>
-nnoremap <M-k> :tabnext<cr>
+nnoremap <M-h> :tabprevious<cr>
+nnoremap <M-l> :tabnext<cr>
 
-nnoremap <M-J> :-tabmove<cr>
-nnoremap <M-K> :+tabmove<cr>
+nnoremap <M-H> :-tabmove<cr>
+nnoremap <M-L> :+tabmove<cr>
 
 nnoremap <M-1> 1gt
 nnoremap <M-2> 2gt
