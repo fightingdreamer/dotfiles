@@ -36,7 +36,7 @@ nnoremap <M-up>    :         resize -5<cr>
 nnoremap <M-right> :vertical resize +5<cr>
 " }}}
 " ----------------------------------------
-" | Change font size with F10 Shift-F10 {{{
+" | Change font size with F9 and F10 {{{
 " ----------------------------------------
 if has("unix")
   function! GetFontSize ()
@@ -78,7 +78,7 @@ nmap <leader>p "+p
 nmap <leader>P "+P
 " }}}
 " ----------------------------------------
-" | Syntax details with F11 {{{
+" | Syntax details with F12 {{{
 " ----------------------------------------
 map <F12> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
       \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
