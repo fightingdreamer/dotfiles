@@ -17,7 +17,7 @@
   svn-dcommit = !git stash && git svn dcommit && git stash pop
   tree = log --graph --full-history --all --color --date=short --pretty=format:\"%Cred%x09%h %Creset%ad%Cblue%d %Creset %s %C(bold)(%an)%Creset\"
 [core]
-  editor = gvim --remote-tab-wait-silent
+  editor = vim
   autocrlf = input
 [include]
   path = ~/.gitconfig.local
