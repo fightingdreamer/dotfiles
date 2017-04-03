@@ -31,9 +31,10 @@ nnoremap Y y$
 " | Window resize using arrows {{{
 " ----------------------------------------
 nnoremap <M-left>  :vertical resize -5<cr>
-nnoremap <M-down>  :         resize +5<cr>
-nnoremap <M-up>    :         resize -5<cr>
+nnoremap <M-down>  :         resize +3<cr>
+nnoremap <M-up>    :         resize -3<cr>
 nnoremap <M-right> :vertical resize +5<cr>
+
 " }}}
 " ----------------------------------------
 " | Change font size with F9 and F10 {{{
@@ -172,7 +173,7 @@ function! s:unite_settings()
 
   imap <buffer> <C-j> <Plug>(unite_select_next_line)
   imap <buffer> <C-k> <Plug>(unite_select_previous_line)
-  " nmap <buffer> <ESC> <Plug>(unite_exit)
+  nmap <buffer> <ESC> <Plug>(unite_exit)
 
 endfunction
 
@@ -248,10 +249,10 @@ nmap <leader>a <Plug>(EasyAlign)
 " ----------------------------------------
 " | {{{ UltiSnips
 " ----------------------------------------
-let g:UltiSnipsExpandTrigger = "<c-l>"
-let g:UltiSnipsListSnippets = "<c-tab>"
-let g:UltiSnipsJumpForwardTrigger = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+let g:UltiSnipsExpandTrigger = "<d-l>"
+let g:UltiSnipsListSnippets = "<d-tab>"
+let g:UltiSnipsJumpForwardTrigger = "<d-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<d-k>"
 " }}}
 " ----------------------------------------
 " | undotree {{{

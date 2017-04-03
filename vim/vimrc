@@ -2,7 +2,7 @@ scriptencoding utf-8
 
 syntax on " enable syntax-highlighting
 
-language en_US.utf8  " sets the language of the messages / ui
+"language en_US.utf8  " sets the language of the messages / ui
 
 " GUI and Terminal VIM options {{{
 if has("gui_running")
@@ -13,9 +13,10 @@ if has("gui_running")
   set gcr+=a:blinkon0
 
   " Default font for GUI Vim
+  set guifont=Monaco:h11
   " set guifont=Menlo\ Bold\ 10
   " set guifont=Monaco\ Bold\ 9
-  set guifont=MonacoB\ Bold\ 9
+  " set guifont=MonacoB\ Bold\ 9
   " set guifont=Source\ Code\ Pro\ Semibold\ 11
 
   " sets the language of the menu
@@ -67,7 +68,7 @@ if has("autocmd")
   " About nosmartindent please look this link
   " http://stackoverflow.com/questions/2063175/vim-insert-mode-comments-go-to-start-of-line
   au FileType python     setlocal nosmartindent "textwidth=79
-  au FileType perl       setlocal foldmethod=indent
+  au FileType perl       setlocal noexpandtab foldmethod=indent
   au FileType javascript setlocal expandtab shiftwidth=4 tabstop=4
   au FileType vim        setlocal expandtab shiftwidth=2 tabstop=2
   au FileType scss       setlocal expandtab shiftwidth=4 tabstop=4
@@ -92,6 +93,10 @@ if executable('ag')
   let $FZF_DEFAULT_COMMAND='ag -l -g ""'
 endif
 " }}}
+
+if has("gui_macvim")
+  set macmeta
+endif
 
 " Neovim options {{{
 "if has('nvim')
@@ -257,6 +262,11 @@ if filereadable(expand('~/.vim/plugins.vim'))
   source ~/.vim/plugins.vim
 endif
 
-colorscheme Tomorrow-Night
+
+if has("gui_macvim")
+  colorscheme base16-ocean
+else
+  colorscheme Tomorrow
+endif
 
 " vim:foldmethod=marker:foldlevel=0:tabstop=2:shiftwidth=2

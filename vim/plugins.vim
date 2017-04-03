@@ -18,10 +18,10 @@ call plug#begin('~/.vim/plugged')
 " ----------------------------------------
 
 Plug 'fightingdreamer/tomorrow-theme', {'rtp': 'vim'}
-"Plug 'fightingdreamer/cleanroom-vim-color'
+Plug 'fightingdreamer/cleanroom-vim-color'
 "Plug 'altercation/vim-colors-solarized'
 "Plug 'sjl/badwolf'
-"Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/base16-vim'
 "Plug 'w0ng/vim-hybrid'
 "Plug 'abra/vim-abra'
 "Plug 'junegunn/seoul256.vim'

@@ -145,6 +145,7 @@ let g:pymode_lint_unmodified = 1
 let g:pymode_lint_checkers = ['pyflakes', 'pep8']
 let g:pymode_lint_signs = 1
 let g:pymode_rope_complete_on_dot = 0
+let g:pymode_rope = 0
 " }}}
 " ----------------------------------------
 
