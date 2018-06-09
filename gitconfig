@@ -15,7 +15,7 @@
   rb = rebase
   lg = log -p
   svn-dcommit = !git stash && git svn dcommit && git stash pop
-  tree = log --graph --full-history --all --color --date=short --pretty=format:\"%Cred%x09%h %Creset%ad%Cblue%d %Creset %s %C(bold)(%an)%Creset\"
+    tree = log --graph --full-history --all --color --date=local --pretty=format:\"%Cred%x09%h %Creset%ad%Cblue%d %Creset %s %C(bold)(%an)%Creset\"
 [core]
   editor = vim
   autocrlf = input
