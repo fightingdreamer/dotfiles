@@ -13,7 +13,7 @@ if has("gui_running")
   set gcr+=a:blinkon0
 
   " Default font for GUI Vim
-  set guifont=Monaco:h11
+  set guifont=SF\ Mono:h12
   " set guifont=Menlo\ Bold\ 10
   " set guifont=Monaco\ Bold\ 9
   " set guifont=MonacoB\ Bold\ 9
