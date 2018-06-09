@@ -1,6 +1,6 @@
 [gui]
-  fontui = -family \"DejaVu Sans\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
-  fontdiff = -family Menlo -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+	fontui = -family \"DejaVu Sans\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family \"Fira Mono\" -size 13 -weight normal -slant roman -underline 0 -overstrike 0
 [color]
   diff = auto
   status = auto
