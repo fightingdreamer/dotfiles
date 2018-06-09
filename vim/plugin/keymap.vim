@@ -35,6 +35,10 @@ nnoremap <M-down>  :         resize +3<cr>
 nnoremap <M-up>    :         resize -3<cr>
 nnoremap <M-right> :vertical resize +5<cr>
 
+nnoremap ķ :vertical resize -5<cr>
+nnoremap ∆ :         resize +3<cr>
+nnoremap Ż :         resize -3<cr>
+nnoremap ł :vertical resize +5<cr>
 " }}}
 " ----------------------------------------
 " | Change font size with F9 and F10 {{{
