@@ -130,9 +130,10 @@ endif
 if has('gui_running')
   nnoremap <silent> <Esc> :nohlsearch<Return><Esc>
 else
-  augroup no_highlight
-    autocmd TermResponse * nnoremap <Esc> :noh<Return><Esc>
-  augroup END
+  nnoremap <silent> <Esc> :nohlsearch<Return><Esc>
+  " augroup no_highlight
+  "   autocmd TermResponse * nnoremap <Esc> :noh<Return><Esc>
+  " augroup END
 end
 " }}}
 
