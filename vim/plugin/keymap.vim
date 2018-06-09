@@ -182,7 +182,7 @@ endfunction
 " | vim-easyMotion {{{
 " ----------------------------------------
 map <leader>      <Plug>(easymotion-prefix)
-map <localleader> <Plug>(easymotion-overwin-f)
+map -             <Plug>(easymotion-overwin-f)
 "}}}
 " ----------------------------------------
 " | incsearch.vim {{{

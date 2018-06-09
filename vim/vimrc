@@ -172,7 +172,7 @@ set confirm " Get a dialog when :q, :w, or :wq fails
 
 let mapleader = "\<Space>" " Map leader
 
-let maplocalleader = "-" " Local leader
+let maplocalleader = "\<Backspace>" " Local leader
 
 set hlsearch " Highlight search terms (very useful!)
 
