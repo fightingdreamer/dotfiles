@@ -27,6 +27,7 @@ Plug 'chriskempson/base16-vim'
 "Plug 'junegunn/seoul256.vim'
 "Plug 'vyshane/vydark-vim-color'
 "Plug 'vyshane/vyterm-vim-color'
+Plug 'rakr/vim-one'
 
 " }}}
 " ----------------------------------------
@@ -115,7 +116,8 @@ Plug 'mattn/emmet-vim'
 "Plug 'Shougo/neosnippet-snippets'
 
 " The ultimate snippet solution for Vim
-Plug 'SirVer/ultisnips'
+" <broken for macvim>
+" Plug 'SirVer/ultisnips'
 
 " Snippets are separated from the engine
 Plug 'honza/vim-snippets'
@@ -204,6 +206,17 @@ Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': 'yes \| ./install' }
 
 " }}}
 " ----------------------------------------
+" | Tasks {{{
+" ----------------------------------------
+
+" use CTRL-A/CTRL-X to increment dates, times, and more
+Plug 'tpope/vim-speeddating'
+
+" Text outlining and task management for Vim
+Plug 'jceb/vim-orgmode'
+
+" }}}
+" ----------------------------------------
 " | Maybe someday {{{
 " ----------------------------------------
 
@@ -212,6 +225,15 @@ Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': 'yes \| ./install' }
 
 " Auto insert pairs when complete done
 "Plug 'Shougo/neopairs.vim'
+
+" }}}
+" ----------------------------------------
+" ----------------------------------------
+" | Maybe someday {{{
+" ----------------------------------------
+
+" Open-source plugin automatic time tracking.
+Plug 'wakatime/vim-wakatime'
 
 " }}}
 " ----------------------------------------
