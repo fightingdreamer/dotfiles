@@ -71,7 +71,7 @@ if has("autocmd")
   au FileType perl       setlocal noexpandtab foldmethod=indent
   au FileType javascript setlocal expandtab shiftwidth=4 tabstop=4
   au FileType vim        setlocal expandtab shiftwidth=2 tabstop=2
-  au FileType scss       setlocal expandtab shiftwidth=4 tabstop=4
+  au FileType scss       setlocal expandtab shiftwidth=2 tabstop=2
   au FileType css        setlocal expandtab shiftwidth=4 tabstop=4
   au FileType html       setlocal expandtab shiftwidth=2 tabstop=2
   au FileType jinja      setlocal expandtab shiftwidth=2 tabstop=2
