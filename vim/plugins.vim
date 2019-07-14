@@ -170,6 +170,9 @@ Plug 'c9s/perlomni.vim'
 " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box.
 Plug 'klen/python-mode', {'branch': 'develop'}
 
+" Improved nginx vim plugin (incl. syntax highlighting)
+Plug 'chr4/nginx.vim'
+
 " A Vim Plugin for Lively Previewing LaTeX PDF Output
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 
