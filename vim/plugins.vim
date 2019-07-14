@@ -28,6 +28,8 @@ Plug 'chriskempson/base16-vim'
 "Plug 'vyshane/vydark-vim-color'
 "Plug 'vyshane/vyterm-vim-color'
 Plug 'rakr/vim-one'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'ayu-theme/ayu-vim'
 
 " }}}
 " ----------------------------------------

@@ -13,8 +13,8 @@ if has("gui_running")
   set gcr+=a:blinkon0
 
   " Default font for GUI Vim
-  set guifont=SF\ Mono:h12
-  " set guifont=Menlo\ Bold\ 10
+  " set guifont=SF\ Mono:h13
+  set guifont=Menlo\ Regular:h11
   " set guifont=Monaco\ Bold\ 9
   " set guifont=MonacoB\ Bold\ 9
   " set guifont=Source\ Code\ Pro\ Semibold\ 11
@@ -266,10 +266,15 @@ if filereadable(expand('~/.vim/plugins.vim'))
 endif
 
 
+set termguicolors
+" let ayucolor="light"
+" let ayucolor="mirage"
+let ayucolor="dark"
+
 if has("gui_macvim")
-  colorscheme base16-ocean
+  colorscheme ayu
 else
-  colorscheme Tomorrow
+  colorscheme ayu
 endif
 
 " vim:foldmethod=marker:foldlevel=0:tabstop=2:shiftwidth=2
