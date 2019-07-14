@@ -95,7 +95,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
 " A simple, easy-to-use Vim alignment plugin
-Plug 'vim-easy-align'
+Plug 'junegunn/vim-easy-align'
 
 " An extensible & universal comment vim-plugin
 Plug 'tomtom/tcomment_vim'
