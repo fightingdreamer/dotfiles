@@ -1,72 +1,49 @@
 scriptencoding utf-8
 
-syntax on " enable syntax-highlighting
+" enable syntax-highlighting
+syntax on
 
-"language en_US.utf8  " sets the language of the messages / ui
-
-" GUI and Terminal VIM options {{{
+" GUI and Terminal VIM options
 if has("gui_running")
   " Disable all GUI elements and enable console based dialogs for simple queries
   set guioptions=gc
-
-  " Disabled blinking cursor in vim-qt
-  set gcr+=a:blinkon0
-
-  " Default font for GUI Vim
-  " set guifont=SF\ Mono:h13
+  set guicursor=a:blinkon0
   set guifont=Menlo\ Regular:h11
-  " set guifont=Monaco\ Bold\ 9
-  " set guifont=MonacoB\ Bold\ 9
-  " set guifont=Source\ Code\ Pro\ Semibold\ 11
 
   " sets the language of the menu
   set langmenu=en_US.UTF-8
 else
   set t_Co=256
-  " Automatic rename of tmux window
-  "if exists('$TMUX') && !exists('$NORENAME')
-  "  au BufEnter * call system('tmux rename-window '.expand('%:t:S'))
-  "  au VimLeave * call system('tmux set-window automatic-rename on')
-  "endif
 endif
-" }}}
 
-" Mouse {{{
+" Mouse
 if has('mouse')
-  set mouse=a " Enable mouse support
-  "set mousemodel=popup " Use the mouse for copy/paste with popup in gui vim
-  set mousehide " Hide cursor while typing
-  "if exists("$TMUX")
-  "  if !has('nvim')
-  "    " Tmux knows the extended mouse mode
-  "    set ttymouse=xterm2
-  "  endif
-  "endif
-endif
-" }}}
+  " Enable mouse support
+  set mouse=a
 
-" Multibyte {{{
+  " Hide cursor while typing
+  set mousehide
+endif
+
+" Multibyte
 if has('multi_byte')
   "›,·,»·,¶,→,←,×,▸,¬,˽,˰
   set listchars=trail:·,tab:»\ ,extends:→,precedes:←,nbsp:×
+
   " Vertical split chars
   set fillchars=stl:\ ,stlnc:\ ,vert:│
-  if has('patch-7.4.338')
-    let &sbr = nr2char(8618).' ' " Show ↪ at the beginning of wrapped lines
-    set breakindent
-    set breakindentopt=sbr
-  endif
-endif
-" }}}
 
-" Autocmd {{{
+  " Show ↪ at the beginning of wrapped lines
+  let &sbr = nr2char(8618).' ' 
+  set breakindent
+  set breakindentopt=sbr
+endif
+
+" Autocmd
 if has("autocmd")
   " Enable file type detection.
   filetype plugin indent on
 
-  " Python indentation
-  " About nosmartindent please look this link
-  " http://stackoverflow.com/questions/2063175/vim-insert-mode-comments-go-to-start-of-line
   au FileType python     setlocal nosmartindent nonumber "textwidth=79
   au FileType perl       setlocal noexpandtab foldmethod=indent
   au FileType javascript setlocal expandtab shiftwidth=4 tabstop=4
@@ -77,88 +54,37 @@ if has("autocmd")
   au FileType jinja      setlocal expandtab shiftwidth=2 tabstop=2
   au FileType yaml       setlocal expandtab shiftwidth=2 tabstop=2
   au FileType tex        setlocal updatetime=200
-
-  " Disable line numbers for QuickFix
-  au FileType qf         setlocal nonumber
-
-  " Remember cursor position
-  "augroup vimrc-remember-cursor-position
-  "  au!
-  "  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-  "augroup END
 endif
-" }}}
-
-" Use ag over grep {{{
-if executable('ag')
-  set grepprg=ag\ --nogroup\ --nocolor
-  let $FZF_DEFAULT_COMMAND='ag -l -g ""'
-endif
-" }}}
 
 if has("gui_macvim")
   " set macmeta
 endif
 
-" Neovim options {{{
-"if has('nvim')
-"  set rtp+=~/.vim/
-"  " If Neovim support is enabled, then let set the
-"  " NVIM_TUI_ENABLE_CURSOR_SHAPE for the user.
-"  if $NVIM_TUI_ENABLE_CURSOR_SHAPE == ""
-"    let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
-"  endif
-"endif
-" }}}
-
-" Store undofile in to fixed location {{{
+" Store undofile in to fixed location
 if exists("+undofile")
-  " undofile - This allows you to use undos after exiting and restarting
-  " This, like swap and backups, uses .vim-undo first, then ~/.vim/undo
-  " :help undo-persistence
-  " This is only present in 7.3+
   set undofile
 
   if !isdirectory('~/.vim/undo')
     silent !mkdir -p ~/.vim/undo
   endif
 
-  " Store undo files in to fixed location
+  " Store undo files in fixed location
   set undodir=~/.vim/undo
 endif
-" }}}
+"
 
-" Clear highlight with esc {{{
-if has('gui_running')
-  nnoremap <silent> <Esc> :nohlsearch<Return><Esc>
-else
-  nnoremap <silent> <Esc> :nohlsearch<Return><Esc>
-  " augroup no_highlight
-  "   autocmd TermResponse * nnoremap <Esc> :noh<Return><Esc>
-  " augroup END
-end
-" }}}
+nnoremap <silent> <tab> :nohlsearch<return>
 
-" Store swap files in to fixed location
+" Store swap files in fixed location
 set noswapfile
 set directory=/var/tmp//,/tmp//,.
 
-" Store backup files in to fixed location
+" Store backup files in fixed location
 set nobackup
 set backupdir=/var/tmp//,/tmp//,.
 
-" This will set your path variable to current directory
-" (from which you launched vim) and to all directories
-" under current directory recursively.
+" Set your path variable to current directory, and children
 set path=.,,**
-
-" Tell vim to remember certain things when we exit
-"  '10  :  marks will be remembered for up to 10 previously edited files
-"  "100 :  will save up to 100 lines for each register
-"  :20  :  up to 20 lines of command-line history will be remembered
-"  %    :  saves and restores the buffer list
-"  n... :  where to save the viminfo files
-"set viminfo='10,\"100,:20,%,n~/.viminfo
 
 " Disable timeout for Esc key
 set ttimeout ttimeoutlen=0 notimeout
@@ -180,7 +106,7 @@ set hlsearch " Highlight search terms (very useful!)
 
 set incsearch " Show search matches while typing
 
-set display+=lastline " Display lastline instead of @
+set display=lastline " Display lastline instead of @
 
 set laststatus=2 " Enable statusline
 
@@ -243,7 +169,7 @@ set wildmenu " Turn on the Wild menu
 set wildmode=list:longest,list:full " Wildmenu configuration
 
 " Ignore files
-set wildignore+=*.o,*.obj,.git/**,node_modules/**,.sass-cache,*.pyc,*.gem
+set wildignore=*.o,*.obj,.git/**,node_modules/**,.sass-cache,*.pyc,*.gem
 set wildignore+=*.jpg,*.jpeg,*.tiff,*.gif,*.png,*.svg,*.pdf
 
 set conceallevel=0 " Conceal level
@@ -260,21 +186,35 @@ set exrc " Allow load .vimrc or _vimrc from current directory
 
 set cursorline " Highlight the screen line of the cursor
 
+" if empty(glob('~/.vim/autoload/plug.vim'))
+"   silent !curl --fail --location --create-dirs --output ~/.vim/autoload/plug.vim
+"         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"   autocmd VimEnter * PlugInstall --sync
+" endif
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 if filereadable(expand('~/.vim/plugins.vim'))
   " Include plugins list
   source ~/.vim/plugins.vim
 endif
-
 
 set termguicolors
 " let ayucolor="light"
 " let ayucolor="mirage"
 let ayucolor="dark"
 
-if has("gui_macvim")
-  colorscheme ayu
-else
-  colorscheme ayu
-endif
+try
+  if has("gui_macvim")
+    colorscheme ayu
+  else
+    colorscheme ayu
+  endif
+catch
+endtry
 
 " vim:foldmethod=marker:foldlevel=0:tabstop=2:shiftwidth=2
