@@ -236,8 +236,7 @@ Plug 'jceb/vim-orgmode'
 
 " }}}
 " ----------------------------------------
-" ----------------------------------------
-" | Maybe someday {{{
+" | Tracking {{{
 " ----------------------------------------
 
 " Open-source plugin automatic time tracking.
