@@ -148,5 +148,14 @@ let g:pymode_rope_complete_on_dot = 0
 let g:pymode_rope = 0
 " }}}
 " ----------------------------------------
+" | vim-latex-plugin {{{
+" ----------------------------------------
+let g:livepreview_previewer = 'open -a Skim'
+let g:livepreview_cursorhold_recompile = 0
+
+" }}}
+" ----------------------------------------
+
+
 
 " vim:foldmethod=marker:foldminlines=1:foldlevel=0:tabstop=2:shiftwidth=2

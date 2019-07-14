@@ -75,6 +75,7 @@ if has("autocmd")
   au FileType css        setlocal expandtab shiftwidth=4 tabstop=4
   au FileType html       setlocal expandtab shiftwidth=2 tabstop=2
   au FileType jinja      setlocal expandtab shiftwidth=2 tabstop=2
+  au FileType tex        setlocal updatetime=200
 
   " Disable line numbers for QuickFix
   au FileType qf         setlocal nonumber

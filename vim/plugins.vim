@@ -168,6 +168,9 @@ Plug 'c9s/perlomni.vim'
 " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box.
 Plug 'klen/python-mode', {'branch': 'develop'}
 
+" A Vim Plugin for Lively Previewing LaTeX PDF Output
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+
 " }}}
 " ----------------------------------------
 " | Autocompletion {{{
