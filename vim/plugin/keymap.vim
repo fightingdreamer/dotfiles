@@ -147,8 +147,10 @@ nnoremap <leader>i :<C-u>FZF<cr>
 " ----------------------------------------
 " | vim-easyMotion {{{
 " ----------------------------------------
-map <leader>      <Plug>(easymotion-prefix)
-map -             <Plug>(easymotion-overwin-f)
+map  <leader>  <Plug>(easymotion-prefix)
+map  -         <Plug>(easymotion-overwin-f)
+map  <leader>/ <Plug>(easymotion-sn)
+
 "}}}
 " ----------------------------------------
 " | incsearch.vim {{{
