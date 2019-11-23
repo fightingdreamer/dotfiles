@@ -52,6 +52,9 @@ Plug 'Shougo/unite-help'
 " Color scheme source
 Plug 'ujihisa/unite-colorscheme'
 
+" FZF's extended-search mode for unite
+Plug 'cskeeters/unite-fzf'
+
 " }}}
 " ----------------------------------------
 " | Navigation {{{
@@ -146,7 +149,10 @@ Plug 'jszakmeister/vim-togglecursor'
 " ----------------------------------------
 
 " Syntax checking hacks for vim
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
+
+" Check syntax in Vim asynchronously and fix files, with Language Server Protocol (LSP) support
+Plug 'w0rp/ale'
 
 " }}}
 " ----------------------------------------
@@ -157,13 +163,16 @@ Plug 'scrooloose/syntastic'
 Plug 'c9s/perlomni.vim'
 
 " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box.
-Plug 'klen/python-mode', {'branch': 'develop'}
+Plug 'klen/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 " Improved nginx vim plugin (incl. syntax highlighting)
 Plug 'chr4/nginx.vim'
 
 " A Vim Plugin for Lively Previewing LaTeX PDF Output
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+
+" Decode Quoted-Printable text
+Plug 'akarzim/vim-decode-qp', { 'for': 'asc' }
 
 " }}}
 " ----------------------------------------
@@ -183,6 +192,7 @@ Plug 'Shougo/neocomplete.vim'
 
 " a Git wrapper so awesome, it should be illegal
 Plug 'tpope/vim-fugitive'
+Plug 'lambdalisue/gina.vim'
 
 " }}}
 " ----------------------------------------
@@ -198,8 +208,8 @@ Plug 'tpope/vim-dispatch'
 " ----------------------------------------
 
 " A command-line fuzzy finder written in Go
-Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': 'yes \| ./install' }
-" Plug 'junegunn/fzf.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
 " }}}
 " ----------------------------------------

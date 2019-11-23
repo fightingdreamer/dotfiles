@@ -111,58 +111,15 @@ vnoremap > >gv
 " | Unite collection {{{
 " ----------------------------------------
 
-nnoremap <leader>i       :<C-u>Unite -buffer-name=files_rec -start-insert
-      \ file_rec/async:!<cr>
-nnoremap <leader>I  :<C-u>UniteWithInputDirectory -buffer-name=files -start-insert
-      \ file_rec/async:!<cr>
-
-if isdirectory(expand('~/Projects'))
-nnoremap <leader>cd      :<C-u>Unite -buffer-name=cd -start-insert -default-action=cd
-      \ directory_rec/async:~/Projects<cr>
-endif
-
-if isdirectory(expand('~/Projekty'))
-nnoremap <leader>cd      :<C-u>Unite -buffer-name=cd -start-insert -default-action=cd
-      \ directory_rec/async:~/Projekty<cr>
-endif
-
-nnoremap <leader>CD :<C-u>UniteWithBufferDir -buffer-name=cd -start-insert -default-action=cd
-      \ directory_rec/async<cr>
-
-nnoremap <leader>o       :<C-u>Unite -buffer-name=files -start-insert
-      \ file file/new directory/new<cr>
-nnoremap <leader>O  :<C-u>UniteWithInputDirectory -buffer-name=files -start-insert
-      \ file file/new directory/new<cr>
-
-nnoremap <leader>r       :<C-u>Unite -buffer-name=mru -start-insert
-      \ neomru/file<cr>
-
-nnoremap <leader>q       :<C-u>Unite -buffer-name=outline -start-insert
-      \ outline<cr>
-
-nnoremap <leader>u       :<C-u>Unite -buffer-name=yank
-      \ history/yank<cr>
-
-nnoremap <leader>s       :<C-u>Unite -buffer-name=buffer -start-insert
-      \ buffer<cr>
-
-nnoremap <leader>/       :<C-u>Unite -buffer-name=grep -start-insert
-      \ grep:%<cr>
-nnoremap <leader>?       :<C-u>UniteWithInputDirectory -buffer-name=grep -start-insert
-      \ grep:<cr>
-
-nnoremap <leader>h       :<C-u>Unite -buffer-name=help -start-insert
-      \ help<cr><cr>
-
-nnoremap <leader>gh      :<C-u>UniteWithCursorWord -buffer-name=help
-      \ help<cr>
-
-nnoremap <leader>cs      :<C-u>Unite -buffer-name=color -start-insert
-      \ colorscheme<cr>
-
-nnoremap <leader>z :<C-u>Unite -buffer-name=session -start-insert
-      \ session session/new<cr>
-
+nnoremap <leader>q  :<C-u>Unite -buffer-name=outline outline -start-insert<cr>
+nnoremap <leader>r  :<C-u>Unite -buffer-name=mru neomru/file -start-insert<cr>
+nnoremap <leader>R  :<C-u>Unite -buffer-name=mru neomru/directory -start-insert -default-action=cd<cr>
+nnoremap <leader>s  :<C-u>Unite -buffer-name=buffer buffer -start-insert<cr>
+nnoremap <leader>z  :<C-u>Unite -buffer-name=session session session/new<cr>
+vnoremap <leader>p  :<C-u>Unite -buffer-name=yank history/yank -start-insert<cr>
+nnoremap <leader>cs :<C-u>Unite -buffer-name=color colorscheme -no-quit -keep-focus<cr>
+nnoremap <leader>g  :<C-u>Unite -buffer-name=change change line -start-insert<cr>
+nnoremap <leader>o  :<C-u>Unite -buffer-name=files file file/new directory/new -start-insert<cr>
 " nnoremap <leader>q   :<C-u>Unite -buffer-name=tag   tag<cr>
 " nnoremap <leader>j   :<C-u>Unite -buffer-name=jump  jump<cr>
 
@@ -181,6 +138,11 @@ function! s:unite_settings()
 
 endfunction
 
+" }}}
+" ----------------------------------------
+" | vim-fzf {{{
+" ----------------------------------------
+nnoremap <leader>i :<C-u>FZF<cr>
 " }}}
 " ----------------------------------------
 " | vim-easyMotion {{{

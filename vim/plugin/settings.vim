@@ -6,15 +6,24 @@ let g:unite_converter_file_directory_width = 80
 let g:unite_source_history_yank_enable = 1
 let g:unite_source_session_enable_auto_save = 1
 
+let g:unite_quick_match_table = {
+      \ 'a': 0,  'b': 1,  'c': 2,  'd': 3,  'e': 4,  'f': 5,  'g': 6,
+      \ 'h': 7,  'i': 8,  'j': 9,  'k': 10, 'l': 11, 'm': 12,
+      \ 'n': 13, 'o': 14, 'p': 15, 'q': 16, 'r': 17,
+      \}
+
+"call unite#filters#matcher_default#use(['matcher_fzf'])
+
 call unite#custom#profile('default', 'context', {
-      \ 'prompt-visible': 1,
-      \ 'prompt': '> ',
+      \ 'start-insert': 0,
+      \ 'prompt-visible': 0,
+      \ 'ignorecase': 1,
+      \ 'smartcase': 1,
       \ 'split': 0,
-      \ 'resize': 0
+      \ 'resize': 0,
       \ })
 
-call unite#custom#source('buffer', 'sorters', ['sorter_word'])
-call unite#custom#source('neomru/file,file_rec/async,buffer,grep', 'matchers', ['matcher_regexp'])
+" call unite#custom#source('buffer', 'sorters', ['sorter_word'])
 call unite#custom#alias('file', 'delete', 'vimfiler__delete')
 
 " }}}
@@ -70,34 +79,34 @@ let g:togglecursor_insert = "line"
 " ----------------------------------------
 " | syntastic {{{
 " ----------------------------------------
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_loc_list_height = 3
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_mode_map = {
-      \ "mode": "active",
-      \ "active_filetypes": ["js"],
-      \ "passive_filetypes": ["json"] }
-
-" let g:syntastic_filetype_map = {'json': 'unknown'}
-
-" javascript
-let g:syntastic_javascript_checkers = ['eslint']
-
-" perl
-let g:syntastic_enable_perl_checker = 1
-let g:syntastic_perl_checkers = ['perl']
-let g:syntastic_perl_perl_args = ['-I', expand('~/perl5/lib/perl5'), '-I', 'lib']
-" let g:syntastic_perl_checkers = ['perl', 'perlcritic']
-" let g:syntastic_perl_perlcritic_args = '-severity 3'
-" let g:syntastic_perl_perlcritic_thres = 2
-" let g:syntastic_perl_perlcritic_post_args = '--verbose "\%s:\%f:\%l:\%c: \%p: \%m\n"'
-
-" python
-let g:syntastic_ignore_files = ['\.py$']
-" let g:syntastic_python_python_exec = '/usr/bin/python3'
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_loc_list_height = 3
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 0
+"
+" let g:syntastic_mode_map = {
+"       \ "mode": "active",
+"       \ "active_filetypes": ["js"],
+"       \ "passive_filetypes": ["json"] }
+"
+" " let g:syntastic_filetype_map = {'json': 'unknown'}
+"
+" " javascript
+" let g:syntastic_javascript_checkers = ['eslint']
+"
+" " perl
+" let g:syntastic_enable_perl_checker = 1
+" let g:syntastic_perl_checkers = ['perl']
+" let g:syntastic_perl_perl_args = ['-I', expand('~/perl5/lib/perl5'), '-I', 'lib']
+" " let g:syntastic_perl_checkers = ['perl', 'perlcritic']
+" " let g:syntastic_perl_perlcritic_args = '-severity 3'
+" " let g:syntastic_perl_perlcritic_thres = 2
+" " let g:syntastic_perl_perlcritic_post_args = '--verbose "\%s:\%f:\%l:\%c: \%p: \%m\n"'
+"
+" " python
+" let g:syntastic_ignore_files = ['\.py$']
+" " let g:syntastic_python_python_exec = '/usr/bin/python3'
 
 "}}}
 " ----------------------------------------

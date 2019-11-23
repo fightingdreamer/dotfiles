@@ -8,7 +8,8 @@ if has("gui_running")
   " Disable all GUI elements and enable console based dialogs for simple queries
   set guioptions=gc
   set guicursor=a:blinkon0
-  set guifont=Menlo\ Regular:h11
+  "set guifont=Menlo\ Regular:h11
+  set guifont=LucidaMonoEF:h12
 
   " sets the language of the menu
   set langmenu=en_US.UTF-8
@@ -204,9 +205,9 @@ if filereadable(expand('~/.vim/plugins.vim'))
 endif
 
 set termguicolors
-" let ayucolor="light"
-" let ayucolor="mirage"
-let ayucolor="dark"
+"let ayucolor="light"
+let ayucolor="mirage"
+"let ayucolor="dark"
 
 try
   if has("gui_macvim")
