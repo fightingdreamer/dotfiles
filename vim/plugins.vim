@@ -19,6 +19,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'rakr/vim-one'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'ayu-theme/ayu-vim'
+Plug 'andreypopp/vim-colors-plain'
 
 " }}}
 " ----------------------------------------

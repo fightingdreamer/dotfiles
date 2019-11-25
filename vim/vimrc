@@ -205,15 +205,13 @@ if filereadable(expand('~/.vim/plugins.vim'))
 endif
 
 set termguicolors
-"let ayucolor="light"
-let ayucolor="mirage"
-"let ayucolor="dark"
+set background=light
 
 try
   if has("gui_macvim")
-    colorscheme ayu
+    colorscheme plain
   else
-    colorscheme ayu
+    colorscheme plain
   endif
 catch
 endtry
