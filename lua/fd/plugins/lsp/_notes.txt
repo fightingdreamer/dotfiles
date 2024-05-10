@@ -1,0 +1,11 @@
+Formatting and Parsing
+* conform
+* nvim-lint
+* (alternative) none-ls/null-ls
+* (last resort) efm-lsp
+
+Bridges mason.nvim with the nvim-dap plugin - making it easier to use both plugins together.
+jay-babu/mason-nvim-dap.nvim
+
+Bridges mason.nvim with the null-ls plugin - making it easier to use both plugins together.
+jay-babu/mason-null-ls.nvim
