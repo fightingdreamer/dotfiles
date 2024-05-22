@@ -61,7 +61,7 @@ o.scrolloff = 2
 o.signcolumn = "yes"
 o.splitbelow = true
 o.splitright = true
-o.timeoutlen = 300
+o.timeoutlen = 2000
 
 -- Store swap files in fixed location
 o.undofile = true
