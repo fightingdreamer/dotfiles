@@ -49,7 +49,7 @@ return {
             },
             view = {
                 centralize_selection = true,
-                width = 48
+                width = 60,
             },
             ui = {
                 confirm = {
