@@ -20,8 +20,6 @@ end
 
 local function opts()
   local cmp = require "cmp"
-  local config = cmp.config
-  local mapping = cmp.mapping
   local luasnip = require "luasnip"
   local lspkind = require "lspkind"
 
@@ -32,14 +30,14 @@ local function opts()
       end,
     },
     window = {
-      completion = config.window.bordered(),
-      documentation = config.window.bordered(),
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
     },
-    mapping = mapping.preset.insert {
-      ["<C-b>"] = mapping.scroll_docs(-4),
-      ["<C-f>"] = mapping.scroll_docs(4),
-      -- ["<S-Tab>"] = mapping.select_prev_item(),
-      ["<S-Tab>"] = mapping(function(fallback)
+    mapping = cmp.mapping.preset.insert {
+      ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+      ["<C-f>"] = cmp.mapping.scroll_docs(4),
+      -- ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+      ["<S-Tab>"] = cmp.mapping(function(fallback)
         if luasnip.jumpable(-1) then
           luasnip.jump(-1)
         elseif cmp.visible() then
@@ -48,8 +46,8 @@ local function opts()
           fallback()
         end
       end, { "i", "s" }),
-      -- ["<Tab>"] = mapping.select_next_item(),
-      ["<Tab>"] = mapping(function(fallback)
+      -- ["<Tab>"] = cmp.mapping.select_next_item(),
+      ["<Tab>"] = cmp.mapping(function(fallback)
         if luasnip.expandable() then
           luasnip.expand()
         elseif luasnip.jumpable(1) then
@@ -60,11 +58,11 @@ local function opts()
           fallback()
         end
       end, { "i", "s" }),
-      ["<C-e>"] = mapping.abort(),
-      ["<Enter>"] = mapping.confirm { select = true },
-      ["<C-Space>"] = mapping.complete(),
+      ["<C-e>"] = cmp.mapping.abort(),
+      ["<Enter>"] = cmp.mapping.confirm { select = true },
+      ["<C-Space>"] = cmp.mapping.complete(),
     },
-    sources = config.sources {
+    sources = cmp.config.sources {
       { name = "nvim_lsp" },
       { name = "luasnip" },
       { name = "buffer", get_bufnrs = select_from.all_buffers },
@@ -73,7 +71,7 @@ local function opts()
     sorting = {
       comparators = {
         -- link: https://github.com/hrsh7th/nvim-cmp/blob/5260e5e8ecadaf13e6b82cf867a909f54e15fd07/lua/cmp/config/compare.lua
-        config.compare.score,
+        cmp.config.compare.score,
       },
     },
     formatting = {
@@ -97,20 +95,18 @@ end
 
 local function config(_, opts)
   local cmp = require "cmp"
-  local config = cmp.config
-  local mapping = cmp.mapping
   cmp.setup(opts)
 
   -- use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline({ "/", "?" }, {
-    mapping = mapping.preset.cmdline(),
+    mapping = cmp.mapping.preset.cmdline(),
     sources = { { name = "buffer" } },
   })
 
   -- use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline({ ":" }, {
-    mapping = mapping.preset.cmdline(),
-    sources = config.sources({ { name = "path" } }, { { name = "cmdline" } }),
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" } }),
     matching = { disallow_symbol_nonprefix_matching = false },
   })
 end
