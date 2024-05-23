@@ -14,11 +14,16 @@ local select_from = {
   end,
 }
 
+local function max_width()
+  return math.floor(0.45 * vim.o.columns)
+end
+
 local function opts()
   local cmp = require "cmp"
   local config = cmp.config
   local mapping = cmp.mapping
   local luasnip = require "luasnip"
+  local lspkind = require "lspkind"
 
   return {
     snippet = {
@@ -71,6 +76,15 @@ local function opts()
         config.compare.score,
       },
     },
+    formatting = {
+      format = lspkind.cmp_format {
+        mode = "symbol_text",
+        preset = "default",
+        maxwidth = max_width,
+        ellipsis_char = "...",
+        show_labelDetails = true,
+      },
+    },
     performance = {
       debounce = 300,
       throttle = 100,
@@ -116,6 +130,8 @@ return {
     "hrsh7th/cmp-calc",
     -- navigate
     "abecodes/tabout.nvim",
+    -- fancy icons
+    "onsails/lspkind.nvim",
   },
   config = config,
   event = { "CmdlineEnter", "InsertEnter" },
