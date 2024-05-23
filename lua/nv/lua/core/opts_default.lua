@@ -31,6 +31,7 @@ o.softtabstop = 2
 o.wrap = false
 
 -- ›,·,»·,¶,→,←,×,▸,¬,˽,˰
+o.list = true
 o.listchars = "trail:·,tab:» ,extends:→,precedes:←,nbsp:×"
 o.fillchars = "eob: "
 o.ignorecase = true
