@@ -9,6 +9,9 @@ end
 return {
   "folke/which-key.nvim",
   config = config,
-  event = "UIEnter",
   opts = opts,
+  keys = {
+    { "g?", "<cmd>WhichKey<cr>", desc = "which-key open popup" },
+  },
+  cmd = "WhichKey",
 }
