@@ -1,3 +1,21 @@
+local function buf_size(buf)
+  return vim.api.nvim_buf_get_offset(buf, vim.api.nvim_buf_line_count(buf))
+end
+
+local function smaller_then(max_size, get_bufnrs)
+  local callback = function()
+    local bufs = get_bufnrs()
+    local result = {}
+    for _, buf in ipairs(bufs) do
+      if buf_size(buf) < max_size then
+        result[buf] = true
+      end
+    end
+    return vim.tbl_keys(result)
+  end
+  return callback
+end
+
 local select_from = {
   current_buffer = function()
     return { vim.api.nvim_get_current_buf() }
@@ -65,7 +83,7 @@ local function opts()
     sources = cmp.config.sources {
       { name = "nvim_lsp" },
       { name = "luasnip" },
-      { name = "buffer", get_bufnrs = select_from.all_buffers },
+      { name = "buffer", option = { get_bufnrs = smaller_then(3145728, select_from.all_buffers) } },
       { name = "calc" },
     },
     sorting = {
