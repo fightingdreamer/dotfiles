@@ -83,6 +83,7 @@ local function opts()
     sources = cmp.config.sources {
       { name = "nvim_lsp" },
       { name = "luasnip" },
+      { name = "orgmode" },
       { name = "buffer", option = { get_bufnrs = smaller_then(3145728, select_from.all_buffers) } },
       { name = "calc" },
     },
