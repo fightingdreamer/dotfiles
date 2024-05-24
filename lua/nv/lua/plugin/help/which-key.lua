@@ -15,7 +15,7 @@ return {
   config = config,
   opts = opts,
   keys = {
-    { "g?", "<cmd>WhichKey<cr>", desc = "which-key open popup" },
+    { "\\\\", "<cmd>WhichKey<cr>", desc = "which-key open popup" },
   },
   cmd = "WhichKey",
 }
