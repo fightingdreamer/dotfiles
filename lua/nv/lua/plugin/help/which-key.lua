@@ -1,5 +1,9 @@
 local opts = function()
-  return {}
+  return {
+    marsk = false,
+    triggers = {},
+    registers = false,
+  }
 end
 
 local config = function(_, opts)
