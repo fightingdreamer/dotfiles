@@ -1,18 +1,33 @@
 -- rename ----------------------------------------------------------------------
 
-local lsp_priority_for_rename = {
-  -- python
-  "pyright",
-  "pylsp",
-  "jedi_language_server",
+local lsp_priority = {
+  rename = {
+    -- python
+    "pyright",
+    "pylsp",
+    "jedi_language_server",
+  },
 }
 
 -- rename ----------------------------------------------------------------------
 
-local function get_lsp_client_names_for_rename()
+-- https://neovim.io/doc/user/lsp.html#lsp-api
+local lsp_have_feature = {
+  rename = function(client)
+    return client.supports_method "textDocument/rename"
+  end,
+  inlay_hint = function(client)
+    return client.supports_method "textDocument/inlayHint"
+  end,
+}
+
+-- rename ----------------------------------------------------------------------
+
+local function get_lsp_client_names(have_feature)
   local client_names = {}
-  for _, client in ipairs(vim.lsp.get_clients { bufnr = 0 }) do
-    if client.server_capabilities.completionProvider then
+  local attached_clients = vim.lsp.get_clients { bufnr = 0 }
+  for _, client in ipairs(attached_clients) do
+    if have_feature(client) then
       table.insert(client_names, client.name)
     end
   end
@@ -24,7 +39,7 @@ local function lsp_buf_rename(client_name)
 end
 
 local function lsp_buf_rename_use_one(fallback)
-  local client_names = get_lsp_client_names_for_rename()
+  local client_names = get_lsp_client_names(lsp_have_feature.rename)
   if #client_names == 1 then
     lsp_buf_rename(client_names[1])
     return
@@ -35,7 +50,7 @@ local function lsp_buf_rename_use_one(fallback)
 end
 
 local function lsp_buf_rename_use_any(fallback)
-  local client_names = get_lsp_client_names_for_rename()
+  local client_names = get_lsp_client_names(lsp_have_feature.rename)
   for _, client_name in ipairs(client_names) do
     lsp_buf_rename(client_name)
     return
@@ -46,7 +61,7 @@ local function lsp_buf_rename_use_any(fallback)
 end
 
 local function lsp_buf_rename_use_select(fallback)
-  local client_names = get_lsp_client_names_for_rename()
+  local client_names = get_lsp_client_names(lsp_have_feature.rename)
   local prompt = "Select lsp client for rename operation"
   local function on_choice(client_name)
     if client_name then
@@ -61,8 +76,8 @@ local function lsp_buf_rename_use_select(fallback)
 end
 
 local function lsp_buf_rename_use_priority(fallback)
-  local client_names = get_lsp_client_names_for_rename()
-  for _, client_priority_name in ipairs(lsp_priority_for_rename) do
+  local client_names = get_lsp_client_names(lsp_have_feature.rename)
+  for _, client_priority_name in ipairs(lsp_priority.rename) do
     for _, client_name in ipairs(client_names) do
       if client_priority_name == client_name then
         lsp_buf_rename(client_priority_name)
@@ -116,15 +131,14 @@ local function lsp_attach(args)
     vim.bo[bufnr].tagfunc = "v:lua.vim.lsp.tagfunc"
   end
 
-  -- https://neovim.io/doc/user/lsp.html#lsp-api
   -- client
-  if client.supports_method "textDocument/rename" then
+  if lsp_have_feature.rename(client) then
     vim.keymap.set("n", "<leader>lR", lsp_buf_rename_use_priority_or_select, { buffer = bufnr, desc = "lsp rename" })
   end
 
-  if client.supports_method "textDocument/inlayHint" then
+  if lsp_have_feature.inlay_hint(client) then
     if lsp_enable_inlay_hint then
-      vim.lsp.inlay_hint.enable()
+      vim.lsp.inlay_hint.enable { bufnr = bufnr }
     end
     vim.keymap.set("n", "<leader>th", toggle_inlay_hint, { buffer = bufnr, desc = "lsp inlay toggle" })
   end
