@@ -25,7 +25,15 @@ local function lsp_buf_rename(client_name)
   end
 end
 
-local function lsp_buf_rename_use_first()
+local function lsp_buf_rename_use_one()
+  local client_names = get_lsp_client_names_for_rename()
+  if #client_names == 1 then
+    lsp_buf_rename(client_name)
+    return true
+  end
+end
+
+local function lsp_buf_rename_use_any()
   local client_names = get_lsp_client_names_for_rename()
   for _, client_name in ipairs(client_names) do
     lsp_buf_rename(client_name)
@@ -53,11 +61,26 @@ local function lsp_buf_rename_use_priority()
   end
 end
 
-local function lsp_buf_rename_use_priority_or_first()
+local function lsp_buf_rename_use_priority_or_any()
+  if lsp_buf_rename_use_one() then
+    return true
+  end
   if lsp_buf_rename_use_priority() then
     return true
   end
-  if lsp_buf_rename_use_first() then
+  if lsp_buf_rename_use_any() then
+    return true
+  end
+end
+
+local function lsp_buf_rename_use_priority_or_select()
+  if lsp_buf_rename_use_one() then
+    return true
+  end
+  if lsp_buf_rename_use_priority() then
+    return true
+  end
+  if lsp_buf_rename_use_select() then
     return true
   end
 end
@@ -90,7 +113,7 @@ local function lsp_attach(args)
   -- https://neovim.io/doc/user/lsp.html#lsp-api
   -- client
   if client.supports_method "textDocument/rename" then
-    vim.keymap.set("n", "<leader>lR", lsp_buf_rename_use_priority_or_first, { buffer = bufnr, desc = "lsp rename" })
+    vim.keymap.set("n", "<leader>lR", lsp_buf_rename_use_priority_or_select, { buffer = bufnr, desc = "lsp rename" })
   end
 
   if client.supports_method "textDocument/inlayHint" then
