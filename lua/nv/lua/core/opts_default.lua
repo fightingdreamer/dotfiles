@@ -39,7 +39,7 @@ o.smartcase = true
 o.mouse = "a"
 
 -- numbers
-o.ruler = false
+o.ruler = true
 o.number = true
 o.numberwidth = 3
 o.relativenumber = true
