@@ -28,7 +28,7 @@ end
 local function lsp_buf_rename_use_one()
   local client_names = get_lsp_client_names_for_rename()
   if #client_names == 1 then
-    lsp_buf_rename(client_name)
+    lsp_buf_rename(client_names[1])
     return true
   end
 end
