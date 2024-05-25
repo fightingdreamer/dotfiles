@@ -52,7 +52,6 @@ local function lsp_buf_rename_use_priority()
   local client_names = get_lsp_client_names_for_rename()
   for _, client_priority_name in ipairs(lsp_priority_for_rename) do
     for _, client_name in ipairs(client_names) do
-      vim.notify(client_name)
       if client_priority_name == client_name then
         lsp_buf_rename(client_priority_name)
         return true
