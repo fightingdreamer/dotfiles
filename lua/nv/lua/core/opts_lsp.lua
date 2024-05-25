@@ -20,68 +20,75 @@ local function get_lsp_client_names_for_rename()
 end
 
 local function lsp_buf_rename(client_name)
-  if client_name then
-    vim.lsp.buf.rename(nil, { name = client_name })
-  end
+  vim.lsp.buf.rename(nil, { name = client_name })
 end
 
-local function lsp_buf_rename_use_one()
+local function lsp_buf_rename_use_one(fallback)
   local client_names = get_lsp_client_names_for_rename()
   if #client_names == 1 then
     lsp_buf_rename(client_names[1])
-    return true
+    return
+  end
+  if fallback then
+    fallback()
   end
 end
 
-local function lsp_buf_rename_use_any()
+local function lsp_buf_rename_use_any(fallback)
   local client_names = get_lsp_client_names_for_rename()
   for _, client_name in ipairs(client_names) do
     lsp_buf_rename(client_name)
-    return true
+    return
   end
-  return false
+  if fallback then
+    fallback()
+  end
 end
 
-local function lsp_buf_rename_use_select()
+local function lsp_buf_rename_use_select(fallback)
   local client_names = get_lsp_client_names_for_rename()
   local prompt = "Select lsp client for rename operation"
-  vim.ui.select(client_names, { prompt = prompt }, lsp_buf_rename)
+  local function on_choice(client_name)
+    if client_name then
+      lsp_buf_rename(client_name)
+      return
+    end
+    if fallback then
+      fallback()
+    end
+  end
+  vim.ui.select(client_names, { prompt = prompt }, on_choice)
 end
 
-local function lsp_buf_rename_use_priority()
+local function lsp_buf_rename_use_priority(fallback)
   local client_names = get_lsp_client_names_for_rename()
   for _, client_priority_name in ipairs(lsp_priority_for_rename) do
     for _, client_name in ipairs(client_names) do
       if client_priority_name == client_name then
         lsp_buf_rename(client_priority_name)
-        return true
+        return
       end
     end
+  end
+  if fallback then
+    fallback()
   end
 end
 
 local function lsp_buf_rename_use_priority_or_any()
-  if lsp_buf_rename_use_one() then
-    return true
-  end
-  if lsp_buf_rename_use_priority() then
-    return true
-  end
-  if lsp_buf_rename_use_any() then
-    return true
-  end
+  lsp_buf_rename_use_one(function()
+    lsp_buf_rename_use_priority(function()
+      lsp_buf_rename_use_any()
+    end)
+  end)
 end
 
 local function lsp_buf_rename_use_priority_or_select()
-  if lsp_buf_rename_use_one() then
-    return true
-  end
-  if lsp_buf_rename_use_priority() then
-    return true
-  end
-  if lsp_buf_rename_use_select() then
-    return true
-  end
+  lsp_buf_rename_use_one(function()
+    lsp_buf_rename_use_priority(function()
+      lsp_buf_rename_use_select()
+    end)
+  end)
 end
 
 -- inlay hint ------------------------------------------------------------------
