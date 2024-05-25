@@ -138,7 +138,7 @@ local function lsp_attach(args)
 
   if lsp_have_feature.inlay_hint(client) then
     if lsp_enable_inlay_hint then
-      vim.lsp.inlay_hint.enable { bufnr = bufnr }
+      vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
     end
     vim.keymap.set("n", "<leader>th", toggle_inlay_hint, { buffer = bufnr, desc = "lsp inlay toggle" })
   end
