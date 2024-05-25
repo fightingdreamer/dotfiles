@@ -10,7 +10,7 @@ o.shada = "!,'1024,<1024,s32,h"
 
 -- options ---------------------------------------------------------------------
 
-o.laststatus = 3
+o.laststatus = 2
 o.showmode = false
 
 -- show title
