@@ -9,7 +9,7 @@ local lsp_priority_for_rename = {
 
 -- rename ----------------------------------------------------------------------
 
-local function get_active_lsp_client_names_for_rename()
+local function get_lsp_client_names_for_rename()
   local client_names = {}
   for _, client in ipairs(vim.lsp.get_clients { bufnr = 0 }) do
     if client.server_capabilities.completionProvider then
@@ -24,7 +24,7 @@ local function lsp_buf_rename(client_name)
 end
 
 local function lsp_buf_rename_use_first()
-  local client_names = get_active_lsp_client_names_for_rename()
+  local client_names = get_lsp_client_names_for_rename()
   for _, client_name in ipairs(client_names) do
     lsp_buf_rename(client_name)
     return true
@@ -33,13 +33,13 @@ local function lsp_buf_rename_use_first()
 end
 
 local function lsp_buf_rename_use_select()
-  local client_names = get_active_lsp_client_names_for_rename()
+  local client_names = get_lsp_client_names_for_rename()
   local prompt = "Select lsp client for rename operation"
   vim.ui.select(client_names, { prompt = prompt }, lsp_buf_rename)
 end
 
 local function lsp_buf_rename_use_priority()
-  local client_names = get_active_lsp_client_names_for_rename()
+  local client_names = get_lsp_client_names_for_rename()
   for _, client_priority_name in ipairs(lsp_priority_for_rename) do
     for _, client_name in ipairs(client_names) do
       vim.notify(client_name)
