@@ -20,7 +20,9 @@ local function get_lsp_client_names_for_rename()
 end
 
 local function lsp_buf_rename(client_name)
-  vim.lsp.buf.rename(nil, { name = client_name })
+  if client_name then
+    vim.lsp.buf.rename(nil, { name = client_name })
+  end
 end
 
 local function lsp_buf_rename_use_first()
