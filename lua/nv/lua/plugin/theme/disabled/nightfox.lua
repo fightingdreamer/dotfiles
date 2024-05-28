@@ -2,7 +2,7 @@ local function dayfox_spec()
   local C = require "nightfox.lib.color"
   local pal = require "nightfox.palette.dayfox"
   local spec = pal.generate_spec(pal.palette)
-  local blend = 0.15
+  local blend = 0.05
   return {
     diag_bg = {
       error = C(spec.bg1):blend(C(spec.diag.error), blend):to_css(),
