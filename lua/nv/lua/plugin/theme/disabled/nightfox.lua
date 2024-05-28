@@ -16,6 +16,11 @@ end
 
 local opts = function()
   return {
+    options = {
+      styles = {
+        comments = "italic",
+      },
+    },
     palettes = {
       dayfox = {
         bg3 = "#e4dcd4", -- Lighter bg (cursor line)
