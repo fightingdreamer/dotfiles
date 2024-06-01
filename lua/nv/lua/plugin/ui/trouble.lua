@@ -1,5 +1,10 @@
 local function opts()
-  return {}
+  return {
+    keys = {
+      ["<cr>"] = false,
+      ["<tab>"] = "jump",
+    },
+  }
 end
 
 local function config(_, opts)
