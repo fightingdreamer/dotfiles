@@ -3,7 +3,7 @@ local function toggle_inline_diagnostic()
   vim.diagnostic.config { virtual_text = not enabled }
 end
 
-vim.keymap.set("n", "<leader><leader>id", toggle_inline_diagnostic, { desc = "lsp virtual text toggle" })
+vim.keymap.set("n", "\\id", toggle_inline_diagnostic, { desc = "lsp virtual text toggle" })
 
 vim.diagnostic.config {
   virtual_text = true,

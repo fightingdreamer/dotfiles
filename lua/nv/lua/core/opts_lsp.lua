@@ -147,7 +147,7 @@ local function lsp_attach(args)
     if lsp_enable_inlay_hint then
       vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
     end
-    vim.keymap.set("n", "<leader><leader>ih", toggle_inlay_hint, { buffer = bufnr, desc = "lsp inlay toggle" })
+    vim.keymap.set("n", "\\ih", toggle_inlay_hint, { buffer = bufnr, desc = "lsp inlay toggle" })
   end
 
   -- workspace
