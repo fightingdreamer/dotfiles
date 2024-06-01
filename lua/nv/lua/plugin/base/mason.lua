@@ -1,5 +1,5 @@
 local function ensure_pylsp_plugins(package, handle)
-  local root_path = vim.fn.resolve(vim.fn.stdpath "data" .. "/mason/packages/" .. package.name)
+  local root_path = package:get_install_path()
   local python_path = root_path .. "/venv/bin/python"
   local python_args = {
     "-m",
