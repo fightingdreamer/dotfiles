@@ -12,9 +12,31 @@ local function opts_default()
   }
 end
 
+local function opts_jedi()
+  return {
+    on_attach = function(client)
+      client.server_capabilities.declarationProvider = false
+      client.server_capabilities.definitionProvider = false
+      client.server_capabilities.typeDefinitionProvider = false
+      client.server_capabilities.referencesProvider = false
+      client.server_capabilities.workspaceSymbol = false
+      client.server_capabilities.workspaceSymbolProvider = false
+    end,
+    -- on_init = on_init,
+    capabilities = default_capabilities(),
+  }
+end
+
 local function opts_pylsp()
   return {
-    -- on_attach = on_attach,
+    on_attach = function(client)
+      client.server_capabilities.declarationProvider = false
+      client.server_capabilities.definitionProvider = false
+      client.server_capabilities.typeDefinitionProvider = false
+      client.server_capabilities.referencesProvider = false
+      client.server_capabilities.workspaceSymbol = false
+      client.server_capabilities.workspaceSymbolProvider = false
+    end,
     -- on_init = on_init,
     capabilities = default_capabilities(),
     settings = {
@@ -74,7 +96,7 @@ local function opts()
   return {
     filetypes = {
       lua = { lua_ls = opts_default },
-      python = { pylsp = opts_pylsp, jedi_language_server = opts_default, pyright = opts_default },
+      python = { pylsp = opts_pylsp, jedi_language_server = opts_jedi, pyright = opts_default },
       typescript = { tsserver = opts_tsserver },
     },
   }
