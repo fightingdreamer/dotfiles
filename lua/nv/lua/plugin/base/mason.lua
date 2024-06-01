@@ -119,6 +119,7 @@ end
 return {
   -- Portable package manager for Neovim that runs everywhere Neovim runs.
   "williamboman/mason.nvim",
+  dependencies = { "nvim-lua/plenary.nvim" },
   config = config,
   event = "VeryLazy",
   opts = opts,
