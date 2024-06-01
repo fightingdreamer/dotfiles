@@ -42,6 +42,9 @@ local function opts()
         ["install:success"] = ensure_pylsp_plugins,
       },
     },
+    on_update_dependencies = {
+      ["python-lsp-server"] = ensure_pylsp_plugins,
+    },
 
     ui = {
       icons = {
@@ -108,12 +111,28 @@ local events = function(event_handlers)
   end
 end
 
+local update = function(on_update_dependencies)
+  local registry = require "mason-registry"
+  for name, callback in pairs(on_update_dependencies) do
+    local package = registry.get_package(name)
+    if package:is_installed() then
+      info(string.format("%s: manual update", package.name))
+      callback(package)
+    else
+      info(string.format("%s: not installed", package.name))
+    end
+  end
+end
+
 local config = function(_, opts)
   require("mason").setup(opts)
   vim.defer_fn(function()
     events(opts.event_handlers)
     ensure(opts.ensure_installed)
   end, 300)
+  vim.api.nvim_create_user_command("MasonUpdateDependencies", function()
+    update(opts.on_update_dependencies)
+  end, {})
 end
 
 return {
