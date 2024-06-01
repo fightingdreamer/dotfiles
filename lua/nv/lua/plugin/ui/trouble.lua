@@ -4,6 +4,22 @@ local function opts()
       ["<cr>"] = false,
       ["<tab>"] = "jump",
     },
+    modes = {
+      lsp = {
+        win = {
+          size = 0.5,
+          relative = "win",
+          position = "right",
+        },
+      },
+      symbols = {
+        win = {
+          size = 0.5,
+          relative = "win",
+          position = "right",
+        },
+      },
+    },
   }
 end
 
@@ -18,7 +34,7 @@ return {
     { "\\t", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "trouble: buffer diagnostics" },
     { "\\T", "<cmd>Trouble diagnostics toggle<cr>", desc = "trouble: diagnostics" },
     { "\\s", "<cmd>Trouble symbols toggle focus=false<cr>", desc = "trouble: Symbols" },
-    { "\\l", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", desc = "trouble: lsp diagnostics" },
+    { "\\l", "<cmd>Trouble lsp toggle focus=false<cr>", desc = "trouble: lsp diagnostics" },
   },
   opts = opts,
   cmd = "Trouble",
