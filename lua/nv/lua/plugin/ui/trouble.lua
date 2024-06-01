@@ -9,7 +9,6 @@ end
 return {
   "folke/trouble.nvim",
   config = config,
-  branch = "dev", -- 3.0 beta
   keys = {
     { "\\t", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "trouble: buffer diagnostics" },
     { "\\T", "<cmd>Trouble diagnostics toggle<cr>", desc = "trouble: diagnostics" },
