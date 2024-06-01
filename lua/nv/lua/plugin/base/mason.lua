@@ -1,3 +1,11 @@
+local info = vim.schedule_wrap(function(msg)
+  vim.notify(msg, vim.log.levels.INFO)
+end)
+
+local warn = vim.schedule_wrap(function(msg)
+  vim.notify(msg, vim.log.levels.WARN)
+end)
+
 local function ensure_pylsp_plugins(package, handle)
   local root_path = package:get_install_path()
   local python_path = root_path .. "/venv/bin/python"
@@ -69,14 +77,6 @@ local function opts()
     max_concurrent_installers = 8,
   }
 end
-
-local info = vim.schedule_wrap(function(msg)
-  vim.notify(msg, vim.log.levels.INFO)
-end)
-
-local warn = vim.schedule_wrap(function(msg)
-  vim.notify(msg, vim.log.levels.WARN)
-end)
 
 local ensure = function(ensure_installed)
   local registry = require "mason-registry"
