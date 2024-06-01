@@ -12,6 +12,56 @@ local function opts_default()
   }
 end
 
+local function opts_pylsp()
+  return {
+    -- on_attach = on_attach,
+    -- on_init = on_init,
+    capabilities = default_capabilities(),
+    settings = {
+      pylsp = {
+        plugins = {
+          ruff = {
+            -- python project (have: pyproject.toml or ruff.toml)
+            enabled = true,
+            formatEnabled = true,
+            extendSelect = {},
+            extendIgnore = {},
+            format = {},
+            -- python file
+            lineLength = 120,
+            select = { "F" },
+            ignore = { "D210" },
+          },
+          autopep8 = {
+            enabled = false,
+          },
+          pycodestyle = {
+            enabled = false,
+          },
+          pyflakes = {
+            enabled = false,
+          },
+          yapf = {
+            enabled = false,
+          },
+          jedi_completion = {
+            eager = false,
+            enabled = false,
+          },
+          rope_autoimport = {
+            memory = true,
+            enabled = true,
+          },
+          rope_completion = {
+            eager = true,
+            enabled = true,
+          },
+        },
+      },
+    },
+  }
+end
+
 local function opts_tsserver()
   return {
     -- on_attach = on_attach,
@@ -24,7 +74,7 @@ local function opts()
   return {
     filetypes = {
       lua = { lua_ls = opts_default },
-      python = { pylsp = opts_default, jedi_language_server = opts_default, pyright = opts_default },
+      python = { pylsp = opts_pylsp, jedi_language_server = opts_default, pyright = opts_default },
       typescript = { tsserver = opts_tsserver },
     },
   }
