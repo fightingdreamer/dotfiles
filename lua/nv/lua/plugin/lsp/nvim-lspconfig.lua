@@ -15,6 +15,7 @@ end
 local function opts_jedi()
   return {
     on_attach = function(client)
+      client.server_capabilities.documentSymbolProvider = false
       client.server_capabilities.declarationProvider = false
       client.server_capabilities.definitionProvider = false
       client.server_capabilities.typeDefinitionProvider = false
@@ -30,6 +31,7 @@ end
 local function opts_pylsp()
   return {
     on_attach = function(client)
+      client.server_capabilities.documentSymbolProvider = false
       client.server_capabilities.declarationProvider = false
       client.server_capabilities.definitionProvider = false
       client.server_capabilities.typeDefinitionProvider = false
