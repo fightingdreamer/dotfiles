@@ -120,6 +120,7 @@ return {
   -- Portable package manager for Neovim that runs everywhere Neovim runs.
   "williamboman/mason.nvim",
   config = config,
+  event = "VeryLazy",
   opts = opts,
   cmd = {
     "Mason",
