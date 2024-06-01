@@ -103,7 +103,6 @@ local events = function(event_handlers)
       package:on(
         event_name,
         vim.schedule_wrap(function()
-          info(string.format("%s: %s", package.name, event_name))
           event_handler(package)
         end)
       )
