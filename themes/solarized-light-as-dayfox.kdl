@@ -1,0 +1,15 @@
+themes {
+  solarized-light-as-dayfox {
+      bg 253 246 227
+      black 246 242 238
+      blue 38 139 210
+      cyan 42 161 152
+      fg 147 161 161
+      green 133 153 0
+      magenta 211 54 130
+      orange 203 75 22
+      red 220 50 47
+      white 88 110 117
+      yellow 181 137 0
+  }
+}

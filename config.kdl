@@ -1,0 +1,13 @@
+default_layout "compact"
+keybinds {
+	tab {
+		unbind "s"
+	}
+	unbind "Ctrl q"
+}
+pane_frames true
+session_serializatien false
+
+// theme "mellow"
+// theme "solarized-light-adjusted"
+theme "solarized-light-as-dayfox"
