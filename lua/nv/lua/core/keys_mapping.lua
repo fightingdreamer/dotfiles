@@ -2,8 +2,8 @@ local del = vim.keymap.del
 local set = vim.keymap.set
 
 -- save file
-set("n", "<leader>s", "<cmd>:w<cr>", {desc = "save file"})
-set("n", "<leader>S", "<cmd>:w!<cr>", {desc = "save file!"})
+set("n", "<leader>w", "<cmd>:w<cr>", {desc = "save file"})
+set("n", "<leader>W", "<cmd>:w!<cr>", {desc = "save file!"})
 
 -- unbind default commenting
 del("n", "gcc")
