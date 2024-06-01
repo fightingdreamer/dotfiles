@@ -6,10 +6,15 @@ local warn = vim.schedule_wrap(function(msg)
   vim.notify(msg, vim.log.levels.WARN)
 end)
 
+local error = vim.schedule_wrap(function(msg)
+  vim.notify(msg, vim.log.levels.ERROR)
+end)
+
 local function ensure_pylsp_plugins(package, handle)
   local root_path = package:get_install_path()
-  local python_path = root_path .. "/venv/bin/python"
-  local python_args = {
+  local python = root_path .. "/venv/bin/python"
+  local cmd = {
+    python,
     "-m",
     "pip",
     "install",
@@ -22,12 +27,24 @@ local function ensure_pylsp_plugins(package, handle)
     -- "pylsp-mypy", -- tracks types
   }
 
-  local job = {
-    cwd = root_path,
-    args = python_args,
-    command = python_path,
-  }
-  require("plenary.job"):new(job):start()
+  local dump = function(err, str)
+    for line in (str or ""):gmatch "[^\n]+" do
+      if line then
+        print(string.format("%s: %s", package.name, line))
+      end
+    end
+  end
+
+  local done = function(res)
+    if res.code == 0 then
+      info(string.format("%s: dependencies installed", package.name))
+    end
+    if string.len(res.stderr) ~= 0 then
+      error(res.stderr)
+    end
+  end
+
+  vim.system(cmd, { cwd = root_path, text = true, stdout = dump }, done)
 end
 
 local function opts()
@@ -137,7 +154,6 @@ end
 return {
   -- Portable package manager for Neovim that runs everywhere Neovim runs.
   "williamboman/mason.nvim",
-  dependencies = { "nvim-lua/plenary.nvim" },
   config = config,
   event = "VeryLazy",
   opts = opts,
