@@ -19,6 +19,9 @@ local lsp_have_feature = {
   inlay_hint = function(client)
     return client.supports_method "textDocument/inlayHint"
   end,
+  code_action = function(client)
+    return client.supports_method "textDocument/codeAction"
+  end,
 }
 
 -- rename ----------------------------------------------------------------------
@@ -132,6 +135,10 @@ local function lsp_attach(args)
   end
 
   -- client
+  if lsp_have_feature.code_action(client) then
+    vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { buffer = bufnr, desc = "lsp rename" })
+  end
+
   if lsp_have_feature.rename(client) then
     vim.keymap.set("n", "<leader>lR", lsp_buf_rename_use_priority_or_select, { buffer = bufnr, desc = "lsp rename" })
   end
