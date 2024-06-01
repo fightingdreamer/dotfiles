@@ -1,3 +1,27 @@
+local function ensure_pylsp_plugins(package, handle)
+  local root_path = vim.fn.resolve(vim.fn.stdpath "data" .. "/mason/packages/" .. package.name)
+  local python_path = root_path .. "/venv/bin/python"
+  local python_args = {
+    "-m",
+    "pip",
+    "install",
+    "--upgrade",
+    "pylsp-rope",
+    -- "python-lsp-black",
+    -- "python-lsp-isort",
+    "python-lsp-ruff",
+    -- "pyls-memestra",  -- tracks @deprecated
+    -- "pylsp-mypy", -- tracks types
+  }
+
+  local job = {
+    cwd = root_path,
+    args = python_args,
+    command = python_path,
+  }
+  require("plenary.job"):new(job):start()
+end
+
 local function opts()
   return {
     ensure_installed = {
@@ -12,6 +36,11 @@ local function opts()
       "debugpy",
       "python-lsp-server",
       "jedi-language-server",
+    },
+    event_handlers = {
+      ["python-lsp-server"] = {
+        ["install:success"] = ensure_pylsp_plugins,
+      },
     },
 
     ui = {
@@ -63,9 +92,26 @@ local ensure = function(ensure_installed)
   end
 end
 
+local events = function(event_handlers)
+  local registry = require "mason-registry"
+  for name, events in pairs(event_handlers) do
+    local package = registry.get_package(name)
+    for event_name, event_handler in pairs(events) do
+      package:on(
+        event_name,
+        vim.schedule_wrap(function()
+          info(string.format("%s: %s", package.name, event_name))
+          event_handler(package)
+        end)
+      )
+    end
+  end
+end
+
 local config = function(_, opts)
   require("mason").setup(opts)
   vim.defer_fn(function()
+    events(opts.event_handlers)
     ensure(opts.ensure_installed)
   end, 300)
 end
