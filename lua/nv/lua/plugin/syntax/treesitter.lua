@@ -9,7 +9,7 @@ local ensure_installed = {
     "java", "javascript", "jq", "json", "json5", "jsonc",
     "kdl",
     "lua", "luap",
-    "make", "markdown", "meson",
+    "make", "markdown", "markdown_inline", "meson",
     "nix",
     "objc",
     "pug", "python",
