@@ -4,6 +4,7 @@ keybinds {
 		unbind "s"
 	}
 	unbind "Ctrl q"
+	unbind "Ctrl k"
 }
 pane_frames true
 session_serializatien false
