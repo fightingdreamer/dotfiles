@@ -23,12 +23,17 @@ local config = function(_, opts)
     require("telescope").load_extension("import")
 end
 
+local function telescope_import()
+  local cword = vim.fn.expand("<cword>");
+  return "<cmd>Telescope import<cr>" .. cword;
+end
+
 return {
     "piersolenski/telescope-import.nvim",
     dependencies = { "nvim-telescope/telescope.nvim" },
     config = config,
     opts = opts,
     keys = {
-        { "<leader>i", "<cmd>Telescope import<cr>", desc = "Telescope import" },
+        { "<leader>i", telescope_import, desc = "Telescope import", expr=true },
     }
 }
