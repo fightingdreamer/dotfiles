@@ -54,34 +54,46 @@ local function opts()
     mapping = cmp.mapping.preset.insert {
       ["<C-k>"] = cmp.mapping.select_prev_item(),
       ["<C-j>"] = cmp.mapping.select_next_item(),
-      ["<S-Tab>"] = cmp.mapping(function(fallback)
-        if luasnip.jumpable(-1) then
-          luasnip.jump(-1)
-        elseif cmp.visible() then
-          fallback()
-        end
-      end, { "i", "s" }),
+
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
-          cmp.confirm { select = true }
-        elseif luasnip.expandable() then
-          luasnip.expand()
-        elseif luasnip.jumpable(1) then
-          luasnip.jump(1)
+          cmp.select_next_item()
         else
           fallback()
         end
       end, { "i", "s" }),
-      ["<C-e>"] = cmp.mapping.abort(),
-      ["<C-l>"] = cmp.mapping(function(fallback)
+
+      ["<S-Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
-          cmp.confirm { select = true }
-        elseif luasnip.expandable() then
+          cmp.select_prev_item()
+        else
+          fallback()
+        end
+      end, { "i", "s" }),
+
+      ["<C-e>"] = cmp.mapping.abort(),
+      ["<Enter>"] = cmp.mapping.confirm {
+        behavior = cmp.ConfirmBehavior.Insert,
+        select = true,
+      },
+
+      ["<C-l>"] = cmp.mapping(function(fallback)
+        if luasnip.expandable() then
           luasnip.expand()
         elseif luasnip.jumpable(1) then
           luasnip.jump(1)
+        elseif cmp.visible() then
+          cmp.confirm { select = true }
         else
           cmp.complete()
+        end
+      end, { "i", "s" }),
+
+      ["<C-L>"] = cmp.mapping(function(fallback)
+        if luasnip.jumpable(-1) then
+          luasnip.jump(-1)
+        else
+          fallback()
         end
       end, { "i", "s" }),
     },
@@ -103,7 +115,7 @@ local function opts()
         mode = "symbol_text",
         preset = "default",
         maxwidth = max_width,
-        ellipsis_char = "...",
+        ellipsis_char = "→",
         show_labelDetails = true,
       },
     },
