@@ -1,8 +1,9 @@
 local function opts()
   return {
     keys = {
-      ["<cr>"] = false,
+      -- ["<cr>"] = false,
       ["<tab>"] = "jump",
+      -- ["<2-leftmouse>"] = false,
     },
     modes = {
       lsp = {
