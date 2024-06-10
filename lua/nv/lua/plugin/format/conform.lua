@@ -15,7 +15,7 @@ local opts = function()
       typescriptreact = { "biome" },
       vue = { "biome" },
     },
-    format_on_save = function(bufnr)
+    format_after_save = function(bufnr)
       -- Disable with a global or buffer-local variable
       if vim.g.conform_disabled or vim.b[bufnr].disable_autoformat then
         return
@@ -30,7 +30,7 @@ local config = function(_, opts)
 end
 
 local conform_format = function()
-  require("conform").format()
+  require("conform").format { lsp_fallback = true }
 end
 
 local conform_disable = function(args)
