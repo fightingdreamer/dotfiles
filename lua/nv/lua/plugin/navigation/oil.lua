@@ -26,7 +26,7 @@ local opts = function()
     preview = {
       min_width = { 10, 0.5 },
     },
-    skip_confirm_for_simple_edits = false,
+    skip_confirm_for_simple_edits = true,
     prompt_save_on_select_new_entry = true,
   }
 end
