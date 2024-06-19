@@ -1,7 +1,7 @@
 local opts = function()
   return {
     columns = {
-      -- "size",
+      "size",
       "icon",
     },
     keymaps = {
