@@ -86,30 +86,72 @@ local function opts_pylsp()
   }
 end
 
-local function opts_tsserver()
+local function opts_volar()
   return {
+    filetypes = {
+      "vue",
+    },
     -- on_attach = on_attach,
     -- on_init = on_init,
     capabilities = default_capabilities(),
   }
 end
 
-local function opts()
+local function opts_tsserver()
+  local mason_registry = require "mason-registry"
+  local root_path = mason_registry.get_package("vue-language-server"):get_install_path()
+  local vue_lsp_path = root_path .. "/node_modules/@vue/language-server"
   return {
     filetypes = {
-      lua = { lua_ls = opts_default },
-      python = { pylsp = opts_pylsp, jedi_language_server = opts_jedi, pyright = opts_default },
-      typescript = { tsserver = opts_tsserver },
+      "javascript",
+      "typescript",
+      "javascriptreact",
+      "typescriptreact",
+      "vue",
+    },
+    -- on_attach = on_attach,
+    -- on_init = on_init,
+    capabilities = default_capabilities(),
+    init_options = {
+      plugins = {
+        {
+          name = "@vue/typescript-plugin",
+          location = vue_lsp_path,
+          languages = { "vue" },
+        },
+      },
+    },
+  }
+end
+
+local function opts()
+  return {
+    configs = {
+      -- c, cpp
+      clangd = opts_default,
+      -- lua
+      lua_ls = opts_default,
+      -- xml
+      lemminx = opts_default,
+      -- vue
+      volar = opts_volar,
+      -- js, ts
+      tsserver = opts_tsserver,
+      -- py
+      pylsp = opts_pylsp,
+      jedi_language_server = opts_jedi,
+      pyright = opts_default,
+      ruff = opts_default,
+      -- zig
+      zls = opts_default,
     },
   }
 end
 
 local function config(_, opts)
   local lspconfig = require "lspconfig"
-  for filetype, configs in pairs(opts.filetypes) do
-    for lsp_name, lsp_opts in pairs(configs) do
-      lspconfig[lsp_name].setup(lsp_opts())
-    end
+  for lsp_name, config in pairs(opts.configs) do
+    lspconfig[lsp_name].setup(config())
   end
 end
 
