@@ -14,6 +14,7 @@ local opts = function()
       typescript = { "biome" },
       typescriptreact = { "biome" },
       vue = { "biome" },
+      zig = { "zigfmt" },
     },
     format_after_save = function(bufnr)
       -- Disable with a global or buffer-local variable

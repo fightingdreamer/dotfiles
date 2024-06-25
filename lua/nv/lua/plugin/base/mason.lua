@@ -50,6 +50,9 @@ end
 local function opts()
   return {
     ensure_installed = {
+      -- low
+      "zls",
+      "clangd",
       -- web
       "biome",
       -- lua
