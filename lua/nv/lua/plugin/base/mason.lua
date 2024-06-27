@@ -19,10 +19,11 @@ local function ensure_pylsp_plugins(package, handle)
     "pip",
     "install",
     "--upgrade",
+    "rope",
     "pylsp-rope",
     -- "python-lsp-black",
     -- "python-lsp-isort",
-    "python-lsp-ruff",
+    -- "python-lsp-ruff",
     -- "pyls-memestra",  -- tracks @deprecated
     -- "pylsp-mypy", -- tracks types
   }
@@ -63,7 +64,7 @@ local function opts()
       "pyright",
       "debugpy",
       "python-lsp-server",
-      "jedi-language-server",
+      -- "jedi-language-server",
     },
     event_handlers = {
       ["python-lsp-server"] = {

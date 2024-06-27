@@ -46,7 +46,7 @@ local function opts_pylsp()
         plugins = {
           ruff = {
             -- python project (have: pyproject.toml or ruff.toml)
-            enabled = true,
+            enabled = false,
             formatEnabled = true,
             extendSelect = {},
             extendIgnore = {},
@@ -65,6 +65,10 @@ local function opts_pylsp()
           pyflakes = {
             enabled = false,
           },
+          pylsp_rope = {
+            enabled = false,
+            rename = false,
+          },
           yapf = {
             enabled = false,
           },
@@ -73,11 +77,17 @@ local function opts_pylsp()
             enabled = false,
           },
           rope_autoimport = {
-            memory = true,
+            memory = false,
             enabled = true,
+            completions = {
+              enabled = true,
+            },
+            code_actions = {
+              enabled = true,
+            },
           },
           rope_completion = {
-            eager = true,
+            eager = false,
             enabled = true,
           },
         },
@@ -139,7 +149,7 @@ local function opts()
       tsserver = opts_tsserver,
       -- py
       pylsp = opts_pylsp,
-      jedi_language_server = opts_jedi,
+      -- jedi_language_server = opts_jedi,
       pyright = opts_default,
       ruff = opts_default,
       -- zig
