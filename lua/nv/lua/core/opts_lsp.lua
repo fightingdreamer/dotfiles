@@ -3,9 +3,9 @@
 local lsp_priority = {
   rename = {
     -- python
-    "pyright",
     "pylsp",
-    "jedi_language_server",
+    "pyright",
+    -- "jedi_language_server",
   },
 }
 
