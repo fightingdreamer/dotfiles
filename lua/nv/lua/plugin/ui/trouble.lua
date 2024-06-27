@@ -29,6 +29,7 @@ local function config(_, opts)
 end
 
 return {
+  -- A pretty diagnostics, references, telescope results, quickfix and location list.
   "folke/trouble.nvim",
   config = config,
   keys = {
