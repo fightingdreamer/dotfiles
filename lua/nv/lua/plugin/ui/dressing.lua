@@ -135,7 +135,7 @@ end
 
 return {
   "stevearc/dressing.nvim",
-  event = "UIEnter",
   config = config,
+  event = "UIEnter",
   opts = opts,
 }
