@@ -40,9 +40,9 @@ o.mouse = "a"
 
 -- numbers
 o.ruler = true
-o.number = true
+o.number = false
 o.numberwidth = 3
-o.relativenumber = true
+o.relativenumber = false
 
 -- enable highlight groups
 opt.termguicolors = true
