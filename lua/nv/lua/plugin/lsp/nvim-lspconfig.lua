@@ -12,6 +12,40 @@ local function opts_default()
   }
 end
 
+local function opts_pyright()
+  return {
+    -- on_attach = function(client, bufnr) end,
+    -- on_init = on_init,
+    capabilities = default_capabilities(),
+    -- link: https://github.com/microsoft/pyright/blob/main/docs/settings.md
+    settings = {
+      pyright = {
+        autoImportCompletion = true,
+        disableOrganizeImports = true,
+      },
+      python = {
+        analysis = {
+          diagnosticMode = "openFilesOnly",
+          typeCheckingMode = "standard",
+          useLibraryCodeForTypes = true,
+        },
+      },
+    },
+  }
+end
+
+local function opts_ruff()
+  return {
+    on_attach = function(client, bufnr)
+      if client.name == "ruff" then
+        client.server_capabilities.hoverProvider = false
+      end
+    end,
+    -- on_init = on_init,
+    capabilities = default_capabilities(),
+  }
+end
+
 local function opts_jedi()
   return {
     on_attach = function(client)
@@ -150,8 +184,8 @@ local function opts()
       -- py
       pylsp = opts_pylsp,
       -- jedi_language_server = opts_jedi,
-      pyright = opts_default,
-      ruff = opts_default,
+      pyright = opts_pyright,
+      ruff = opts_ruff,
       -- zig
       zls = opts_default,
     },
@@ -160,8 +194,8 @@ end
 
 local function config(_, opts)
   local lspconfig = require "lspconfig"
-  for lsp_name, config in pairs(opts.configs) do
-    lspconfig[lsp_name].setup(config())
+  for lsp_name, lsp_config in pairs(opts.configs) do
+    lspconfig[lsp_name].setup(lsp_config())
   end
 end
 
