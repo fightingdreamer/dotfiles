@@ -1,5 +1,11 @@
 local function opts()
-  return {}
+  return {
+    replace_engine = {
+      ["sed"] = {
+        cmd = "sed",
+      },
+    },
+  }
 end
 
 local function config(_, opts)
