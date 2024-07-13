@@ -112,10 +112,10 @@ return {
     { "<leader>b", "<cmd>Telescope buffers<cr>", desc = "telescope find buffers" },
     { "<leader>r", oldfiles, desc = "telescope find oldfiles" },
     { "<leader>t", "<cmd>Telescope treesitter<cr>", desc = "telescope treesitter" },
-    { "<leader>g", live_grep_below, desc = "telescope live grep" },
+    { "<leader>g", "<cmd>Telescope live_grep grep_open_files=true<cr>", desc = "telescope live grep" },
     { "<leader>G", "<cmd>Telescope live_grep<cr>", desc = "telescope live grep" },
     -- { "<leader>o", "<cmd>git_files show_untracked=true<cr>", desc = "telescope live grep" },
-    { "<leader>o", find_files_below, desc = "telescope find files" },
+    { "<leader>o", "<cmd>Telescope find_files follow=true<cr>", desc = "telescope find files" },
     { "<leader>O", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<cr>", desc = "telescope find all files" },
 
     -- buf
