@@ -16,12 +16,12 @@ local opts = function()
       vue = { "biome" },
       zig = { "zigfmt" },
     },
-    format_after_save = function(bufnr)
+    format_on_save = function(bufnr)
       -- Disable with a global or buffer-local variable
       if vim.g.conform_disabled or vim.b[bufnr].disable_autoformat then
         return
       end
-      return { lsp_fallback = true }
+      return { lsp_format = "fallback" }
     end,
   }
 end
@@ -31,7 +31,7 @@ local config = function(_, opts)
 end
 
 local conform_format = function()
-  require("conform").format { lsp_fallback = true }
+  require("conform").format { lsp_format = "fallback" }
 end
 
 local conform_disable = function(args)
