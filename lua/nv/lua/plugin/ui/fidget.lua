@@ -1,16 +1,18 @@
 local function opts()
   return {
     progress = {
+      poll_rate = 10,
       display = {
         done_ttl = 1,
         done_icon = "✓",
         progress_icon = {
           pattern = "line",
-          period = 1,
+          period = 2,
         },
       },
     },
     notification = {
+      poll_rate = 10,
       view = {
         stack_upwards = false,
       },
