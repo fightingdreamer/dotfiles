@@ -19,6 +19,7 @@ local function ensure_pylsp_plugins(package, handle)
     "pip",
     "install",
     "--upgrade",
+    "pip",
     "rope",
     "pylsp-rope",
     -- "python-lsp-black",
