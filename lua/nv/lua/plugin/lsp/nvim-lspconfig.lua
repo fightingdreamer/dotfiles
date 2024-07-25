@@ -224,6 +224,8 @@ local function opts()
       volar = opts_volar,
       -- js, ts
       tsserver = opts_tsserver,
+      -- html
+      html = opts_default,
       -- py
       -- pylsp = opts_pylsp,
       -- jedi_language_server = opts_jedi,
