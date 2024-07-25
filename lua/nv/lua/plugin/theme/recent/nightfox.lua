@@ -21,6 +21,11 @@ local opts = function()
         comments = "italic",
       },
     },
+    groups = {
+      all = {
+        LspInlayHint = { bg = "", fg = "#7f848e" },
+      },
+    },
     palettes = {
       dayfox = {
         bg3 = "#e4dcd4", -- Lighter bg (cursor line)
@@ -44,6 +49,10 @@ local config = function(_, opts)
   -- dark
   -- vim.opt.background = "dark"
   -- vim.cmd.colorscheme "nightfox"
+
+  -- dark
+  -- vim.opt.background = "dark"
+  -- vim.cmd.colorscheme "duskfox"
 end
 
 return {
