@@ -21,6 +21,9 @@ local function opts()
         },
       },
     },
+    follow = false,
+    auto_preview = false,
+    auto_refresh = true,
   }
 end
 
