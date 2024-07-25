@@ -24,6 +24,29 @@ local function opts_pyright()
         disableOrganizeImports = true,
       },
       python = {
+        pythonPath = vim.fn.exepath "python3",
+        analysis = {
+          diagnosticMode = "openFilesOnly",
+          typeCheckingMode = "standard",
+          useLibraryCodeForTypes = true,
+        },
+      },
+    },
+  }
+end
+
+local function opts_basedpyright()
+  return {
+    -- on_attach = function(client, bufnr) end,
+    -- on_init = on_init,
+    capabilities = default_capabilities(),
+    -- link: https://github.com/microsoft/pyright/blob/main/docs/settings.md
+    settings = {
+      basedpyright = {
+        disableOrganizeImports = true,
+      },
+      python = {
+        pythonPath = vim.fn.exepath "python3",
         analysis = {
           diagnosticMode = "openFilesOnly",
           typeCheckingMode = "standard",
@@ -168,6 +191,26 @@ local function opts_tsserver()
   }
 end
 
+-- pyrightconfig.json
+-- {
+--   "include": [
+--     "src"
+--   ],
+--   "pythonVersion": "3.10",
+--   "reportAny": false,
+--   "reportArgumentType": false,
+--   "reportLambdaType": false,
+--   "reportMemberType": false,
+--   "reportMissingParameterType": true,
+--   "reportMissingTypeArgument": false,
+--   "reportMissingTypeStubs": false,
+--   "reportUnknownArgumentType": false,
+--   "reportUnknownMemberType": false,
+--   "reportUnknownParameterType": false,
+--   "reportUnknownVariableType": false,
+--   "reportVariableType": false
+-- }
+
 local function opts()
   return {
     configs = {
@@ -182,9 +225,10 @@ local function opts()
       -- js, ts
       tsserver = opts_tsserver,
       -- py
-      pylsp = opts_pylsp,
+      -- pylsp = opts_pylsp,
       -- jedi_language_server = opts_jedi,
-      pyright = opts_pyright,
+      basedpyright = opts_basedpyright,
+      -- pyright = opts_pyright,
       ruff = opts_ruff,
       -- zig
       zls = opts_default,
