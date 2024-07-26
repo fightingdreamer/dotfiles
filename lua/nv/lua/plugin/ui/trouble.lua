@@ -22,6 +22,7 @@ local function opts()
       },
     },
     follow = false,
+    pinned = true,
     auto_preview = false,
     auto_refresh = true,
   }
