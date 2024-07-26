@@ -22,7 +22,7 @@ local opts = function()
         { "type", "desc" },
         { "name", "asc" },
       },
-      is_always_hidden = function(name, bufrn)
+      is_always_hidden = function(name, bufnr)
         local excluded = { "__pycache__" }
         for _, excluded_name in ipairs(excluded) do
           if name == excluded_name then
