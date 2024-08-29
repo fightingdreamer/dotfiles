@@ -62,9 +62,10 @@ local function opts()
       "selene",
       "stylua",
       -- python
-      "pyright",
+      -- "pyright",
+      "basedpyright",
       "debugpy",
-      "python-lsp-server",
+      -- "python-lsp-server",
       -- "jedi-language-server",
     },
     event_handlers = {
