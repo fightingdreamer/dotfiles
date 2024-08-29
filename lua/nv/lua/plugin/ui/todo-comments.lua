@@ -7,7 +7,7 @@
 -- idea: idea
 --       lorem ipsum dolor sit amet
 
--- todo: note
+-- todo: todo
 --       lorem ipsum dolor sit amet
 
 -- warn: warn
@@ -23,12 +23,13 @@ local function opts()
   return {
     keywords = {
       -- https://www.nerdfonts.com/cheat-sheet
-      -- double                         
-      -- single 󰙨
-      note = { icon = " ", color = "hint" },
+      -- double           󰸳                 
+      -- single 󰙨
+      note = { icon = " ", color = "hint" },
       link = { icon = " ", color = "hint" },
       idea = { icon = " ", color = "info" },
-      todo = { icon = " ", color = "info" },
+      todo = { icon = " ", color = "info" },
+      redo = { icon = " ", color = "info" },
       warn = { icon = " ", color = "error" },
       perf = { icon = " ", color = "warning" },
       test = { icon = " ", color = "test" },
@@ -40,8 +41,9 @@ local function opts()
       -- "fg", "bg", "wide", "wide_bg", "wide_fg" or empty.
       keyword = "wide_fg",
       -- "fg" or "bg" or empty.
+      before = "fg",
       after = "fg",
-      comments_only = false,
+      comments_only = true,
     },
   }
 end
