@@ -11,4 +11,7 @@ session_serializatien false
 
 // theme "mellow"
 // theme "solarized-light-adjusted"
-theme "solarized-light-as-dayfox"
+
+// theme "solarized-light-as-dayfox"
+theme "duskfox"
+// theme "nightfox"
