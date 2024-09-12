@@ -48,7 +48,7 @@ local function opts_basedpyright()
       python = {
         pythonPath = vim.fn.exepath "python3",
         analysis = {
-          diagnosticMode = "openFilesOnly",
+          diagnosticMode = "workspace",
           typeCheckingMode = "standard",
           useLibraryCodeForTypes = true,
         },
