@@ -46,11 +46,11 @@ local function opts_basedpyright()
         disableOrganizeImports = true,
       },
       python = {
-        pythonPath = vim.fn.exepath "python3",
+        -- pythonPath = vim.fn.exepath "python3",
         analysis = {
           diagnosticMode = "workspace",
-          typeCheckingMode = "standard",
-          useLibraryCodeForTypes = true,
+          -- typeCheckingMode = "standard",
+          -- useLibraryCodeForTypes = true,
         },
       },
     },
