@@ -164,7 +164,7 @@ local function opts_volar()
   }
 end
 
-local function opts_tslsp()
+local function opts_ts_ls()
   local mason_registry = require "mason-registry"
   local root_path = mason_registry.get_package("vue-language-server"):get_install_path()
   local vue_lsp_path = root_path .. "/node_modules/@vue/language-server"
@@ -220,7 +220,7 @@ local function opts()
       -- vue
       volar = opts_volar,
       -- js, ts
-      tslsp = opts_tslsp,
+      ts_ls = opts_ts_ls,
       -- html
       html = opts_default,
       -- py
