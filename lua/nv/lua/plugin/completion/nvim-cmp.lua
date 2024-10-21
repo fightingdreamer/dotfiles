@@ -108,9 +108,9 @@ local function opts()
       comparators = {
         -- link: https://github.com/hrsh7th/nvim-cmp/blob/5260e5e8ecadaf13e6b82cf867a909f54e15fd07/lua/cmp/config/compare.lua
         cmp.config.compare.exact,
-        cmp.config.compare.length,
-        cmp.config.compare.locality,
         cmp.config.compare.score,
+        cmp.config.compare.locality,
+        cmp.config.compare.length,
       },
     },
     formatting = {
