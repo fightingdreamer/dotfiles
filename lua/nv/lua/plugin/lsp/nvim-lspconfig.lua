@@ -231,6 +231,7 @@ local function opts()
       ruff = opts_ruff,
       -- zig
       zls = opts_default,
+      gopls = opts_default,
     },
   }
 end
