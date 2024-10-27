@@ -104,6 +104,14 @@ local function opts()
       { name = "buffer", option = { get_bufnrs = smaller_then(3145728, select_from.all_buffers) } },
       { name = "calc" },
     },
+    matching = {
+      disallow_fuzzy_matching = true,
+      disallow_fullfuzzy_matching = true,
+      disallow_partial_fuzzy_matching = true,
+      disallow_partial_matching = false,
+      disallow_prefix_unmatching = true,
+      disallow_symbol_nonprefix_matching = true,
+    },
     sorting = {
       comparators = {
         -- link: https://github.com/hrsh7th/nvim-cmp/blob/5260e5e8ecadaf13e6b82cf867a909f54e15fd07/lua/cmp/config/compare.lua
