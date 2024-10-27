@@ -36,6 +36,17 @@ local function max_width()
   return math.floor(0.45 * vim.o.columns)
 end
 
+local function entry_filter_vue(entry, ctx)
+  local char = ctx.cursor_before_line:sub(-1)
+  if char == "@" then
+    return entry.completion_item.label:match "^@"
+  end
+  if char == ":" then
+    return entry.completion_item.label:match "^:" and not entry.completion_item.label:match "^:on-"
+  end
+  return true
+end
+
 local function opts()
   local cmp = require "cmp"
   local luasnip = require "luasnip"
@@ -98,7 +109,15 @@ local function opts()
       end, { "i", "s" }),
     },
     sources = cmp.config.sources {
-      { name = "nvim_lsp" },
+      {
+        name = "nvim_lsp",
+        -- entry_filter = function(entry, ctx)
+        --   if ctx.filetype == "vue" then
+        --     return entry_filter_vue(entry, ctx)
+        --   end
+        --   return true
+        -- end,
+      },
       { name = "luasnip" },
       { name = "orgmode" },
       { name = "buffer", option = { get_bufnrs = smaller_then(3145728, select_from.all_buffers) } },
