@@ -104,7 +104,7 @@ return {
     { "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", desc = "telescope lsp document symbols" },
     { "<leader>lS", "<cmd>Telescope lsp_workspace_symbols<cr>", desc = "telescope lsp workspace references" },
     { "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "telescope lsp dynamic workspace references" },
-    { "<leader>lD", "<cmd>Telescope diagnostic bufnr=0 severity_limit=0 severity_bound=10<cr>", desc = "telescope diagnostic" },
+    { "<leader>lD", "<cmd>Telescope diagnostics bufnr=0 severity_limit=1 <cr>", desc = "telescope diagnostic" },
 
     -- nav
     { "<leader>b", "<cmd>Telescope buffers<cr>", desc = "telescope find buffers" },
