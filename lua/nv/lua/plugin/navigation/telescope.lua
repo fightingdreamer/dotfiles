@@ -43,12 +43,10 @@ local oldfiles = function()
   local sorters = require "telescope.sorters"
   builtin.oldfiles {
     sorter = sorters.get_substr_matcher(),
+    --   tiebreak = function(a, b, _)
+    --     return a.index < b.index
+    --   end,
   }
-  -- builtin.oldfiles {
-  --   tiebreak = function(a, b, _)
-  --     return a.index < b.index
-  --   end,
-  -- }
 end
 
 local live_grep_git = function()
