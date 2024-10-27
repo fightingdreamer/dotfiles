@@ -1,5 +1,0 @@
-return {
-    {
-        "wookayin/vim-autoimport",
-    }
-}
