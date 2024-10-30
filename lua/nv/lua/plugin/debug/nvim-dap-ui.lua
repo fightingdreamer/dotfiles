@@ -33,5 +33,7 @@ return {
     "nvim-neotest/nvim-nio",
   },
   opts = opts,
-  lazy = false,
+  event = {
+    "FileReadPost",
+  },
 }
