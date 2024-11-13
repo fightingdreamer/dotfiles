@@ -124,7 +124,7 @@ local function opts()
       { name = "calc" },
     },
     matching = {
-      disallow_fuzzy_matching = true,
+      disallow_fuzzy_matching = false,
       disallow_fullfuzzy_matching = true,
       disallow_partial_fuzzy_matching = true,
       disallow_partial_matching = false,
@@ -134,9 +134,9 @@ local function opts()
     sorting = {
       comparators = {
         -- link: https://github.com/hrsh7th/nvim-cmp/blob/5260e5e8ecadaf13e6b82cf867a909f54e15fd07/lua/cmp/config/compare.lua
-        cmp.config.compare.offset,
         cmp.config.compare.exact,
         cmp.config.compare.score,
+        cmp.config.compare.offset,
         cmp.config.compare.recently_used,
         cmp.config.compare.locality,
         cmp.config.compare.kind,
