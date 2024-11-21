@@ -19,6 +19,9 @@
 -- test: test
 --       lorem ipsum dolor sit amet
 
+-- code: test
+--       lorem ipsum dolor sit amet
+
 local function opts()
   return {
     keywords = {
@@ -33,6 +36,7 @@ local function opts()
       warn = { icon = " ", color = "error" },
       perf = { icon = " ", color = "warning" },
       test = { icon = " ", color = "test" },
+      code = { icon = " ", color = "error" },
     },
     merge_keywords = false,
     highlight = {
