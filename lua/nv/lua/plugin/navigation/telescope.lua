@@ -1,4 +1,6 @@
 local opts = function()
+  local builtin = require "telescope.builtin"
+  local sorters = require "telescope.sorters"
   return {
     defaults = {
       -- sort
@@ -31,22 +33,22 @@ local opts = function()
         n = { ["q"] = require("telescope.actions").close },
       },
     },
+    pickers = {
+      jumplist = {
+        sorter = sorters.get_substr_matcher(),
+      },
+      oldfiles = {
+        sorter = sorters.get_substr_matcher(),
+        --   tiebreak = function(a, b, _)
+        --     return a.index < b.index
+        --   end,
+      },
+    },
   }
 end
 
 local config = function(_, opts)
   require("telescope").setup(opts)
-end
-
-local oldfiles = function()
-  local builtin = require "telescope.builtin"
-  local sorters = require "telescope.sorters"
-  builtin.oldfiles {
-    sorter = sorters.get_substr_matcher(),
-    --   tiebreak = function(a, b, _)
-    --     return a.index < b.index
-    --   end,
-  }
 end
 
 local live_grep_git = function()
@@ -108,7 +110,8 @@ return {
 
     -- nav
     { "<leader>b", "<cmd>Telescope buffers<cr>", desc = "telescope find buffers" },
-    { "<leader>r", oldfiles, desc = "telescope find oldfiles" },
+    { "<leader>r", "<cmd>Telescope oldfiles<cr>", desc = "telescope find oldfiles" },
+    { "<leader>j", "<cmd>Telescope jumplist<cr>", desc = "telescope jumplist" },
     { "<leader>t", "<cmd>Telescope treesitter<cr>", desc = "telescope treesitter" },
     { "<leader>g", "<cmd>Telescope live_grep grep_open_files=true<cr>", desc = "telescope live grep" },
     { "<leader>G", "<cmd>Telescope live_grep<cr>", desc = "telescope live grep" },
