@@ -196,16 +196,16 @@ end
 --   "include": [
 --     "src"
 --   ],
---  "pythonVersion": "3.12",
---  "reportAny": false,
---  "reportArgumentType": false,
---  "reportMissingParameterType": true,
---  "reportMissingTypeArgument": false,
---  "reportMissingTypeStubs": false,
---  "reportUnknownArgumentType": false,
---  "reportUnknownMemberType": false,
---  "reportUnknownParameterType": false,
---  "reportUnknownVariableType": false,
+--   "pythonVersion": "3.12",
+--   "reportAny": false,
+--   "reportArgumentType": true,
+--   "reportMissingParameterType": true,
+--   "reportMissingTypeArgument": true,
+--   "reportMissingTypeStubs": false,
+--   "reportUnknownArgumentType": false,
+--   "reportUnknownMemberType": false,
+--   "reportUnknownParameterType": false,
+--   "reportUnknownVariableType": false
 -- }
 
 local function opts()
