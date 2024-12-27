@@ -1,0 +1,47 @@
+command = $HOME/.nix-profile/bin/fish --login --command fish
+
+cursor-style-blink = false
+
+# Iosevka
+# SS01 + Andale Mono Style
+# SS02 - Anonymous Pro Style
+# SS03 - Consolas Style
+# SS04 - Menlo Style
+# SS05 - Fira Mono Style
+# SS06 - Liberation Mono Style
+# SS07 - Monaco Style
+# SS08 + Pragmata Pro Style
+# SS09 + Source Code Pro Style
+# SS10 + Envy Code R Style
+# SS11 + X Windows Fixed Style
+# SS12 + Ubuntu Mono Style
+# SS13 - Lucida Style
+# SS14 + JetBrains Mono Style
+# SS15 - IBM Plex Mono Style
+# SS16 - PT Mono Style
+# SS17 - Recursive Mono Style
+# SS18 - Input Mono Style
+
+font-family = Iosevka Term SS07
+
+font-style = Semibold
+font-style-bold = Bold
+font-style-italic = Italic
+font-style-bold-italic = Medium Italic
+
+font-size = 15
+font-thicken = false
+
+adjust-cell-width = 0
+adjust-cell-height = 4
+
+adjust-cursor-height = 6
+adjust-cursor-thickness = 1
+
+window-padding-x = 4
+window-padding-y = 4
+
+macos-option-as-alt = left
+
+# theme = dayfox
+theme = duskfox
