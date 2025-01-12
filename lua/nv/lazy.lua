@@ -22,6 +22,7 @@ local spec = {
   -- { import = "plugin.note" },
   { import = "plugin.syntax" },
   { import = "plugin.theme" },
+  { import = "plugin.tool" },
   { import = "plugin.ui" },
 }
 
