@@ -67,6 +67,7 @@ local function opts()
       "debugpy",
       -- "python-lsp-server",
       -- "jedi-language-server",
+      "sql-formatter",
     },
     event_handlers = {
       ["python-lsp-server"] = {

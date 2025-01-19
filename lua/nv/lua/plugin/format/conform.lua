@@ -15,6 +15,7 @@ local opts = function()
       typescriptreact = { "biome" },
       vue = { "biome" },
       zig = { "zigfmt" },
+      sql = { "sql_formatter" },
     },
     format_on_save = function(bufnr)
       -- Disable with a global or buffer-local variable
