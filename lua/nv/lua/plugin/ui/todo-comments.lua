@@ -9,6 +9,9 @@
 
 -- todo: todo
 --       lorem ipsum dolor sit amet
+--
+-- redo: redo
+--       lorem ipsum dolor sit amet
 
 -- warn: warn
 --       lorem ipsum dolor sit amet
