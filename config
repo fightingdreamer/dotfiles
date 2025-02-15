@@ -46,3 +46,32 @@ macos-option-as-alt = left
 
 # theme = dayfox
 theme = duskfox
+
+# custom-shader = shader/glitchy.glsl
+# custom-shader = shader/starfield-colors.glsl
+# custom-shader = shader/starfield.glsl
+
+# custom-shader = shader/animated-gradient-shader.glsl
+# custom-shader = shader/bettercrt.glsl
+# custom-shader = shader/crt.glsl
+# custom-shader = shader/cubes.glsl
+# custom-shader = shader/dither.glsl
+# custom-shader = shader/drunkard.glsl
+# custom-shader = shader/fireworks-rockets.glsl
+# custom-shader = shader/fireworks.glsl
+# custom-shader = shader/gears-and-belts.glsl
+# custom-shader = shader/glow-rgbsplit-twitchy.glsl
+# custom-shader = shader/gradient-background.glsl
+# custom-shader = shader/in-game-crt.glsl
+# custom-shader = shader/inside-the-matrix.glsl
+# custom-shader = shader/just-snow.glsl
+# custom-shader = shader/matrix-hallway.glsl
+# custom-shader = shader/negative.glsl
+# custom-shader = shader/retro-terminal.glsl
+# custom-shader = shader/sin-interference.glsl
+# custom-shader = shader/smoke-and-ghost.glsl
+# custom-shader = shader/sparks-from-fire.glsl
+# custom-shader = shader/spotlight.glsl
+# custom-shader = shader/tft.glsl
+# custom-shader = shader/underwater.glsl
+# custom-shader = shader/water.glsl
