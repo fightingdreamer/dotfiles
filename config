@@ -3,6 +3,7 @@ command = $HOME/.nix-profile/bin/fish --login --command fish
 cursor-style-blink = false
 
 # Iosevka
+# Curly
 # SS01 + Andale Mono Style
 # SS02 - Anonymous Pro Style
 # SS03 - Consolas Style
@@ -22,7 +23,7 @@ cursor-style-blink = false
 # SS17 - Recursive Mono Style
 # SS18 - Input Mono Style
 
-font-family = Iosevka Term SS07
+font-family = Iosevka Term Curly
 
 font-style = Semibold
 font-style-bold = Bold
