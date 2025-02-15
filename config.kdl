@@ -1,10 +1,10 @@
 default_layout "compact"
 keybinds {
-	tab {
-		unbind "s"
-	}
-	unbind "Ctrl q"
-	unbind "Ctrl k"
+    tab {
+        unbind "s"
+    }
+    unbind "Ctrl q"
+    unbind "Ctrl k"
 }
 pane_frames false
 session_serializatien false
