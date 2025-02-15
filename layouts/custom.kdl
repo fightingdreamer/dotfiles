@@ -1,0 +1,36 @@
+layout {
+    pane
+    // pane size=2 borderless=true {
+    //     plugin location="status-bar"
+    // }
+    pane size=1 borderless=true {
+        plugin location="compact-bar"
+    }
+    swap_floating_layout name="auto" {
+        floating_panes max_panes=1 {
+            pane x="14%" y="14%" width="70%" height="70%"
+        }
+        floating_panes max_panes=2 {
+            pane x="4%" y="5%" width="70%" height="70%"
+            pane x="24%" y="23%" width="70%" height="70%"
+        }
+        floating_panes max_panes=3 {
+            pane x="4%" y="5%" width="70%" height="70%"
+            pane x="13%" y="14%" width="70%" height="70%"
+            pane x="24%" y="23%" width="70%" height="70%"
+        }
+        floating_panes max_panes=4 {
+            pane x="2%" y="5%" width="70%" height="70%"
+            pane x="9%" y="12%" width="70%" height="70%"
+            pane x="16%" y="18%" width="70%" height="70%"
+            pane x="24%" y="24%" width="70%" height="70%"
+        }
+        floating_panes max_panes=5 {
+            pane x="1%" y="2%" width="70%" height="70%"
+            pane x="7%" y="8%" width="70%" height="70%"
+            pane x="13%" y="14%" width="70%" height="70%"
+            pane x="20%" y="21%" width="70%" height="70%"
+            pane x="27%" y="26%" width="70%" height="70%"
+        }
+    }
+}
