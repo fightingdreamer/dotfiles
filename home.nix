@@ -173,7 +173,7 @@ in {
       tmux
       master.zellij
       tree
-      vim
+      master.vim
       zstd
       p7zip
       brotli
@@ -287,8 +287,8 @@ in {
       master.luajit
 
       # note: zig
-      master.zig_0_13 # master
-      # master.zig_0_14 # master
+      # master.zig_0_13 # master
+      master.zig_0_14 # master
 
       # note: go
       go
