@@ -30,6 +30,9 @@ set("n", "<tab>", "<cmd>nohlsearch<cr>", { noremap = true, desc = "clear highlig
 set("n", "j", "v:count ? 'j' : 'gj'", { noremap = true, expr = true })
 set("n", "k", "v:count ? 'k' : 'gk'", { noremap = true, expr = true })
 
+set("n", "<down>", "v:count ? 'j' : 'gj'", { noremap = true, expr = true })
+set("n", "<up>", "v:count ? 'k' : 'gk'", { noremap = true, expr = true })
+
 -- option/alt navigation over splits
 -- set("n", "<M-h>", "<C-w>h")
 -- set("n", "<M-l>", "<C-w>l")
