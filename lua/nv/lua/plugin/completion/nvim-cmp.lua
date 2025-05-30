@@ -87,6 +87,10 @@ local function opts()
         behavior = cmp.ConfirmBehavior.Insert,
         select = true,
       },
+      ["<right>"] = cmp.mapping.confirm {
+        behavior = cmp.ConfirmBehavior.Insert,
+        select = true,
+      },
 
       ["<C-l>"] = cmp.mapping(function(fallback)
         if luasnip.expandable() then
