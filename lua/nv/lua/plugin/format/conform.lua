@@ -1,3 +1,8 @@
+-- taplo.toml
+-- [formatting]
+-- indent_string = "    "
+-- column_width = 120
+
 local opts = function()
   return {
     formatters_by_ft = {
@@ -9,6 +14,7 @@ local opts = function()
       lua = { "stylua" },
       nix = { "alejandra", "nixfmt" },
       python = { "ruff_fix", "ruff_organize_imports", "ruff_format" },
+      -- python = { "black", "isort" },
       sh = { "shfmt" },
       toml = { "taplo" },
       html = { "superhtml" },
