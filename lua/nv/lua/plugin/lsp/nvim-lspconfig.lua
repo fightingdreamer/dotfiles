@@ -27,7 +27,8 @@ local function opts_pyright()
         pythonPath = vim.fn.exepath "python3",
         analysis = {
           diagnosticMode = "openFilesOnly",
-          typeCheckingMode = "standard",
+          -- diagnosticMode = "workspace",
+          -- typeCheckingMode = "standard",
           useLibraryCodeForTypes = true,
         },
       },
@@ -44,13 +45,15 @@ local function opts_basedpyright()
     settings = {
       basedpyright = {
         disableOrganizeImports = true,
-      },
-      python = {
-        -- pythonPath = vim.fn.exepath "python3",
         analysis = {
+          -- diagnosticMode = "openFilesOnly",
           diagnosticMode = "workspace",
-          -- typeCheckingMode = "standard",
-          -- useLibraryCodeForTypes = true,
+          inlayHints = {
+            variableTypes = true, -- conflicts with ty
+            callArgumentNames = true, -- conflicts with ty
+            functionReturnTypes = true,
+            genericTypes = true, -- conflicts with ty
+          },
         },
       },
     },
@@ -153,21 +156,8 @@ local function opts_pylsp()
   }
 end
 
-local function opts_volar()
-  return {
-    filetypes = {
-      "vue",
-    },
-    -- on_attach = on_attach,
-    -- on_init = on_init,
-    capabilities = default_capabilities(),
-  }
-end
-
 local function opts_ts_ls()
   local mason_registry = require "mason-registry"
-  local root_path = mason_registry.get_package("vue-language-server"):get_install_path()
-  local vue_lsp_path = root_path .. "/node_modules/@vue/language-server"
   return {
     filetypes = {
       "javascript",
@@ -179,15 +169,51 @@ local function opts_ts_ls()
     -- on_attach = on_attach,
     -- on_init = on_init,
     capabilities = default_capabilities(),
-    init_options = {
-      plugins = {
-        {
-          name = "@vue/typescript-plugin",
-          location = vue_lsp_path,
-          languages = { "vue" },
+  }
+end
+
+local function opts_harper()
+  return {
+    settings = {
+      ["harper-ls"] = {
+        codeActions = {
+          forceStable = true,
         },
       },
     },
+  }
+end
+
+local function opts_djlsp()
+  return {
+    filetypes = {
+      "html",
+      "htmldjango",
+    },
+    init_options = {
+      -- django_settings_module = "<your.settings.module>",
+      -- docker_compose_file = "docker-compose.yml",
+      docker_compose_service = "django",
+    },
+  }
+end
+
+local function opts_html()
+  return {
+    filetypes = {
+      "html",
+      "htmldjango",
+    },
+    capabilities = default_capabilities(),
+  }
+end
+
+local function opts_superhtml()
+  return {
+    pattern = {
+      "html",
+    },
+    capabilities = default_capabilities(),
   }
 end
 
@@ -218,20 +244,33 @@ local function opts()
       -- xml
       lemminx = opts_default,
       -- vue
-      volar = opts_volar,
+      vue_ls = opts_default,
       -- js, ts
+      -- css
+      tailwindcss = opts_default(),
+      unocss = opts_default(),
       ts_ls = opts_ts_ls,
       -- html
-      html = opts_default,
+      -- djlsp = opts_djlsp,
+      cssls = opts_default,
+      html = opts_html,
+      superhtml = opts_superhtml,
       -- py
       -- pylsp = opts_pylsp,
       -- jedi_language_server = opts_jedi,
       basedpyright = opts_basedpyright,
       -- pyright = opts_pyright,
+      -- ty = opts_default,
       ruff = opts_ruff,
+      yamlls = opts_default,
       -- zig
       zls = opts_default,
+      sqls = opts_default,
+      sqlls = opts_default,
       gopls = opts_default,
+      -- spelling
+      -- harper_ls = opts_harper,
+      -- svelte = opts_default,
     },
   }
 end
@@ -239,7 +278,8 @@ end
 local function config(_, opts)
   local lspconfig = require "lspconfig"
   for lsp_name, lsp_config in pairs(opts.configs) do
-    lspconfig[lsp_name].setup(lsp_config())
+    -- vim.lsp.config(lsp_name, lsp_config())
+    vim.lsp.enable(lsp_name)
   end
 end
 
