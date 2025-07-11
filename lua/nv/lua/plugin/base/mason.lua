@@ -68,6 +68,7 @@ local function opts()
       -- "python-lsp-server",
       -- "jedi-language-server",
       "sql-formatter",
+      "superhtml",
     },
     event_handlers = {
       ["python-lsp-server"] = {

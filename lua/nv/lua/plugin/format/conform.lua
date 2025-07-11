@@ -11,6 +11,7 @@ local opts = function()
       python = { "ruff_fix", "ruff_organize_imports", "ruff_format" },
       sh = { "shfmt" },
       toml = { "taplo" },
+      html = { "superhtml" },
       typescript = { "biome" },
       typescriptreact = { "biome" },
       vue = { "biome" },
