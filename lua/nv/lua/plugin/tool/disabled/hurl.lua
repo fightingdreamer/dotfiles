@@ -37,6 +37,7 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
   },
+  disabled = true,
   opts = opts,
   keys = {
     -- Run API request
