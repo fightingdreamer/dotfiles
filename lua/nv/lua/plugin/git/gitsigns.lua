@@ -11,6 +11,13 @@ local opts = function()
       changedelete = { text = "~" },
       untracked = { text = "┇" },
     },
+    current_line_blame = false,
+    current_line_blame_opts = {
+      virt_text = true,
+      virt_text_pos = "eol",
+      delay = 100,
+      virt_text_priority = 10,
+    },
 
     on_attach = function(bufnr)
       local gs = package.loaded.gitsigns
@@ -36,4 +43,7 @@ return {
   config = config,
   event = "BufReadPost",
   opts = opts,
+  keys = {
+    { "\\g", "<cmd>Gitsigns toggle_current_line_blame<cr>", mode = { "n" }, desc = "Gitsigns toggle current line blame" },
+  },
 }
