@@ -5,6 +5,7 @@ local root = vim.fn.stdpath "config" .. "/lua/nv"
 vim.g.mapleader = " "
 
 local spec = {
+  { import = "plugin.ai" },
   { import = "plugin.api" },
   { import = "plugin.base" },
   { import = "plugin.comment" },
