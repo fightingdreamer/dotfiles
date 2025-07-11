@@ -126,8 +126,10 @@ local function opts()
       { name = "orgmode" },
       { name = "buffer", option = { get_bufnrs = smaller_then(3145728, select_from.all_buffers) } },
       { name = "calc" },
+      { name = "copilot", group_index = 2 },
     },
     matching = {
+      priority_weight = 2,
       disallow_fuzzy_matching = false,
       disallow_fullfuzzy_matching = true,
       disallow_partial_fuzzy_matching = true,
@@ -202,6 +204,13 @@ return {
     "abecodes/tabout.nvim",
     -- fancy icons
     "onsails/lspkind.nvim",
+    -- copilot
+    {
+      "zbirenbaum/copilot-cmp",
+      config = function()
+        require("copilot_cmp").setup()
+      end,
+    },
   },
   config = config,
   event = { "CmdlineEnter", "InsertEnter" },
