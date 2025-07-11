@@ -1,7 +1,7 @@
 vim.filetype.add {
   extension = {
-    jinja = "htmldjango",
-    jinja2 = "htmldjango",
-    j2 = "htmldjango",
+    html = "htmldjango",
+    -- jinja = "jinja",
+    -- jinja2 = "jinja2",
   },
 }
