@@ -34,10 +34,10 @@ set("n", "<down>", "v:count ? 'j' : 'gj'", { noremap = true, expr = true })
 set("n", "<up>", "v:count ? 'k' : 'gk'", { noremap = true, expr = true })
 
 -- option/alt navigation over splits
--- set("n", "<M-h>", "<C-w>h")
--- set("n", "<M-l>", "<C-w>l")
--- set("n", "<M-j>", "<C-w>j")
--- set("n", "<M-k>", "<C-w>k")
+set("n", "ķ", "<C-w>h")
+set("n", "ł", "<C-w>l")
+set("n", "∆", "<C-w>j")
+set("n", "Ż", "<C-w>k")
 
 -- todo
 
