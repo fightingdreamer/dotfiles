@@ -14,6 +14,6 @@ return {
   config = config,
   opts = opts,
   keys = {
-    { "gt", "<cmd>TextCaseOpenTelescope<cr>", desc = "Telescope text case" },
+    { "gt", "<cmd>TextCaseOpenTelescope<cr>", mode = { "n", "v" }, desc = "Telescope text case" },
   },
 }
