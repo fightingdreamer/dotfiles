@@ -286,7 +286,7 @@ end
 return {
   "neovim/nvim-lspconfig",
   dependencies = { "hrsh7th/cmp-nvim-lsp" },
-  event = "BufReadPost",
+  event = "BufReadPre",
   config = config,
   opts = opts,
 }
