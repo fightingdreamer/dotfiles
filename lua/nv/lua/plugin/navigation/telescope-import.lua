@@ -36,4 +36,5 @@ return {
   keys = {
     { "<leader>i", telescope_import, desc = "Telescope import", expr = true },
   },
+  enabled = false,
 }
