@@ -173,10 +173,10 @@ return {
   event = "BufReadPre",
   opts = get_opts(),
   config = function(_, opts)
-    local lspconfig = require "lspconfig"
     for server, config in pairs(opts.servers) do
       config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-      lspconfig[server].setup(config)
+      pcall(vim.lsp.config, server, config)
+      vim.lsp.enable(server)
     end
   end,
 }
