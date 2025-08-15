@@ -1,222 +1,3 @@
-local set = vim.keymap.key
-
-local function default_capabilities()
-  return require("cmp_nvim_lsp").default_capabilities()
-end
-
-local function opts_default()
-  return {
-    -- on_attach = on_attach,
-    -- on_init = on_init,
-    capabilities = default_capabilities(),
-  }
-end
-
-local function opts_pyright()
-  return {
-    -- on_attach = function(client, bufnr) end,
-    -- on_init = on_init,
-    capabilities = default_capabilities(),
-    -- link: https://github.com/microsoft/pyright/blob/main/docs/settings.md
-    settings = {
-      pyright = {
-        autoImportCompletion = true,
-        disableOrganizeImports = true,
-      },
-      python = {
-        pythonPath = vim.fn.exepath "python3",
-        analysis = {
-          diagnosticMode = "openFilesOnly",
-          -- diagnosticMode = "workspace",
-          -- typeCheckingMode = "standard",
-          useLibraryCodeForTypes = true,
-        },
-      },
-    },
-  }
-end
-
-local function opts_basedpyright()
-  return {
-    -- on_attach = function(client, bufnr) end,
-    -- on_init = on_init,
-    capabilities = default_capabilities(),
-    -- link: https://github.com/microsoft/pyright/blob/main/docs/settings.md
-    settings = {
-      basedpyright = {
-        disableOrganizeImports = true,
-        analysis = {
-          -- diagnosticMode = "openFilesOnly",
-          diagnosticMode = "workspace",
-          inlayHints = {
-            variableTypes = true, -- conflicts with ty
-            callArgumentNames = true, -- conflicts with ty
-            functionReturnTypes = true,
-            genericTypes = true, -- conflicts with ty
-          },
-        },
-      },
-    },
-  }
-end
-
-local function opts_ruff()
-  return {
-    on_attach = function(client, bufnr)
-      if client.name == "ruff" then
-        client.server_capabilities.hoverProvider = false
-      end
-    end,
-    -- on_init = on_init,
-    capabilities = default_capabilities(),
-  }
-end
-
-local function opts_jedi()
-  return {
-    on_attach = function(client)
-      client.server_capabilities.documentSymbolProvider = false
-      client.server_capabilities.declarationProvider = false
-      client.server_capabilities.definitionProvider = false
-      client.server_capabilities.typeDefinitionProvider = false
-      client.server_capabilities.referencesProvider = false
-      client.server_capabilities.workspaceSymbol = false
-      client.server_capabilities.workspaceSymbolProvider = false
-    end,
-    -- on_init = on_init,
-    capabilities = default_capabilities(),
-  }
-end
-
-local function opts_pylsp()
-  return {
-    on_attach = function(client)
-      client.server_capabilities.documentSymbolProvider = false
-      client.server_capabilities.declarationProvider = false
-      client.server_capabilities.definitionProvider = false
-      client.server_capabilities.typeDefinitionProvider = false
-      client.server_capabilities.referencesProvider = false
-      client.server_capabilities.workspaceSymbol = false
-      client.server_capabilities.workspaceSymbolProvider = false
-    end,
-    -- on_init = on_init,
-    capabilities = default_capabilities(),
-    settings = {
-      pylsp = {
-        plugins = {
-          ruff = {
-            -- python project (have: pyproject.toml or ruff.toml)
-            enabled = false,
-            formatEnabled = true,
-            extendSelect = {},
-            extendIgnore = {},
-            format = {},
-            -- python file
-            lineLength = 120,
-            select = { "F" },
-            ignore = { "D210" },
-          },
-          autopep8 = {
-            enabled = false,
-          },
-          pycodestyle = {
-            enabled = false,
-          },
-          pyflakes = {
-            enabled = false,
-          },
-          pylsp_rope = {
-            enabled = false,
-            rename = false,
-          },
-          yapf = {
-            enabled = false,
-          },
-          jedi_completion = {
-            eager = false,
-            enabled = false,
-          },
-          rope_autoimport = {
-            memory = false,
-            enabled = true,
-            completions = {
-              enabled = true,
-            },
-            code_actions = {
-              enabled = true,
-            },
-          },
-          rope_completion = {
-            eager = false,
-            enabled = true,
-          },
-        },
-      },
-    },
-  }
-end
-
-local function opts_ts_ls()
-  local mason_registry = require "mason-registry"
-  return {
-    filetypes = {
-      "javascript",
-      "typescript",
-      "javascriptreact",
-      "typescriptreact",
-      "vue",
-    },
-    -- on_attach = on_attach,
-    -- on_init = on_init,
-    capabilities = default_capabilities(),
-  }
-end
-
-local function opts_harper()
-  return {
-    settings = {
-      ["harper-ls"] = {
-        codeActions = {
-          forceStable = true,
-        },
-      },
-    },
-  }
-end
-
-local function opts_djlsp()
-  return {
-    filetypes = {
-      "html",
-      "htmldjango",
-    },
-    init_options = {
-      -- django_settings_module = "<your.settings.module>",
-      -- docker_compose_file = "docker-compose.yml",
-      docker_compose_service = "django",
-    },
-  }
-end
-
-local function opts_html()
-  return {
-    filetypes = {
-      "html",
-      "htmldjango",
-    },
-    capabilities = default_capabilities(),
-  }
-end
-
-local function opts_superhtml()
-  return {
-    pattern = {
-      "html",
-    },
-    capabilities = default_capabilities(),
-  }
-end
-
 -- pyrightconfig.json
 -- {
 --   "include": [
@@ -234,59 +15,180 @@ end
 --   "reportUnknownVariableType": false
 -- }
 
-local function opts()
+local function get_lazy_plugin_paths()
+  local lazy_path = vim.fn.stdpath "data" .. "/lazy"
+  local plugins = {}
+  -- Check if Lazy.nvim is installed.
+  if vim.loop.fs_stat(lazy_path) then
+    -- Scan all directories in `lazy/` (assuming they are plugins).
+    for name, _ in vim.fs.dir(lazy_path) do
+      local plugin_lua_path = lazy_path .. "/" .. name .. "/lua"
+      if vim.loop.fs_stat(plugin_lua_path) then
+        table.insert(plugins, plugin_lua_path)
+      end
+    end
+  end
+  return plugins
+end
+
+local lazy_plugin_paths = nil
+
+local function get_cached_lazy_paths()
+  if not lazy_plugin_paths then
+    lazy_plugin_paths = get_lazy_plugin_paths()
+  end
+  return lazy_plugin_paths
+end
+
+local function get_lua_ls()
   return {
-    configs = {
-      -- c, cpp
-      clangd = opts_default,
-      -- lua
-      lua_ls = opts_default,
-      -- xml
-      lemminx = opts_default,
-      -- vue
-      vue_ls = opts_default,
-      -- js, ts
-      -- css
-      tailwindcss = opts_default(),
-      unocss = opts_default(),
-      ts_ls = opts_ts_ls,
-      -- html
-      -- djlsp = opts_djlsp,
-      cssls = opts_default,
-      html = opts_html,
-      superhtml = opts_superhtml,
-      -- py
-      -- pylsp = opts_pylsp,
-      -- jedi_language_server = opts_jedi,
-      basedpyright = opts_basedpyright,
-      -- pyright = opts_pyright,
-      -- ty = opts_default,
-      ruff = opts_ruff,
-      yamlls = opts_default,
-      -- zig
-      zls = opts_default,
-      sqls = opts_default,
-      sqlls = opts_default,
-      gopls = opts_default,
-      -- spelling
-      -- harper_ls = opts_harper,
-      -- svelte = opts_default,
+    settings = {
+      Lua = {
+        diagnostics = {
+          globals = { "vim" }, -- Ignore "undefined global vim" warnings
+        },
+        workspace = {
+          library = vim.tbl_flatten {
+            vim.env.VIMRUNTIME, -- Neovim runtime files
+            get_cached_lazy_paths(),
+          },
+          checkThirdParty = false, -- Disable "missing third-party library" warnings
+        },
+        telemetry = { enable = false }, -- Disable telemetry
+        completion = {
+          callSnippet = "Replace", -- Auto-fill function arguments
+        },
+        hint = {
+          enable = true, -- Show type hints
+        },
+      },
     },
   }
 end
 
-local function config(_, opts)
-  local lspconfig = require "lspconfig"
-  for lsp_name, lsp_config in pairs(opts.configs) do
-    -- vim.lsp.config(lsp_name, lsp_config())
-    vim.lsp.enable(lsp_name)
-  end
+local function get_ts_ls()
+  return {
+    filetypes = {
+      "javascript",
+      "typescript",
+      "javascriptreact",
+      "typescriptreact",
+      "vue",
+    },
+  }
+end
+
+local function get_ruff()
+  return {
+    on_attach = function(client)
+      if client.name == "ruff" then
+        client.server_capabilities.hoverProvider = false
+      end
+    end,
+  }
+end
+
+local function get_basedpyright()
+  return {
+    -- link: https://github.com/microsoft/pyright/blob/main/docs/settings.md
+    settings = {
+      basedpyright = {
+        disableOrganizeImports = true,
+        analysis = {
+          -- Diagnostic mode `workspace` or `openFilesOnly`.
+          diagnosticMode = "workspace",
+          inlayHints = {
+            -- Conflicts with ty.
+            variableTypes = true,
+            -- Conflicts with ty.
+            callArgumentNames = true,
+            functionReturnTypes = true,
+            -- Conflicts with ty.
+            genericTypes = true,
+          },
+        },
+      },
+    },
+  }
+end
+
+local function get_harper_ls()
+  return {
+    settings = {
+      ["harper-ls"] = {
+        codeActions = {
+          forceStable = true,
+        },
+      },
+    },
+  }
+end
+
+local function get_servers()
+  return {
+    -- C and C++
+    clangd = {},
+
+    -- Lua.
+    lua_ls = get_lua_ls(),
+
+    -- Xml.
+    lemminx = {},
+
+    -- Vue.
+    -- vue_ls = {},
+
+    -- Css.
+    tailwindcss = {},
+    unocss = {},
+    cssls = {},
+
+    -- Javascript and Typescript.
+    ts_ls = get_ts_ls(),
+
+    -- Html.
+    html = {},
+    superhtml = {},
+
+    -- Python.
+    -- ty = {},
+    ruff = get_ruff(),
+    basedpyright = get_basedpyright(),
+
+    -- Yaml.
+    yamlls = {},
+
+    -- Zig.
+    zls = {},
+
+    -- Sql.
+    sqls = {},
+    sqlls = {},
+
+    -- Go.
+    gopls = {},
+
+    -- Spelling.
+    harper_ls = get_harper_ls(),
+  }
+end
+
+local function get_opts()
+  return {
+    servers = get_servers(),
+  }
 end
 
 return {
   "neovim/nvim-lspconfig",
-  dependencies = { "hrsh7th/cmp-nvim-lsp" },
+  dependencies = { "saghen/blink.cmp" },
   event = "BufReadPre",
-  config = config,
-  opts = opts,
+  opts = get_opts(),
+  config = function(_, opts)
+    local lspconfig = require "lspconfig"
+    for server, config in pairs(opts.servers) do
+      config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+      lspconfig[server].setup(config)
+    end
+  end,
 }
