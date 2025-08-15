@@ -15,31 +15,6 @@
 --   "reportUnknownVariableType": false
 -- }
 
-local function get_lazy_plugin_paths()
-  local lazy_path = vim.fn.stdpath "data" .. "/lazy"
-  local plugins = {}
-  -- Check if Lazy.nvim is installed.
-  if vim.loop.fs_stat(lazy_path) then
-    -- Scan all directories in `lazy/` (assuming they are plugins).
-    for name, _ in vim.fs.dir(lazy_path) do
-      local plugin_lua_path = lazy_path .. "/" .. name .. "/lua"
-      if vim.loop.fs_stat(plugin_lua_path) then
-        table.insert(plugins, plugin_lua_path)
-      end
-    end
-  end
-  return plugins
-end
-
-local lazy_plugin_paths = nil
-
-local function get_cached_lazy_paths()
-  if not lazy_plugin_paths then
-    lazy_plugin_paths = get_lazy_plugin_paths()
-  end
-  return lazy_plugin_paths
-end
-
 local function get_lua_ls()
   return {
     settings = {
@@ -48,9 +23,8 @@ local function get_lua_ls()
           globals = { "vim" }, -- Ignore "undefined global vim" warnings
         },
         workspace = {
-          library = vim.tbl_flatten {
+          library = {
             vim.env.VIMRUNTIME, -- Neovim runtime files
-            get_cached_lazy_paths(),
           },
           checkThirdParty = false, -- Disable "missing third-party library" warnings
         },
