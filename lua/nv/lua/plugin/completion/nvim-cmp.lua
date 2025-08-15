@@ -215,4 +215,5 @@ return {
   config = config,
   event = { "CmdlineEnter", "InsertEnter" },
   opts = opts,
+  enabled = false,
 }
