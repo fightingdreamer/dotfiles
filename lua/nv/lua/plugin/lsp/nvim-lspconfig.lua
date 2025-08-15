@@ -113,6 +113,7 @@ local function get_harper_ls()
 end
 
 local function get_servers()
+  -- :help lspconfig-all
   return {
     -- C and C++
     clangd = {},
@@ -173,6 +174,7 @@ return {
   event = "BufReadPre",
   opts = get_opts(),
   config = function(_, opts)
+    -- :help lspconfig-all
     for server, config in pairs(opts.servers) do
       config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
       pcall(vim.lsp.config, server, config)
