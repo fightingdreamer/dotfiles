@@ -93,6 +93,20 @@ local function get_harper_ls()
         codeActions = {
           forceStable = true,
         },
+        linters = {
+          SpellCheck = false,
+          SpelledNumbers = false,
+          AnA = true,
+          SentenceCapitalization = true,
+          UnclosedQuotes = true,
+          WrongQuotes = false,
+          LongSentences = true,
+          RepeatedWords = true,
+          Spaces = true,
+          Matcher = true,
+          CorrectNumberSuffix = true,
+        },
+        dialect = "American",
       },
     },
   }
