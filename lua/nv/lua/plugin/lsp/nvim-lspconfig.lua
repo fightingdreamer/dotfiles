@@ -140,9 +140,9 @@ local function get_servers()
     superhtml = {},
 
     -- Python.
-    -- ty = {},
+    ty = {},
     ruff = get_ruff(),
-    basedpyright = get_basedpyright(),
+    -- basedpyright = get_basedpyright(),
 
     -- Yaml.
     yamlls = {},
