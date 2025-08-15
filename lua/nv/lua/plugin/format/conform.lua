@@ -2,6 +2,14 @@
 -- [formatting]
 -- indent_string = "    "
 -- column_width = 120
+--
+-- biome.json
+-- {
+--   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+--   "formatter": {
+--     "indentStyle": "space"
+--   }
+-- }
 
 local opts = function()
   return {
