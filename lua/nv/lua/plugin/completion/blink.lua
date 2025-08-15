@@ -2,10 +2,10 @@ local function get_opts() end
 
 return {
   "saghen/blink.cmp",
-  -- optional: provides snippets for the snippet source
+  -- Optional: provides snippets for the snippet source.
   dependencies = { "rafamadriz/friendly-snippets" },
 
-  -- use a release tag to download pre-built binaries
+  -- Use a release tag to download pre-built binaries.
   version = "1.*",
 
   ---@module 'blink.cmp'
