@@ -29,7 +29,11 @@ return {
       default = { "lsp", "path", "snippets", "buffer" },
       providers = {
         -- defaults to `{ 'buffer' }`
-        lsp = { fallbacks = {} },
+        lsp = {
+          async = true,
+          score_offset = 2,
+          fallbacks = {},
+        },
       },
     },
 
