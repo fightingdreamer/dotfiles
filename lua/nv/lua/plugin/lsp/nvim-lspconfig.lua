@@ -67,18 +67,31 @@ local function get_basedpyright()
     -- link: https://github.com/microsoft/pyright/blob/main/docs/settings.md
     settings = {
       basedpyright = {
+        -- This option is useful if you want to use basedpyright only
+        -- as a type checker, but want to run another Python language
+        -- server for language service features.
+        disableLanguageServices = false,
+        -- If you are using another extension that provides similar,
+        -- functionality and you don’t want the two extensions to
+        -- fight each other.
+        autoFormatStrings = true,
+        useTypingExtensions = false,
         disableOrganizeImports = true,
+        fileEnumerationTimeout = 1,
         analysis = {
           -- Diagnostic mode `workspace` or `openFilesOnly`.
           diagnosticMode = "workspace",
+          autoImportCompletions = true,
+          useLibraryCodeForTypes = true,
           inlayHints = {
             -- Conflicts with ty.
-            variableTypes = true,
+            variableTypes = false,
             -- Conflicts with ty.
-            callArgumentNames = true,
-            functionReturnTypes = true,
+            callArgumentNames = false,
+            callArgumentNamesMatching = false,
+            functionReturnTypes = false,
             -- Conflicts with ty.
-            genericTypes = true,
+            genericTypes = false,
           },
         },
       },
