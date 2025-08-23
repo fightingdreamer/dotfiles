@@ -11,14 +11,15 @@
 --   }
 -- }
 
-local opts = function()
+local get_opts = function()
   return {
     formatters_by_ft = {
       bash = { "shfmt" },
       fish = { "fish_indent" },
       graphql = {},
-      javascript = { "biome" },
-      json = { "jq" },
+      javascript = { "biome-organize-imports", "biome" },
+      json = { "biome" },
+      jsonc = { "biome" },
       lua = { "stylua" },
       nix = { "alejandra", "nixfmt" },
       python = { "ruff_fix", "ruff_organize_imports", "ruff_format" },
@@ -26,8 +27,8 @@ local opts = function()
       sh = { "shfmt" },
       toml = { "taplo" },
       html = { "superhtml" },
-      typescript = { "biome" },
-      typescriptreact = { "biome" },
+      typescript = { "biome-organize-imports", "biome" },
+      typescriptreact = { "biome-organize-imports", "biome" },
       vue = { "biome" },
       zig = { "zigfmt" },
       sql = { "sql_formatter" },
@@ -87,5 +88,5 @@ return {
   keys = {
     { "<leader>f", conform_format, mode = { "n", "v" }, desc = "Conform format" },
   },
-  opts = opts,
+  opts = get_opts,
 }
