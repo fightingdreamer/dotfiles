@@ -133,6 +133,8 @@ local function get_servers()
     cssls = {},
 
     -- Javascript and Typescript.
+    biome = {},
+    eslint = {},
     ts_ls = get_ts_ls(),
 
     -- Html.
