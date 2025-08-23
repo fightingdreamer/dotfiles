@@ -11,6 +11,10 @@ local opts = function()
       changedelete = { text = "~" },
       untracked = { text = "┇" },
     },
+    watch_gitdir = {
+      enable = true,
+      follow_files = true,
+    },
     current_line_blame = false,
     current_line_blame_opts = {
       virt_text = true,
