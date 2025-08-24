@@ -10,13 +10,18 @@ local function get_opts()
 
     -- (Default) Only show the documentation popup when manually triggered
     completion = {
+      keyword = {
+        -- Can be prefix or pull.
+        range = "full",
+      },
       documentation = { auto_show = false },
       ghost_text = { enabled = true },
       menu = {
         draw = {
           columns = {
-            { "label", "label_description", gap = 1 },
-            { "kind", "source_name" },
+            { "label" },
+            { "kind_icon", gap = 1, "kind" },
+            { "label_description" },
           },
           padding = { 0, 0 },
           components = {
@@ -45,8 +50,14 @@ local function get_opts()
         lsp = {
           min_keyword_length = 1,
           score_offset = 3,
-          async = true,
+          async = false,
           fallbacks = {},
+          transform_items = function(_, items)
+            local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
+            return vim.tbl_filter(function(item)
+              return item.kind ~= CompletionItemKind.Keyword and item.kind ~= CompletionItemKind.Text
+            end, items)
+          end,
         },
         path = {
           min_keyword_length = 1,
@@ -89,4 +100,5 @@ return {
   opts = get_opts(),
   opts_extend = { "sources.default" },
   event = { "CmdlineEnter", "InsertEnter" },
+  enabled = true,
 }
