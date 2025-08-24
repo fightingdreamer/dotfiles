@@ -37,4 +37,5 @@ return {
     { "\\S", replace_in_file, mode = "n", desc = "Spectre: search in current file" },
   },
   cmd = "Spectre",
+  enabled = false,
 }
