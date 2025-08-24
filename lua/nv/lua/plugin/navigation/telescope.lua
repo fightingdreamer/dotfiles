@@ -140,4 +140,5 @@ return {
     -- { "<leader>pt", "<cmd>Telescope terms<cr>",                                            desc = "telescope pick hidden term" },
   },
   cmd = "Telescope",
+  enabled = false,
 }
