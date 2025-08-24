@@ -7,9 +7,8 @@ local _config = function()
       preview_border = "Comment",
     },
     fzf_colors = {
-      ["fg+"] = { "fg", { "Foreground", "Normal" } },
-      ["bg+"] = { "bg", { "Background", "Normal" } },
-      ["fg"] = { "fg", { "Comment", "Normal" } },
+      ["bg+"] = { "bg", { "Cursorline", "Normal" } },
+      ["gutter"] = { "bg", { "Normal" } },
     },
     winopts = {
       row = 0.5,
