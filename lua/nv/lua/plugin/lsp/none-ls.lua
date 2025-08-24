@@ -23,4 +23,5 @@ return {
   event = "BufReadPost",
   config = _config,
   keys = {},
+  enabled = false,
 }
