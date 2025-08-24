@@ -20,9 +20,6 @@ end
 
 return {
   "nvimtools/none-ls.nvim",
-  dependencies = {
-    "nvimtools/none-ls-extras.nvim",
-  },
   event = "BufReadPost",
   config = _config,
   keys = {},
