@@ -6,6 +6,11 @@ local _config = function()
       help_border = "Comment",
       preview_border = "Comment",
     },
+    fzf_colors = {
+      ["fg+"] = { "fg", { "Foreground", "Normal" } },
+      ["bg+"] = { "bg", { "Background", "Normal" } },
+      ["fg"] = { "fg", { "Comment", "Normal" } },
+    },
     winopts = {
       row = 0.5,
       width = 0.90,
