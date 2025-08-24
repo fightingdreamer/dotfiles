@@ -1,21 +1,24 @@
-local opts = function()
+local _opts = function()
   return {
     marsk = false,
     triggers = {},
     registers = false,
+    icons = {
+      mappings = false,
+    },
   }
 end
 
-local config = function(_, opts)
+local _config = function(_, opts)
   require("which-key").setup(opts)
 end
 
 return {
   "folke/which-key.nvim",
-  config = config,
-  opts = opts,
+  config = _config,
+  opts = _opts,
   keys = {
-    { "\\\\", "<cmd>WhichKey<cr>", desc = "which-key open popup" },
+    { mode = { "n", "v" }, "\\\\", "<cmd>WhichKey<cr>", desc = "which-key open popup" },
   },
   cmd = "WhichKey",
 }
