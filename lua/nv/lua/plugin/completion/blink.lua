@@ -98,7 +98,5 @@ return {
   version = "1.*",
 
   opts = get_opts(),
-  opts_extend = { "sources.default" },
   event = { "CmdlineEnter", "InsertEnter" },
-  enabled = true,
 }
