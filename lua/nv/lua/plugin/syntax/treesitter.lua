@@ -70,10 +70,7 @@ return {
   "nvim-treesitter/nvim-treesitter",
   config = config,
   build = ":TSUpdate",
-  event = {
-    "BufNewFile",
-    "BufReadPost",
-  },
+  event = "UIEnter",
   opts = opts,
   cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
 }
