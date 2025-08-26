@@ -57,8 +57,7 @@ end
 
 return {
   "EdenEast/nightfox.nvim",
-  priority = 1000,
   config = config,
-  lazy = false,
+  event = "UIEnter",
   opts = opts,
 }
