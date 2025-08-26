@@ -6,10 +6,11 @@ local _config = function()
       help_border = "Comment",
       preview_border = "Comment",
     },
-    fzf_colors = {
-      ["bg+"] = { "bg", { "Cursorline", "Normal" } },
-      ["gutter"] = { "bg", { "Normal" } },
+    fzf_opts = {
+      ["--prompt"] = "❯ ",
+      ["--pointer"] = "❯",
     },
+    fzf_colors = true,
     winopts = {
       row = 0.5,
       width = 0.90,
@@ -21,7 +22,6 @@ local _config = function()
         scrollbar = false,
         winopts = {
           number = false,
-          border = "Comment",
         },
       },
       on_create = function()
