@@ -69,7 +69,7 @@ o.undofile = true
 o.undodir = vim.fn.stdpath "data" .. "/undo"
 
 -- Store swap files in fixed location
-o.swapfile = true
+o.swapfile = false
 o.directory = vim.fn.stdpath "data" .. "/swap"
 
 -- Store backup files in fixed location
