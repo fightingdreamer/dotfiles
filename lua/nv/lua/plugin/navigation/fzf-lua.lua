@@ -1,5 +1,5 @@
 local _config = function()
-  local actions = require("fzf-lua").actions
+  -- local actions = require("fzf-lua").actions
   require("fzf-lua").setup {
     hls = {
       border = "Comment",
@@ -148,6 +148,7 @@ return {
     { "<leader>ld", _fzf_definitions, desc = "telescope lsp definitions" },
     { "<leader>li", _fzf_lsp_incoming_calls, desc = "telescope lsp incoming calls" },
     { "<leader>lo", _fzf_lsp_outgoing_calls, desc = "telescope lsp outgoing calls" },
+    { "<leader>la", _fzf_lsp_code_actions, desc = "telescope lsp outgoing calls" },
     { "<leader>lt", _fzf_lsp_typedefs, desc = "telescope type definitions" },
     { "<leader>ls", _fzf_lsp_document_symbols, desc = "telescope lsp document symbols" },
     { "<leader>lS", _fzf_lsp_live_workspace_symbols, desc = "telescope lsp dynamic workspace references" },
