@@ -139,7 +139,7 @@ local function lsp_attach(args)
   -- end
 
   if lsp_have_feature.rename(client) then
-    vim.keymap.set("n", "<leader>R", lsp_buf_rename_use_priority_or_select, { buffer = bufnr, desc = "lsp rename" })
+    vim.keymap.set("n", "<leader>lR", lsp_buf_rename_use_priority_or_select, { buffer = bufnr, desc = "lsp rename" })
   end
 
   if lsp_have_feature.inlay_hint(client) then
