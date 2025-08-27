@@ -4,6 +4,7 @@ local lsp_priority = {
   rename = {
     -- python
     "basedpyright",
+    "pyrefly",
     "ty",
   },
 }
