@@ -8,6 +8,11 @@ local function _config(_, opts)
   dap_python.test_runner = "pytest"
 end
 
+-- entrypoint module:
+-- debugpy --listen localhost:5678 --wait-for-client -m example.cli a b c
+-- entrypoint file:
+-- debugpy --listen localhost:5678 --wait-for-client src/example/cli.py a b c
+
 return {
   "mfussenegger/nvim-dap-python",
   dependencies = { "mfussenegger/nvim-dap" },
