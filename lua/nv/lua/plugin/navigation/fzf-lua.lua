@@ -163,8 +163,8 @@ return {
     { "<leader>lS", _fzf_lsp_live_workspace_symbols, desc = "telescope lsp dynamic workspace references" },
 
     -- nav
-    { "<leader>d", _fzf_diagnostics_document, desc = "Find in open buffers" },
-    { "<leader>D", _fzf_diagnostics_workspace, desc = "Find in open buffers" },
+    { "<leader>e", _fzf_diagnostics_document, desc = "Find in open buffers" },
+    { "<leader>E", _fzf_diagnostics_workspace, desc = "Find in open buffers" },
     { "<leader>b", _fzf_buffers, desc = "Find in open buffers" },
     { "<leader>r", _fzf_oldfiles, desc = "Find in oldfiles" },
     { "<leader>j", _fzf_jumps, desc = "telescope jumplist" },
