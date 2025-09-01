@@ -39,9 +39,10 @@ return {
   keys = {
     { "\\t", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "trouble: buffer diagnostics" },
     { "\\T", "<cmd>Trouble diagnostics toggle<cr>", desc = "trouble: diagnostics" },
-    { "\\s", "<cmd>Trouble symbols toggle focus=false<cr>", desc = "trouble: Symbols" },
+    { "\\s", "<cmd>Trouble symbols toggle focus=true<cr>", desc = "trouble: Symbols" },
     -- { "\\l", "<cmd>Trouble lsp toggle focus=false<cr>", desc = "trouble: lsp diagnostics" },
   },
   opts = opts,
   cmd = "Trouble",
+  enabled = false,
 }

@@ -83,11 +83,11 @@ local _fzf_live_grep_native_all = function()
   }
 end
 
-local _fzf_references = function()
+local _fzf_lsp_references = function()
   require("fzf-lua").lsp_references()
 end
 
-local _fzf_definitions = function()
+local _fzf_lsp_definitions = function()
   require("fzf-lua").lsp_definitions()
 end
 
@@ -135,6 +135,14 @@ local _fzf_colorschemes = function()
   require("fzf-lua").colorschemes()
 end
 
+local _fzf_diagnostics_document = function()
+  require("fzf-lua").diagnostics_document()
+end
+
+local _fzf_diagnostics_workspace = function()
+  require("fzf-lua").diagnostics_workspace()
+end
+
 return {
   "ibhagwan/fzf-lua",
   dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -144,8 +152,9 @@ return {
   cmd = "FzfLua",
   keys = {
     -- lsp
-    { "<leader>lr", _fzf_references, desc = "telescope lsp references" },
-    { "<leader>ld", _fzf_definitions, desc = "telescope lsp definitions" },
+    { "<leader>lr", _fzf_lsp_references, desc = "telescope lsp references" },
+    { "<leader>lD", _fzf_lsp_declarations, desc = "telescope lsp definitions" },
+    { "<leader>ld", _fzf_lsp_definitions, desc = "telescope lsp definitions" },
     { "<leader>li", _fzf_lsp_incoming_calls, desc = "telescope lsp incoming calls" },
     { "<leader>lo", _fzf_lsp_outgoing_calls, desc = "telescope lsp outgoing calls" },
     { "<leader>la", _fzf_lsp_code_actions, desc = "telescope lsp outgoing calls" },
@@ -154,6 +163,8 @@ return {
     { "<leader>lS", _fzf_lsp_live_workspace_symbols, desc = "telescope lsp dynamic workspace references" },
 
     -- nav
+    { "<leader>d", _fzf_diagnostics_document, desc = "Find in open buffers" },
+    { "<leader>D", _fzf_diagnostics_workspace, desc = "Find in open buffers" },
     { "<leader>b", _fzf_buffers, desc = "Find in open buffers" },
     { "<leader>r", _fzf_oldfiles, desc = "Find in oldfiles" },
     { "<leader>j", _fzf_jumps, desc = "telescope jumplist" },
