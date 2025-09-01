@@ -157,8 +157,8 @@ local function get_servers()
     -- Python.
     -- ty = {},
     ruff = get_ruff(),
-    pyrefly = {},
-    -- basedpyright = get_basedpyright(),
+    -- pyrefly = {},
+    basedpyright = get_basedpyright(),
 
     -- Yaml.
     yamlls = {},
