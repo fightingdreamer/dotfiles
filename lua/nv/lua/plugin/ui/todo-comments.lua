@@ -66,11 +66,10 @@ end
 return {
   {
     "folke/todo-comments.nvim",
-    dependencies = { "folke/trouble.nvim" },
+    dependencies = { "ibhagwan/fzf-lua" },
     event = "BufReadPost",
     opts = opts,
     keys = {
-      { "<leader>T", "<cmd>TodoTrouble<cr>", mode = "n", desc = "TodoComments: show" },
       { "[t", jump_prev, mode = "n", desc = "TodoComments: jump prev" },
       { "]t", jump_next, mode = "n", desc = "TodoComments: jump next" },
     },
