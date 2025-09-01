@@ -20,8 +20,8 @@ return {
   version = false,
   config = config,
   keys = {
-    { "<leader>d", trim, mode = "n", desc = "mini.trailspace trim trailing whitespace" },
-    { "<leader>D", trim_last_lines, mode = "n", desc = "mini.trailspace trim last blank lines" },
+    { "<leader>t", trim, mode = "n", desc = "mini.trailspace trim trailing whitespace" },
+    { "<leader>T", trim_last_lines, mode = "n", desc = "mini.trailspace trim last blank lines" },
   },
   opts = opts,
 }
