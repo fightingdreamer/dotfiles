@@ -1,36 +1,32 @@
+-- Setup mapleader.
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
 -- register path, hint: {path}/lua/c/lsp.lua -> require('c.lsp')
 local root = vim.fn.stdpath "config" .. "/lua/nv"
 
--- setup mapleader
-vim.g.mapleader = " "
+-- Plugin path.
+local path = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
-local spec = {
-  { import = "plugin.ai" },
-  { import = "plugin.api" },
-  { import = "plugin.base" },
-  { import = "plugin.comment" },
-  { import = "plugin.completion" },
-  { import = "plugin.debug" },
-  { import = "plugin.deps" },
-  { import = "plugin.editing" },
-  { import = "plugin.format" },
-  { import = "plugin.git" },
-  { import = "plugin.help" },
-  { import = "plugin.history" },
-  { import = "plugin.icon" },
-  { import = "plugin.lsp" },
-  -- { import = "plugin.org" },
-  { import = "plugin.navigation" },
-  -- { import = "plugin.note" },
-  { import = "plugin.syntax" },
-  { import = "plugin.theme" },
-  { import = "plugin.tool" },
-  { import = "plugin.ui" },
-}
+-- When not present.
+if not (vim.uv or vim.loop).fs_stat(path) then
+  local repo = "https://github.com/folke/lazy.nvim.git"
+  -- Clone from remote.
+  vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", path }
+end
 
-local opts = {
-  spec = spec,
-  defaults = { lazy = true },
+-- Register path, resolution: require('lazy') -> {path}/lua/lazy.lua
+vim.opt.rtp:prepend(path)
+
+-- setup
+require("lazy").setup {
+  spec = {
+    { import = "plugin" },
+  },
+
+  defaults = {
+    lazy = true,
+  },
 
   ui = {
     icons = {
@@ -43,9 +39,9 @@ local opts = {
     backdrop = 100,
   },
 
-  -- dev = {
-  --     path = "~/Projects.forks"
-  -- },
+  install = {
+    colorscheme = { "duskfox" },
+  },
 
   performance = {
     rtp = {
@@ -89,18 +85,10 @@ local opts = {
   },
 }
 
--- plugin path
-local path = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+-- Light theme.
+-- vim.opt.background = "light"
+-- vim.cmd.colorscheme "dayfox"
 
--- if not present
-if not (vim.uv or vim.loop).fs_stat(path) then
-  local repo = "https://github.com/folke/lazy.nvim.git"
-  -- clone from remote
-  vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", path }
-end
-
--- register path, hint: {path}/lua/lazy.lua -> require('lazy')
-vim.opt.rtp:prepend(path)
-
--- setup
-require("lazy").setup(opts)
+-- Dark theme.
+vim.opt.background = "dark"
+vim.cmd.colorscheme "duskfox"
