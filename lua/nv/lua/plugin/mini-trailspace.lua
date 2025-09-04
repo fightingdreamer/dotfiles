@@ -15,7 +15,7 @@ return {
   version = "*",
 
   keys = {
-    { "<leader>t", m.trim, desc = "mini.trailspace trim trailing whitespace" },
-    { "<leader>T", m.trim_last_lines, desc = "mini.trailspace trim last blank lines" },
+    { "<leader>;", m.trim, desc = "mini.trailspace trim trailing whitespace" },
+    { "<leader>\\", m.trim_last_lines, desc = "mini.trailspace trim last blank lines" },
   },
 }
