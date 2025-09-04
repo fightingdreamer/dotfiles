@@ -76,7 +76,7 @@ o.directory = vim.fn.stdpath "data" .. "/swap"
 o.backup = true
 o.backupdir = vim.fn.stdpath "data" .. "/backup"
 
--- interval for writing swap file to disk, also used by gitsigns
+-- interval for writing swap file to disk (in ms), also used by gitsigns
 o.updatetime = 250
 
 -- go to previous/next line with h,l,left arrow and right arrow
