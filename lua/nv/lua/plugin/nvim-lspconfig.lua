@@ -79,13 +79,13 @@ local c = {
           useLibraryCodeForTypes = true,
           inlayHints = {
             -- Conflicts with ty.
-            variableTypes = false,
+            variableTypes = true,
             -- Conflicts with ty.
-            callArgumentNames = false,
+            callArgumentNames = true,
             callArgumentNamesMatching = false,
-            functionReturnTypes = false,
+            functionReturnTypes = true,
             -- Conflicts with ty.
-            genericTypes = false,
+            genericTypes = true,
           },
         },
       },
