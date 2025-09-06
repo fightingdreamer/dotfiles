@@ -9,6 +9,15 @@ set("n", "<leader>W", "<cmd>:w!<cr>", { desc = "save file!" })
 del("n", "gcc")
 del("v", "gc")
 
+-- unbind default lsp
+del("n", "grn")
+del("n", "gra")
+del("v", "gra")
+del("n", "grr")
+del("n", "gri")
+del("n", "grt")
+del("n", "gO")
+
 -- paste keeping register
 set("v", "P", '"0P', { noremap = true })
 
