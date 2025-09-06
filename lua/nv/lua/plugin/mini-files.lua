@@ -34,7 +34,7 @@ local dir_last_sort = function(fs_entries)
 end
 
 return {
-  "echasnovski/mini.files",
+  "nvim-mini/mini.files",
 
   version = "*",
 

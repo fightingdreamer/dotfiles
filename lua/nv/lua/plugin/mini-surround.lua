@@ -1,7 +1,7 @@
 -- Fast and feature-rich surround actions.
 
 return {
-  "echasnovski/mini.surround",
+  "nvim-mini/mini.surround",
 
   version = "*",
 

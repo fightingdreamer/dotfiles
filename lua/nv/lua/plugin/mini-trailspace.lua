@@ -11,7 +11,7 @@ local m = {
 }
 
 return {
-  "echasnovski/mini.trailspace",
+  "nvim-mini/mini.trailspace",
   version = "*",
 
   keys = {

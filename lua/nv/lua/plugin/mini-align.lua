@@ -1,11 +1,11 @@
 -- Align text interactively.
 
 return {
-  "echasnovski/mini.align",
+  "nvim-mini/mini.align",
 
   version = "*",
 
-  opts = {
+  optsa = {
     -- Use `''` (empty string) to disable mapping.
     mappings = {
       start = "ga",
