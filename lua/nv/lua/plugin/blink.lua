@@ -23,7 +23,7 @@ return {
     completion = {
       keyword = {
         -- Can be prefix or pull.
-        range = "full",
+        range = "prefix",
       },
       documentation = { auto_show = false },
       ghost_text = { enabled = true },
