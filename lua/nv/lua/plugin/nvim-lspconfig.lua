@@ -57,6 +57,16 @@ local c = {
     end,
   },
 
+  pyrefly = {
+    settings = {
+      python = {
+        pyrefly = {
+          displayTypeErrors = "force-on",
+        },
+      },
+    },
+  },
+
   basedpyright = {
     -- link: https://github.com/microsoft/pyright/blob/main/docs/settings.md
     settings = {
@@ -152,7 +162,7 @@ return {
       -- Python.
       -- ty = {},
       ruff = c.ruff,
-      -- pyrefly = {},
+      -- pyrefly = c.pyrefly,
       basedpyright = c.basedpyright,
 
       -- Yaml.
