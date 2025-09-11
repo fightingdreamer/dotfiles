@@ -18,6 +18,7 @@ o.title = true
 
 -- o.clipboard = "unnamedplus"
 o.cursorline = true
+o.cursorcolumn = true
 o.cursorlineopt = "line"
 
 -- indenting
