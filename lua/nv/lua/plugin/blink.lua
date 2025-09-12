@@ -13,7 +13,17 @@ return {
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
-    keymap = { preset = "super-tab" },
+    keymap = {
+      preset = "none",
+
+      ["<Down>"] = { "select_next", "fallback" },
+      ["<Up>"] = { "select_prev", "fallback" },
+
+      ["<Tab>"] = { "select_and_accept", "fallback" },
+
+      ["<Esc>"] = { "cancel", "fallback" },
+      ["<C-space>"] = { "show" },
+    },
 
     appearance = {
       nerd_font_variant = "mono",
@@ -27,6 +37,17 @@ return {
       },
       documentation = { auto_show = false },
       ghost_text = { enabled = true },
+      accept = {
+        auto_brackets = {
+          enabled = false,
+        },
+      },
+      list = {
+        selection = {
+          preselect = true,
+          auto_insert = true,
+        },
+      },
       menu = {
         draw = {
           columns = {
@@ -67,7 +88,7 @@ return {
         lsp = {
           min_keyword_length = 0,
           score_offset = 3,
-          async = false,
+          async = true,
           fallbacks = {},
           transform_items = function(_, items)
             local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
