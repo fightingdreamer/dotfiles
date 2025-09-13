@@ -20,8 +20,6 @@ return {
       ["<Up>"] = { "select_prev", "fallback" },
 
       ["<Tab>"] = { "select_and_accept", "fallback" },
-
-      ["<Esc>"] = { "cancel", "fallback" },
       ["<C-space>"] = { "show" },
     },
 
