@@ -151,7 +151,7 @@ in {
       lazydocker # unstable
       master.pv
       zf
-      master.fzf
+      # master.fzf
       fzy
       nnn
       master.skim
@@ -201,8 +201,8 @@ in {
       # fishPlugins.fzf-fish
       # fishPlugins.foreign-env
       # fishPlugins.forgit
-      # fishPlugins.pure
-      fishPluginsPure
+      master.fishPlugins.pure
+      # fishPluginsPure
       fishPlugins.colored-man-pages
       fishPlugins.sponge
 
@@ -402,6 +402,7 @@ in {
     };
     fish = {
       enable = true;
+      package = master.fish;
       loginShellInit = ''
         if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
           source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
@@ -409,13 +410,17 @@ in {
       '';
       interactiveShellInit = ''
         set --export SHELL $HOME/.nix-profile/bin/fish
+
         set --universal pure_threshold_command_duration 0
         set --universal pure_show_subsecond_command_duration true
-        set --universal pure_reverse_prompt_symbol_in_vimode true
+        set --universal pure_reverse_prompt_symbol_in_vimode false
+        set --universal pure_enable_single_line_prompt false
+        set --universal pure_separate_prompt_on_error false
+        set --universal pure_truncate_prompt_current_directory_keeps 0
 
         # fish_vi_key_bindings default
-        fish_vi_key_bindings insert
-        fish_vi_cursor
+        # fish_vi_key_bindings insert
+        # fish_vi_cursor
 
         # for mode in default insert visual
         #     bind -M $mode \r -m default execute
@@ -426,9 +431,9 @@ in {
         set fish_cursor_replace_one underscore
         set fish_cursor_visual block
 
-        set sponge_allow_previously_successful true
-        set sponge_purge_only_on_exit false
-        set sponge_delay 300
+        set --universal sponge_allow_previously_successful true
+        set --universal sponge_purge_only_on_exit false
+        set --universal sponge_delay 300
 
         #rbenv init - fish | source
 
@@ -441,6 +446,8 @@ in {
       '';
     };
     fzf = {
+      enable = true;
+      package = master.fzf;
       enableFishIntegration = true;
       enableZshIntegration = true;
     };
