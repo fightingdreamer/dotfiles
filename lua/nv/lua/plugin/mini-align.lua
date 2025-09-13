@@ -5,7 +5,7 @@ return {
 
   version = "*",
 
-  optsa = {
+  opts = {
     -- Use `''` (empty string) to disable mapping.
     mappings = {
       start = "ga",
