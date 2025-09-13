@@ -15,8 +15,8 @@ let
     # https://github.com/NixOS/nixpkgs/tree/master
     owner = "NixOS";
     repo = "nixpkgs";
-    rev = "c19dedbc7407d4d15c16b6dc0e5ef530597ce7aa";
-    sha256 = "sha256-zt4zxXxiifpIZe24yJqpltSnxxpW+/EhtZdi6ClUGec=";
+    rev = "fc59955d9232318cc860d500d9add044fa2c52b1";
+    sha256 = "sha256-CmdO/FZSRA+p0Tpq0o8loNpmTIIVTTErDoqhW82gtas=";
   }) { };
   podman = import (pkgs.fetchFromGitHub {
     # https://github.com/NixOS/nixpkgs/tree/master
@@ -30,7 +30,7 @@ let
     owner = "NixOS";
     repo = "nixpkgs";
     rev = "b3fcfcfabd01b947a1e4f36622bbffa3985bdac6";
-    sha256 = "";
+    sha256 = "sha256-CmdO/FZSRA+p0Tpq0o8loNpmTIIVTTErDoqhW82gtas=";
   }) { };
   kubectl_1_26 = import (pkgs.fetchFromGitHub {
     # https://github.com/NixOS/nixpkgs/tree/nixpkgs-unstable
@@ -102,6 +102,7 @@ in {
       g = "lazygit";
       k = "kubectl";
       i = "ipython";
+      yt = "mpv --no-resume-playback";
     };
     packages = with pkgs; [
       # headers
@@ -145,13 +146,15 @@ in {
       git
       git-cliff
       git-filter-repo
+      gource
       lazygit # unstable
       lazydocker # unstable
-      pv
+      master.pv
       zf
-      fzf
+      master.fzf
       fzy
       nnn
+      master.skim
       btop
       htop
       # teetty
@@ -179,9 +182,14 @@ in {
       brotli
       #git-bug
       entr
-      master.ncdu
+      # master.ncdu
       coreutils
       watchman
+      dos2unix
+      httrack
+
+      ## keyboard
+      # master.qmk
 
       ## nvim related
       universal-ctags
@@ -232,8 +240,8 @@ in {
       master.qemu
       master.lima
       master.dive
-      podman.podman
-      podman.podman-tui
+      master.podman
+      master.podman-tui
 
       ## network
       mtr
@@ -288,7 +296,7 @@ in {
 
       # note: zig
       # master.zig_0_13 # master
-      master.zig_0_14 # master
+      # master.zig_0_15 # master
 
       # note: go
       go
@@ -315,12 +323,15 @@ in {
       master.bun # master
       #node2nix
       htmlq
-      master.tailwindcss
+      master.tailwindcss_4
       prettierd # unstable
       nodePackages.prettier # unstable
 
       ## spark
       # master.spark
+
+      ## php
+      master.php
 
       ## python
       master.uv
@@ -357,9 +368,8 @@ in {
 
       ## javascript
       # nodejs
-      nodePackages_latest.nodejs
-      nodePackages.pnpm
-      nodePackages.rollup
+      master.nodejs_24
+      master.pnpm
 
       ## image
       master.qoi
@@ -375,7 +385,7 @@ in {
       ## video
       # mpv
       mediainfo
-      yt-dlp
+      master.yt-dlp
       ffmpeg
       # libav_12
 
