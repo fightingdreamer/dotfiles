@@ -49,6 +49,21 @@ local c = {
     },
   },
 
+  ty = {
+    settings = {
+      ty = {
+        inlayHints = {
+          variableTypes = false,
+          callArgumentNames = false,
+        },
+        experimental = {
+          rename = false,
+          autoImport = true,
+        },
+      },
+    },
+  },
+
   ruff = {
     on_attach = function(client)
       if client.name == "ruff" then
@@ -85,7 +100,7 @@ local c = {
         analysis = {
           -- Diagnostic mode `workspace` or `openFilesOnly`.
           diagnosticMode = "workspace",
-          autoImportCompletions = true,
+          autoImportCompletions = false,
           useLibraryCodeForTypes = true,
           inlayHints = {
             -- Conflicts with ty.
@@ -160,7 +175,7 @@ return {
       superhtml = {},
 
       -- Python.
-      -- ty = {},
+      ty = c.ty,
       ruff = c.ruff,
       -- pyrefly = c.pyrefly,
       basedpyright = c.basedpyright,
