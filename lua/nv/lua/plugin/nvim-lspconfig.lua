@@ -100,7 +100,7 @@ local c = {
         analysis = {
           -- Diagnostic mode `workspace` or `openFilesOnly`.
           diagnosticMode = "workspace",
-          autoImportCompletions = false,
+          autoImportCompletions = true,
           useLibraryCodeForTypes = true,
           inlayHints = {
             -- Conflicts with ty.
@@ -175,7 +175,7 @@ return {
       superhtml = {},
 
       -- Python.
-      ty = c.ty,
+      -- ty = c.ty,
       ruff = c.ruff,
       -- pyrefly = c.pyrefly,
       basedpyright = c.basedpyright,
