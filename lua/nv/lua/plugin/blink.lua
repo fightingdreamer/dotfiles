@@ -76,16 +76,16 @@ return {
       providers = {
         snippets = {
           min_keyword_length = 2,
-          score_offset = 4,
+          score_offset = -20,
         },
         lazydev = {
           name = "LazyDev",
           module = "lazydev.integrations.blink",
-          score_offset = 100,
+          score_offset = -100,
         },
         lsp = {
           min_keyword_length = 0,
-          score_offset = 3,
+          score_offset = 0,
           async = true,
           fallbacks = {},
           transform_items = function(_, items)
@@ -97,11 +97,11 @@ return {
         },
         path = {
           min_keyword_length = 1,
-          score_offset = 2,
+          score_offset = -50,
         },
         buffer = {
           min_keyword_length = 1,
-          score_offset = 1,
+          score_offset = -10,
         },
       },
     },
@@ -121,6 +121,11 @@ return {
         "sort_text",
       },
       implementation = "prefer_rust_with_warning",
+      max_typos = 0,
+      frecency = {
+        enabled = false,
+      },
+      use_proximity = true,
     },
   },
 
