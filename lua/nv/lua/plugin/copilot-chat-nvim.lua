@@ -23,6 +23,5 @@ return {
     "CopilotChatLoad",
     "CopilotChatPrompts",
     "CopilotChatModels",
-    "CopilotCha",
   },
 }
