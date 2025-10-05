@@ -65,7 +65,7 @@ return {
       jsonc = { "biome" },
       lua = { "stylua" },
       nix = { "alejandra", "nixfmt" },
-      python = { "ruff_fix", "ruff_organize_imports", "ruff_format" },
+      python = { "ruff_fix", "ruff_organize_imports" },
       -- python = { "black", "isort" },
       sh = { "shfmt" },
       toml = { "taplo" },
@@ -81,7 +81,12 @@ return {
       if vim.g.conform_disabled or vim.b[bufnr].disable_autoformat then
         return
       end
-      return { lsp_format = "fallback" }
+      -- For Python files, prefer LSP formatting (ruff LSP)
+      local filetype = vim.bo[bufnr].filetype
+      if filetype == "python" then
+        return { lsp_format = "first", timeout_ms = 5000 }
+      end
+      return { lsp_format = "prefer", timeout_ms = 5000 }
     end,
   },
 
