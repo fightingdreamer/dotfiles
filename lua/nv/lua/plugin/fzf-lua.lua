@@ -2,7 +2,9 @@
 
 local m = {
   buffers = function()
-    require("fzf-lua").buffers()
+    require("fzf-lua").buffers {
+      sort_lastused = false,
+    }
   end,
 
   files = function()
@@ -17,7 +19,10 @@ local m = {
   end,
 
   oldfiles = function()
-    require("fzf-lua").oldfiles()
+    require("fzf-lua").oldfiles {
+      include_current_session = true,
+      stat_file = true,
+    }
   end,
 
   quickfix = function()
@@ -142,7 +147,7 @@ return {
       preview = {
         vertical = "down:50%",
         horizontal = "right:50%",
-        scrollbar = false,
+        scrollbar = true,
         winopts = {
           number = false,
         },
