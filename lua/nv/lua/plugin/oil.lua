@@ -24,6 +24,9 @@ return {
       ["gh"] = "actions.select_vsplit",
       ["K"] = "actions.preview",
     },
+    lsp_file_methods = {
+      timeout_ms = 5000,
+    },
     view_options = {
       natural_order = true,
       sort = {
