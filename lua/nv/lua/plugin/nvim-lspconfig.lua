@@ -65,7 +65,7 @@ local c = {
   },
 
   ruff = {
-    on_attach = function(client)
+    on_attach = function(client, bufnr)
       if client.name == "ruff" then
         client.server_capabilities.hoverProvider = false
       end
