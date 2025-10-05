@@ -15,8 +15,8 @@ let
     # https://github.com/NixOS/nixpkgs/tree/master
     owner = "NixOS";
     repo = "nixpkgs";
-    rev = "fc59955d9232318cc860d500d9add044fa2c52b1";
-    sha256 = "sha256-CmdO/FZSRA+p0Tpq0o8loNpmTIIVTTErDoqhW82gtas=";
+    rev = "6310777266905c286a48893c48274b7efafc8772";
+    sha256 = "sha256-en5viMbKEAPRvuc82lly1ZSp49HvoyVmOpAcWcSszV8=";
   }) { };
   podman = import (pkgs.fetchFromGitHub {
     # https://github.com/NixOS/nixpkgs/tree/master
@@ -131,13 +131,13 @@ in {
 
       ## shell local
       # poop
-      master.nushell
+      # master.nushell
       unixtools.watch
       hwatch
       master.watchexec
       parallel
       aria2
-      master.eza
+      # master.eza
       envsubst
       fd
       #git-local
@@ -225,10 +225,10 @@ in {
       sshfs
 
       ## kube
-      kubectl_1_30.cmctl # cert-manager
-      master.k3d
+      # kubectl_1_30.cmctl # cert-manager
+      # master.k3d
       # master.minikube
-      kubectl_1_30.kubectl
+      # kubectl_1_30.kubectl
       # kubectl_1_30.kubernetes-helm
       # kubectl_1_30.cilium-cli
       # kubectl_1_30.hubble
@@ -241,7 +241,6 @@ in {
       master.lima
       master.dive
       master.podman
-      master.podman-tui
 
       ## network
       mtr
@@ -264,7 +263,7 @@ in {
 
       # note: db
       # master.redis
-      master.redict
+      # master.redict
       master.valkey
       master.sqlite
       litecli
@@ -320,12 +319,12 @@ in {
       ## js
       master.web-ext
       master.biome
-      master.bun # master
+      master.bun
       #node2nix
       htmlq
-      master.tailwindcss_4
-      prettierd # unstable
-      nodePackages.prettier # unstable
+      # master.tailwindcss_4
+      # prettierd
+      # nodePackages.prettier
 
       ## spark
       # master.spark
@@ -336,7 +335,7 @@ in {
       ## python
       master.uv
       master.rye
-      master.ruff # master
+      master.ruff
       pypy3
       poetry
       blackd
@@ -417,6 +416,8 @@ in {
         set --universal pure_enable_single_line_prompt false
         set --universal pure_separate_prompt_on_error false
         set --universal pure_truncate_prompt_current_directory_keeps 0
+
+        set --universal fish_user_paths $HOME/.bun/bin
 
         # fish_vi_key_bindings default
         # fish_vi_key_bindings insert
