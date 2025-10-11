@@ -163,38 +163,38 @@ return {
 
   keys = {
     -- lsp
-    { "<leader>lr", m.lsp_references, desc = "Lsp references" },
-    { "<leader>lD", m.lsp_declarations, desc = "Lsp declarations" },
-    { "<leader>ld", m.lsp_definitions, desc = "Lsp definitions" },
-    { "<leader>li", m.lsp_incoming_calls, desc = "Lsp incoming calls" },
-    { "<leader>lo", m.lsp_outgoing_calls, desc = "Lsp outgoing calls" },
-    { "<leader>la", m.lsp_code_actions, desc = "Lsp code actions" },
-    { "<leader>lt", m.lsp_typedefs, desc = "Lsp type definitions" },
-    { "<leader>ls", m.lsp_document_symbols, desc = "Lsp document symbols" },
+    { "<leader>lr", m.lsp_references,             desc = "Lsp references" },
+    { "<leader>lD", m.lsp_declarations,           desc = "Lsp declarations" },
+    { "<leader>ld", m.lsp_definitions,            desc = "Lsp definitions" },
+    { "<leader>li", m.lsp_incoming_calls,         desc = "Lsp incoming calls" },
+    { "<leader>lo", m.lsp_outgoing_calls,         desc = "Lsp outgoing calls" },
+    { "<leader>la", m.lsp_code_actions,           desc = "Lsp code actions" },
+    { "<leader>lt", m.lsp_typedefs,               desc = "Lsp type definitions" },
+    { "<leader>ls", m.lsp_document_symbols,       desc = "Lsp document symbols" },
     { "<leader>lS", m.lsp_live_workspace_symbols, desc = "Lsp live workspace symbols" },
 
     -- nav
-    { "<leader>e", m.diagnostics_document, desc = "Document diagnostics" },
-    { "<leader>E", m.diagnostics_workspace, desc = "Worksapce diagnostics" },
-    { "<leader>b", m.buffers, desc = "Buffers" },
-    { "<leader>r", m.oldfiles, desc = "Oldfiles" },
-    { "<leader>j", m.jumps, desc = "Jumps" },
-    { "<leader>g", m.live_grep_native, desc = "Live grep" },
-    { "<leader>G", m.live_grep_native_all, desc = "Live grep (all)" },
-    { "<leader>o", m.files, desc = "Files" },
-    { "<leader>O", m.files_all, desc = "Files (all)" },
+    { "<leader>e",  m.diagnostics_document,       desc = "Document diagnostics" },
+    { "<leader>E",  m.diagnostics_workspace,      desc = "Worksapce diagnostics" },
+    { "<leader>b",  m.buffers,                    desc = "Buffers" },
+    { "<leader>r",  m.oldfiles,                   desc = "Oldfiles" },
+    { "<leader>j",  m.jumps,                      desc = "Jumps" },
+    { "<leader>g",  m.live_grep_native,           desc = "Live grep" },
+    { "<leader>G",  m.live_grep_native_all,       desc = "Live grep (all)" },
+    { "<leader>o",  m.files,                      desc = "Files" },
+    { "<leader>O",  m.files_all,                  desc = "Files (all)" },
 
     -- buf
-    { "<leader>/", m.blines, desc = "Buffer lines" },
+    { "<leader>/",  m.blines,                     desc = "Buffer lines" },
 
     -- doc
-    { "<leader>h", m.helptags, desc = "Help pages" },
+    { "<leader>h",  m.helptags,                   desc = "Help pages" },
 
     -- man
-    { "<leader>m", m.manpages, desc = "Man pages" },
+    { "<leader>m",  m.manpages,                   desc = "Man pages" },
 
     -- oth
-    { "<leader>c", m.colorschemes, desc = "Color schemes" },
+    { "<leader>c",  m.colorschemes,               desc = "Color schemes" },
   },
   cmd = "FzfLua",
 }
