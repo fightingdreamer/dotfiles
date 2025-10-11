@@ -179,8 +179,8 @@ return {
     { "<leader>b",  m.buffers,                    desc = "Buffers" },
     { "<leader>r",  m.oldfiles,                   desc = "Oldfiles" },
     { "<leader>j",  m.jumps,                      desc = "Jumps" },
-    { "<leader>g",  m.live_grep_native,           desc = "Live grep" },
-    { "<leader>G",  m.live_grep_native_all,       desc = "Live grep (all)" },
+    { "<leader>g",  m.live_grep,                  desc = "Live grep" },
+    { "<leader>G",  m.live_grep_all,              desc = "Live grep (all)" },
     { "<leader>o",  m.files,                      desc = "Files" },
     { "<leader>O",  m.files_all,                  desc = "Files (all)" },
 
