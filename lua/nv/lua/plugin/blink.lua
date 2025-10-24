@@ -50,7 +50,7 @@ return {
         draw = {
           columns = {
             { "label" },
-            { "kind_icon", gap = 1, "kind" },
+            { "kind_icon",        gap = 1, "kind" },
             { "label_description" },
           },
           padding = { 0, 0 },
@@ -76,12 +76,12 @@ return {
       providers = {
         snippets = {
           min_keyword_length = 2,
-          score_offset = -20,
+          score_offset = 0,
         },
         lazydev = {
           name = "LazyDev",
           module = "lazydev.integrations.blink",
-          score_offset = -100,
+          score_offset = 0,
         },
         lsp = {
           min_keyword_length = 0,
@@ -97,11 +97,11 @@ return {
         },
         path = {
           min_keyword_length = 1,
-          score_offset = -50,
+          score_offset = 0,
         },
         buffer = {
           min_keyword_length = 1,
-          score_offset = -10,
+          score_offset = 0,
         },
       },
     },
