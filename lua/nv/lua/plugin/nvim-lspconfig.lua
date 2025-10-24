@@ -24,13 +24,13 @@ local c = {
         },
         workspace = {
           library = {
-            vim.env.VIMRUNTIME, -- Neovim runtime files
+            vim.env.VIMRUNTIME,         -- Neovim runtime files
           },
-          checkThirdParty = false, -- Disable "missing third-party library" warnings
+          checkThirdParty = false,      -- Disable "missing third-party library" warnings
         },
         telemetry = { enable = false }, -- Disable telemetry
         completion = {
-          callSnippet = "Replace", -- Auto-fill function arguments
+          callSnippet = "Replace",      -- Auto-fill function arguments
         },
         hint = {
           enable = true, -- Show type hints
@@ -53,8 +53,8 @@ local c = {
     settings = {
       ty = {
         inlayHints = {
-          variableTypes = false,
-          callArgumentNames = false,
+          variableTypes = true,
+          callArgumentNames = true,
         },
         experimental = {
           rename = false,
