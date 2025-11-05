@@ -180,6 +180,7 @@ return {
       biome = {},
       eslint = {},
       ts_ls = c.ts_ls,
+      astro = {},
 
       -- Html.
       html = {},
