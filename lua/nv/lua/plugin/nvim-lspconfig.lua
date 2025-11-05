@@ -72,6 +72,17 @@ local c = {
     end,
   },
 
+  zuban = {
+    cmd = { "zuban", "server" },
+    filetypes = { "python" },
+    root_markers = {
+      "setup.py",
+      "setup.cfg",
+      "pyproject.toml",
+      "requirements.txt",
+    },
+  },
+
   pyrefly = {
     settings = {
       python = {
@@ -177,6 +188,7 @@ return {
       -- Python.
       -- ty = c.ty,
       ruff = c.ruff,
+      -- zuban = c.zuban,
       -- pyrefly = c.pyrefly,
       basedpyright = c.basedpyright,
 
