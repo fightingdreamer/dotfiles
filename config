@@ -23,21 +23,24 @@ cursor-style-blink = false
 # SS17 - Recursive Mono Style
 # SS18 - Input Mono Style
 
-font-family = Iosevka Term Curly
+font-family = Iosevka Term SS18
 
-font-style = Semibold
-font-style-bold = Bold
+font-style = Medium
+font-style-bold = SemiBold
 font-style-italic = Italic
 font-style-bold-italic = Medium Italic
 
-font-size = 15
+font-size = 16
 font-thicken = false
+font-thicken-strength = 0
 
 adjust-cell-width = 0
 adjust-cell-height = 4
 
 adjust-cursor-height = 6
 adjust-cursor-thickness = 1
+
+window-inherit-font-size = false
 
 window-padding-x = 4
 window-padding-y = 4
@@ -75,3 +78,6 @@ theme = duskfox
 # custom-shader = shader/tft.glsl
 # custom-shader = shader/underwater.glsl
 # custom-shader = shader/water.glsl
+
+# https://github.com/anthropics/claude-code/issues/1282#issuecomment-3185584410
+keybind = shift+enter=text:\x1b\r
