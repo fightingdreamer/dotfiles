@@ -30,7 +30,7 @@ return {
     -- (Default) Only show the documentation popup when manually triggered
     completion = {
       keyword = {
-        -- Can be prefix or pull.
+        -- Can be prefix or full.
         range = "prefix",
       },
       documentation = { auto_show = false },
