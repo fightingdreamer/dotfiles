@@ -187,11 +187,11 @@ return {
       superhtml = {},
 
       -- Python.
-      -- ty = c.ty,
+      ty = c.ty,
       ruff = c.ruff,
       -- zuban = c.zuban,
       -- pyrefly = c.pyrefly,
-      basedpyright = c.basedpyright,
+      -- basedpyright = c.basedpyright,
 
       -- Yaml.
       yamlls = {},
