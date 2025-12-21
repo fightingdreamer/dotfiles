@@ -56,13 +56,19 @@ return {
   end,
 
   opts = {
+    formatters = {
+      jq_jsonl = {
+        command = 'jq',
+        args = { '-c', '.' },
+      }
+    },
     formatters_by_ft = {
       bash = { "shfmt" },
       fish = { "fish_indent" },
       graphql = {},
       javascript = { "biome-organize-imports", "biome" },
-      json = { "biome" },
-      jsonc = { "biome" },
+      json = { "jq" },
+      jsonl = { "jq_jsonl" },
       lua = { "stylua" },
       nix = { "alejandra", "nixfmt" },
       python = { "ruff_fix", "ruff_organize_imports" },
