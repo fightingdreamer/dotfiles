@@ -9,6 +9,18 @@ set("n", "<leader>W", "<cmd>:w!<cr>", { desc = "save file!" })
 del("n", "gcc")
 del("v", "gc")
 
+-- use arrows for navigation
+set("n", "<Up>", "<C-w>k")
+set("n", "<Down>", "<C-w>j")
+set("n", "<Left>", "<C-w>h")
+set("n", "<Right>", "<C-w>l")
+
+-- use arrows for movement
+set("n", "<S-Up>", "<C-w>K")
+set("n", "<S-Down>", "<C-w>J")
+set("n", "<S-Left>", "<C-w>H")
+set("n", "<S-Right>", "<C-w>L")
+
 -- unbind default lsp
 del("n", "grn")
 del("n", "gra")
@@ -39,8 +51,8 @@ set("n", "<tab>", "<cmd>nohlsearch<cr>", { noremap = true, desc = "clear highlig
 set("n", "j", "v:count ? 'j' : 'gj'", { noremap = true, expr = true })
 set("n", "k", "v:count ? 'k' : 'gk'", { noremap = true, expr = true })
 
-set("n", "<down>", "v:count ? 'j' : 'gj'", { noremap = true, expr = true })
-set("n", "<up>", "v:count ? 'k' : 'gk'", { noremap = true, expr = true })
+-- set("n", "<down>", "v:count ? 'j' : 'gj'", { noremap = true, expr = true })
+-- set("n", "<up>", "v:count ? 'k' : 'gk'", { noremap = true, expr = true })
 
 -- option/alt navigation over splits
 set("n", "ķ", "<C-w>h")
