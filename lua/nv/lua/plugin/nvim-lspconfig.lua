@@ -24,13 +24,13 @@ local c = {
         },
         workspace = {
           library = {
-            vim.env.VIMRUNTIME,         -- Neovim runtime files
+            vim.env.VIMRUNTIME, -- Neovim runtime files
           },
-          checkThirdParty = false,      -- Disable "missing third-party library" warnings
+          checkThirdParty = false, -- Disable "missing third-party library" warnings
         },
         telemetry = { enable = false }, -- Disable telemetry
         completion = {
-          callSnippet = "Replace",      -- Auto-fill function arguments
+          callSnippet = "Replace", -- Auto-fill function arguments
         },
         hint = {
           enable = true, -- Show type hints
@@ -39,7 +39,16 @@ local c = {
     },
   },
 
-  ts_ls = {
+  biome = {
+    filetypes = {
+      "javascript",
+      "typescript",
+      "javascriptreact",
+      "typescriptreact",
+    },
+  },
+
+  vtsls = {
     filetypes = {
       "javascript",
       "typescript",
@@ -48,6 +57,18 @@ local c = {
       "vue",
     },
     settings = {
+      vtsls = {
+        tsserver = {
+          globalPlugins = {
+            {
+              name = "@vue/typescript-plugin",
+              location = vim.fn.stdpath "data" .. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+              languages = { "vue" },
+              configNamespace = "typescript",
+            },
+          },
+        },
+      },
       typescript = {
         inlayHints = {
           -- You can set this to 'all' or 'literals' to enable more hints
@@ -83,10 +104,6 @@ local c = {
         inlayHints = {
           variableTypes = true,
           callArgumentNames = true,
-        },
-        experimental = {
-          rename = false,
-          autoImport = true,
         },
       },
     },
@@ -138,7 +155,7 @@ local c = {
         fileEnumerationTimeout = 1,
         analysis = {
           -- Diagnostic mode `workspace` or `openFilesOnly`.
-          diagnosticMode = "workspace",
+          diagnosticMode = "openFilesOnly",
           autoImportCompletions = true,
           useLibraryCodeForTypes = true,
           inlayHints = {
@@ -197,7 +214,7 @@ return {
       lemminx = {},
 
       -- Vue.
-      -- vue_ls = {},
+      vue_ls = {},
 
       -- Css.
       tailwindcss = {},
@@ -205,9 +222,9 @@ return {
       cssls = {},
 
       -- Javascript and Typescript.
-      biome = {},
+      biome = c.biome,
       eslint = {},
-      ts_ls = c.ts_ls,
+      vtsls = c.vtsls,
       astro = {},
 
       -- Html.
@@ -235,14 +252,16 @@ return {
       gopls = {},
 
       -- Spelling.
-      harper_ls = c.harper_ls,
+      -- harper_ls = c.harper_ls,
     },
   },
   config = function(_, opts)
     -- :help lspconfig-all
     for server, config in pairs(opts.servers) do
       config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-      pcall(vim.lsp.config, server, config)
+      vim.lsp.config(server, config)
+    end
+    for server, _ in pairs(opts.servers) do
       vim.lsp.enable(server)
     end
   end,
