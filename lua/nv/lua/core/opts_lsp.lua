@@ -6,6 +6,9 @@ local lsp_priority = {
     "basedpyright",
     "pyrefly",
     "ty",
+    -- vue
+    "vtsls",
+    "vue_ls",
   },
 }
 
