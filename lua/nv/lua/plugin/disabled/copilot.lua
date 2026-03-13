@@ -1,24 +1,21 @@
-local function opts()
-  return {
-    suggestion = { enabled = false },
-    panel = { enabled = false },
-    filetypes = {
-      -- javascript = true,
-      -- typescript = true,
-      python = true,
-      ["*"] = false,
-    },
-  }
-end
-
-local function config(_, opts)
-  require("copilot").setup(opts)
-end
+-- Fully featured & enhanced replacement for copilot.vim.
 
 return {
   "zbirenbaum/copilot.lua",
   cmd = "Copilot",
-  opts = opts,
+  opts = {
+    suggestion = { enabled = false },
+    panel = { enabled = false },
+    server = {
+      type = "nodejs",
+    },
+    filetypes = {
+      javascript = true,
+      typescript = true,
+      python = true,
+      lua = true,
+      ["*"] = false,
+    },
+  },
   event = "InsertEnter",
-  config = config,
 }
