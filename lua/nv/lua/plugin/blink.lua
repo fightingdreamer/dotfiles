@@ -50,13 +50,19 @@ return {
         draw = {
           columns = {
             { "label" },
-            { "kind_icon",        gap = 1, "kind" },
+            { "kind_icon", "score", gap = 1, "kind" },
             { "label_description" },
           },
           padding = { 0, 0 },
           components = {
             label_description = {
               width = { fill = true, max = 80 },
+            },
+            score = {
+              text = function(ctx)
+                return tostring(ctx.item.score or 0)
+              end,
+              width = { max = 5 },
             },
           },
         },
@@ -85,14 +91,21 @@ return {
         },
         lsp = {
           min_keyword_length = 0,
-          score_offset = 0,
+          score_offset = 10,
           async = true,
           fallbacks = {},
           transform_items = function(_, items)
             local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
-            return vim.tbl_filter(function(item)
+            local filtered_items = vim.tbl_filter(function(item)
               return item.kind ~= CompletionItemKind.Keyword and item.kind ~= CompletionItemKind.Text
             end, items)
+            for _, item in ipairs(filtered_items) do
+              -- boost items containing '=' (e.g., keyword args)
+              if item.label and item.label:find("=", 1, true) then
+                item.score_offset = 20
+              end
+            end
+            return filtered_items
           end,
         },
         path = {
@@ -101,7 +114,7 @@ return {
         },
         buffer = {
           min_keyword_length = 1,
-          score_offset = 0,
+          score_offset = -5,
         },
       },
     },
@@ -115,8 +128,8 @@ return {
     -- See the fuzzy documentation for more information
     fuzzy = {
       sorts = {
-        "exact",
         "score",
+        "exact",
         "label",
         "sort_text",
       },

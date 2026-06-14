@@ -5,7 +5,6 @@ return {
 
   build = ":TSUpdate",
 
-  main = "nvim-treesitter.configs",
   opts = {
     ensure_installed = {
       "bash",

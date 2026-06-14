@@ -41,9 +41,9 @@ return {
   {
     "folke/todo-comments.nvim",
 
-    dependencies = {
-      "ibhagwan/fzf-lua",
-    },
+    -- dependencies = {
+    --   "ibhagwan/fzf-lua",
+    -- },
 
     opts = {
       keywords = {

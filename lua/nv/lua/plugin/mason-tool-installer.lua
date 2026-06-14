@@ -15,15 +15,15 @@ return {
   opts = {
     run_on_start = false,
     ensure_installed = {
-      { "shfmt", auto_update = true },
-      { "basedpyright", auto_update = false },
-      { "biome", auto_update = true },
-      { "debugpy", auto_update = true },
+      { "shfmt",               auto_update = true },
+      { "basedpyright",        auto_update = false },
+      -- { "biome", auto_update = true }, -- need npm
+      { "debugpy",             auto_update = true },
       { "lua-language-server", auto_update = true },
-      { "sql-formatter", auto_update = true },
-      { "stylua", auto_update = true },
-      { "superhtml", auto_update = true },
-      { "ty", auto_update = true },
+      -- { "sql-formatter",       auto_update = true }, -- need npm
+      { "stylua",              auto_update = true },
+      { "superhtml",           auto_update = true },
+      { "ty",                  auto_update = true },
     },
     integrations = {
       ["mason-null-ls"] = false,
