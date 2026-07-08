@@ -110,9 +110,15 @@ local m = {
   end,
 
   manpages = function()
+    local actions = require "telescope.actions"
     require("telescope.builtin").man_pages({
       sections = { "1", "5", "8" },
       sorter = require("telescope").extensions.fzy_native.sorter,
+      attach_mappings = function(prompt_bufnr, map)
+        map("i", "<CR>", actions.select_vertical)
+        map("n", "<CR>", actions.select_vertical)
+        return true
+      end,
     })
   end,
 
@@ -161,15 +167,15 @@ local m = {
   end,
 
   lsp_code_actions = function()
-    require("telescope.builtin").lsp_code_actions()
+    vim.lsp.buf.code_action()
   end,
 
   diagnostic = function()
-    require("telescope.builtin").diagnostics({ bufnr = 0, line_width = 'full' })
+    require("telescope.builtin").diagnostics({ bufnr = 0, line_width = 'full', wrap_results = true })
   end,
 
   diagnostic_all = function()
-    require("telescope.builtin").diagnostics({ line_width = 'full' })
+    require("telescope.builtin").diagnostics({ line_width = 'full', wrap_results = true })
   end,
 }
 
@@ -185,74 +191,76 @@ return {
     require("telescope").setup(opts)
   end,
 
-  opts = {
-    defaults = {
-      entry_prefix = " ",
-      prompt_prefix = " > ",
-      selection_caret = " ",
-      path_display = {
-        filename_first = {
-          reverse_directories = true,
+  opts = function()
+    return {
+      defaults = {
+        entry_prefix = " ",
+        prompt_prefix = " > ",
+        selection_caret = " ",
+        path_display = {
+          filename_first = {
+            reverse_directories = false,
+          },
+        },
+        sorting_strategy = "ascending",
+        color_devicons = true,
+        layout_config = {
+          horizontal = {
+            prompt_position = "top",
+            preview_width = 0.55,
+            results_width = 0.8,
+          },
+          vertical = {
+            mirror = false,
+          },
+          width = 0.87,
+          height = 0.80,
+          preview_cutoff = 120,
+        },
+        mappings = {
+          n = { ["q"] = require("telescope.actions").close },
         },
       },
-      sorting_strategy = "ascending",
-      color_devicons = true,
-      layout_config = {
-        horizontal = {
-          prompt_position = "top",
-          preview_width = 0.55,
-          results_width = 0.8,
+      pickers = {
+        jumplist = {
+          sorter = require("telescope.sorters").get_substr_matcher(),
         },
-        vertical = {
-          mirror = false,
+        oldfiles = {
+          sorter = require("telescope.sorters").get_substr_matcher(),
         },
-        width = 0.87,
-        height = 0.80,
-        preview_cutoff = 120,
       },
-      mappings = {
-        n = { ["q"] = require("telescope.actions").close },
-      },
-    },
-    pickers = {
-      jumplist = {
-        sorter = require("telescope.sorters").get_substr_matcher(),
-      },
-      oldfiles = {
-        sorter = require("telescope.sorters").get_substr_matcher(),
-      },
-    },
-  },
+    }
+  end,
 
   keys = {
-    { "<leader>lr", m.lsp_references,         desc = "Lsp references" },
-    { "<leader>lD", m.lsp_declarations,       desc = "Lsp declarations" },
-    { "<leader>ld", m.lsp_definitions,        desc = "Lsp definitions" },
-    { "<leader>li", m.lsp_incoming_calls,     desc = "Lsp incoming calls" },
-    { "<leader>lo", m.lsp_outgoing_calls,     desc = "Lsp outgoing calls" },
-    { "<leader>la", m.lsp_code_actions,       desc = "Lsp code actions" },
-    { "<leader>lt", m.lsp_type_definitions,   desc = "Lsp type definitions" },
-    { "<leader>ls", m.lsp_document_symbols,   desc = "Lsp document symbols" },
-    { "<leader>lS", m.lsp_workspace_symbols,  desc = "Lsp workspace symbols" },
+    { "<leader>lr", m.lsp_references,        desc = "Lsp references" },
+    { "<leader>lD", m.lsp_declarations,      desc = "Lsp declarations" },
+    { "<leader>ld", m.lsp_definitions,       desc = "Lsp definitions" },
+    { "<leader>li", m.lsp_incoming_calls,    desc = "Lsp incoming calls" },
+    { "<leader>lo", m.lsp_outgoing_calls,    desc = "Lsp outgoing calls" },
+    { "<leader>la", m.lsp_code_actions,      desc = "Lsp code actions" },
+    { "<leader>lt", m.lsp_type_definitions,  desc = "Lsp type definitions" },
+    { "<leader>ls", m.lsp_document_symbols,  desc = "Lsp document symbols" },
+    { "<leader>lS", m.lsp_workspace_symbols, desc = "Lsp workspace symbols" },
 
-    { "<leader>t",  m.treesitter,             desc = "Treesitter" },
-    { "<leader>e",  m.diagnostic,             desc = "Diagnostics" },
-    { "<leader>E",  m.diagnostic_all,         desc = "Diagnostics (all)" },
-    { "<leader>b",  m.buffers,                desc = "Buffers" },
-    { "<leader>r",  m.oldfiles,               desc = "Old files" },
-    { "<leader>j",  m.jumps,                  desc = "Jumps" },
-    { "<leader>q",  m.quickfix,               desc = "Quickfix" },
-    { "<leader>g",  m.live_grep,              desc = "Live grep" },
-    { "<leader>G",  m.live_grep_all,          desc = "Live grep (all)" },
-    { "<leader>o",  m.find_files,             desc = "Find files" },
-    { "<leader>O",  m.find_all_files,         desc = "Find all files" },
-    { "<leader>/",  m.buf_lines,              desc = "Buffer lines" },
+    { "<leader>t",  m.treesitter,            desc = "Treesitter" },
+    { "<leader>e",  m.diagnostic,            desc = "Diagnostics" },
+    { "<leader>E",  m.diagnostic_all,        desc = "Diagnostics (all)" },
+    { "<leader>b",  m.buffers,               desc = "Buffers" },
+    { "<leader>r",  m.oldfiles,              desc = "Old files" },
+    { "<leader>j",  m.jumps,                 desc = "Jumps" },
+    { "<leader>q",  m.quickfix,              desc = "Quickfix" },
+    { "<leader>g",  m.live_grep,             desc = "Live grep" },
+    { "<leader>G",  m.live_grep_all,         desc = "Live grep (all)" },
+    { "<leader>o",  m.find_files,            desc = "Find files" },
+    { "<leader>O",  m.find_all_files,        desc = "Find all files" },
+    { "<leader>/",  m.buf_lines,             desc = "Buffer lines" },
 
-    { "<leader>h",  m.help_tags,              desc = "Help pages" },
-    { "<leader>m",  m.manpages,               desc = "Man pages" },
+    { "<leader>h",  m.help_tags,             desc = "Help pages" },
+    { "<leader>m",  m.manpages,              desc = "Man pages" },
 
-    { "<leader>c",  m.colorschemes,           desc = "Color schemes" },
-    { "<leader>:",  m.command_history,        desc = "Command history" },
+    { "<leader>c",  m.colorschemes,          desc = "Color schemes" },
+    { "<leader>:",  m.command_history,       desc = "Command history" },
   },
 
   event = "VeryLazy",

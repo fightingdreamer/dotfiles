@@ -17,13 +17,13 @@ local lsp_priority = {
 -- https://neovim.io/doc/user/lsp.html#lsp-api
 local lsp_have_feature = {
   rename = function(client)
-    return client.supports_method "textDocument/rename"
+    return client:supports_method "textDocument/rename"
   end,
   inlay_hint = function(client)
-    return client.supports_method "textDocument/inlayHint"
+    return client:supports_method "textDocument/inlayHint"
   end,
   code_action = function(client)
-    return client.supports_method "textDocument/codeAction"
+    return client:supports_method "textDocument/codeAction"
   end,
 }
 

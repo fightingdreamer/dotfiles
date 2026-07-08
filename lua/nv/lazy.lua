@@ -24,6 +24,10 @@ require("lazy").setup {
     { import = "plugin" },
   },
 
+  rocks = {
+    enabled = false,
+  },
+
   defaults = {
     lazy = true,
   },
