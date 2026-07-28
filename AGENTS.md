@@ -80,6 +80,29 @@
 - Run Python through `uv run python`.
 - Run Alembic with an explicit configuration path using `alembic --config <path> <command>`.
 
+- For cache/memoize methods, use a single late return. Prefer the one-line
+  form when the compute call fits on one line:
+
+  ```python
+  try:
+      result = self._cache[key]
+  except KeyError:
+      result = self._cache[key] = compute()
+  return result
+  ```
+
+  When the compute call is complex or spans multiple lines, split into
+  separate statements so a breakpoint can isolate each step:
+
+  ```python
+  try:
+      result = self._cache[key]
+  except KeyError:
+      result = compute()
+      self._cache[key] = result
+  return result
+  ```
+
 ## Commits
 
 - Before committing, ask the user to review and explicitly approve the changes.
