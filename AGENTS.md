@@ -108,3 +108,7 @@
 - Before committing, ask the user to review and explicitly approve the changes.
 - Write concise commit messages as normal sentences.
 - Do not use Conventional Commit prefixes by default.
+
+## Documentation
+
+- Always create in ASD-STE100 Simplified Technical English
