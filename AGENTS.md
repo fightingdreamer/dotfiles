@@ -28,6 +28,12 @@
 - Do not spend implementation time removing unused imports or addressing lint and type-checking errors unless they block the work.
 - Use one statement per line and one condition per line so a debugger breakpoint can isolate each step.
 
+## Making Changes
+
+- Prefer manual edits over creating scripts that only perform the edit.
+- Abandon debugging an automation script when a manual edit across multiple turns would achieve the same result.
+- Keep such scripts in temporary locations (e.g. /tmp), not in the workspace or repo.
+
 ## Problematic Code
 
 - Do not force an unclean implementation when the problem cannot be solved safely or maintainably as-is.
