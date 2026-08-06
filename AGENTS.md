@@ -112,6 +112,7 @@
 ## Commits
 
 - Before committing, ask the user to review and explicitly approve the changes.
+- Before pushing, ask the user to explicitly approve the changes.
 - Write concise commit messages as normal sentences.
 - Do not use Conventional Commit prefixes by default.
 
