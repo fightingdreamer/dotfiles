@@ -13,6 +13,7 @@
 - Propose a concise list of viable solution options.
 - Explain the key tradeoffs, risks, and affected areas for each option.
 - Recommend an option when appropriate, while leaving the decision to the user.
+- If unsure whether to proceed with an edit, ask the user and proceed only after the user explicitly agrees.
 - Do not write, edit, or generate implementation code until the user explicitly approves the architecture or design.
 
 ## Implementation Style
