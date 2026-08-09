@@ -85,7 +85,7 @@
 
 - Run Python through `uv run python`.
 - Run Alembic with an explicit configuration path using `alembic --config <path> <command>`.
-
+- Do not prefix function and method names with an underscore to make them private by default.
 - For cache/memoize methods, use a single late return. Prefer the one-line
   form when the compute call fits on one line:
 
