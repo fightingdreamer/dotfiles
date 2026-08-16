@@ -120,3 +120,7 @@
 ## Documentation
 
 - Always create in ASD-STE100 Simplified Technical English
+
+## Runtime
+
+- Do not use tail on commands that are expected to be slow, user like to see progress of these.
