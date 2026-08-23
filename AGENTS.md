@@ -1,5 +1,9 @@
 # Coding Agent Instructions
 
+## Discovery
+
+- When using discovery tools like find or grep, use narrow scope to not scan over many unrelated locations.
+
 ## Shared Workspace
 
 - Treat the workspace as shared with the user.
@@ -87,28 +91,7 @@
 - Run Python through `uv run python`.
 - Run Alembic with an explicit configuration path using `alembic --config <path> <command>`.
 - Do not prefix function and method names with an underscore to make them private by default.
-- For cache/memoize methods, use a single late return. Prefer the one-line
-  form when the compute call fits on one line:
-
-  ```python
-  try:
-      result = self._cache[key]
-  except KeyError:
-      result = self._cache[key] = compute()
-  return result
-  ```
-
-  When the compute call is complex or spans multiple lines, split into
-  separate statements so a breakpoint can isolate each step:
-
-  ```python
-  try:
-      result = self._cache[key]
-  except KeyError:
-      result = compute()
-      self._cache[key] = result
-  return result
-  ```
+- Do not run `ruff check --fix` without the user's explicit permission.
 
 ## Commits
 
@@ -124,3 +107,8 @@
 ## Runtime
 
 - Do not use tail on commands that are expected to be slow, user like to see progress of these.
+
+## Responses
+
+- Never use two or three letter shortcuts.
+- Always respond in ASD-STE100 Simplified Technical English
