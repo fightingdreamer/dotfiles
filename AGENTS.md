@@ -22,8 +22,8 @@
 
 ## Implementation Style
 
+- Do not put argument types and return types in function docstring or method docstring.
 - Keep proposed solutions easy to reason about and avoid unnecessary mental load.
-- Do not add docstrings; use self-explanatory function and class names instead.
 - Prefer forward-only control flow with minimal mutation and side effects.
 - Keep control flow flat by using early returns, throws, `continue`, `break`, or extracted steps instead of nesting `if`, `for`, and `while` blocks.
 - In typed languages, prefer interfaces and immutable (`const`) function inputs when supported.
@@ -31,7 +31,7 @@
 - Apply DRY only when deduplication is straightforward and reduces complexity; do not fragment code into tiny helpers that increase mental load.
 - Optimize for a working draft before cleanup and polish.
 - Do not spend implementation time removing unused imports or addressing lint and type-checking errors unless they block the work.
-- Use one statement per line and one condition per line so a debugger breakpoint can isolate each step.
+- Use one statement per line and one condition per line, and assign an awaited result to a named variable before it is used or returned so a debugger can isolate each step.
 
 ## Making Changes
 
@@ -57,10 +57,10 @@
 ## Problem Solving
 
 - Focus on one problem at a time.
-- Split complex problems into smaller problems that can be reasoned about and validated independently.
+- Split complex problems into smaller problems that can be reasoned about and validated independently in ordered manner.
 - Validate reasoning with concrete examples or small experiments when useful, preferably in numbered local files.
-- Return to the user with the proposed investigation plan and wait for validation before starting problem-solving work.
-- Ask the user for clarification or additional information whenever the plan has material gaps.
+- Return to the user with the proposed investigation plan and wait for validation before starting bigger problem-solving work.
+- Ask the user for clarification or additional information whenever the plan has assumptions.
 - Before trying a fundamentally different approach, ensure the current work state is clean or explicitly preserved and accounted for.
 
 ## Incremental Delivery
@@ -73,9 +73,11 @@
 
 ## Testing And Validation
 
-- Start testing with the smallest happy-path test.
+- Don't run or create tests when not asked by user.
+- When asked create tests with the smallest happy-path.
+- Defer running tests until context change or commit is proposed.
 - After it passes, measure coverage for the new solution and decide which focused cases to add next.
-- Allow duplicated test code, mocks, and patches when it keeps tests separate and clear; consolidate only non-trivial repetition when doing so is plainly simpler.
+- Allow duplicated test code, mocks, and patches when it keeps tests separate and clear.
 - Keep assertions explicit in each test and do not move them to shared helpers.
 - Investigate and resolve ordinary test failures without reporting each failure to the user.
 - Ask the user for help with database, environment, credential, external-service, or other contextual issues the user may know more about.
@@ -102,13 +104,17 @@
 
 ## Documentation
 
-- Always create in ASD-STE100 Simplified Technical English
+- Always create in ASD-STE100 Simplified Technical English.
+- Describe current behavior directly; omit comparisons with previous or alternative behavior unless needed to prevent a specific misunderstanding.
 
 ## Runtime
 
 - Do not use tail on commands that are expected to be slow, user like to see progress of these.
+- When using tail always redirect to tmp file, so command output is always captured.
 
 ## Responses
 
 - Never use two or three letter shortcuts.
+- Use mermaid diagrams for visual reference.
+- Use open comment to show things to user.
 - Always respond in ASD-STE100 Simplified Technical English
