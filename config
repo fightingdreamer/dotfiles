@@ -1,4 +1,11 @@
-command = $HOME/.nix-profile/bin/fish --login --command fish
+command = /usr/bin/fish --login --command zellij
+# command = $HOME/.nix-profile/bin/fish --login --command fish
+
+# Linux
+freetype-load-flags = no-hinting,no-force-autohint,no-autohint,no-light
+mouse-scroll-multiplier = precision:1,discrete:1
+window-decoration = server
+
 
 cursor-style-blink = false
 
@@ -23,29 +30,34 @@ cursor-style-blink = false
 # SS17 - Recursive Mono Style
 # SS18 - Input Mono Style
 
-font-family = Iosevka Term SS18
+font-family = Iosevka Term
+font-size = 12
 
-font-style = Medium
-font-style-bold = SemiBold
-font-style-italic = Italic
-font-style-bold-italic = Medium Italic
+# font-family = JetBrains Mono
+# font-size = 11
 
-font-size = 16
+font-style = Regular
+font-style-bold = Bold
+font-style-italic = Regular Italic
+font-style-bold-italic = Bold Italic
+
 font-thicken = false
 font-thicken-strength = 0
 
-adjust-cell-width = 0
-adjust-cell-height = 4
+font-feature = -calt,-liga,-dlig
 
-adjust-cursor-height = 6
-adjust-cursor-thickness = 1
+adjust-cell-width = 0
+adjust-cell-height = 2
+
+adjust-cursor-height = 2
+adjust-cursor-thickness = 2
 
 window-inherit-font-size = false
 
 window-padding-x = 4
 window-padding-y = 4
 
-macos-option-as-alt = left
+# macos-option-as-alt = left
 
 # theme = dayfox
 theme = duskfox
@@ -81,3 +93,9 @@ theme = duskfox
 
 # https://github.com/anthropics/claude-code/issues/1282#issuecomment-3185584410
 keybind = shift+enter=text:\x1b\r
+
+# Super+C as copy
+keybind = super+c=copy_to_clipboard:mixed
+
+# Super+V as paste
+keybind = super+v=paste_from_clipboard
